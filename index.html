@@ -6254,14 +6254,14 @@ function answerQuiz(idx) {
 // ── CONFIG ──
 const SUPABASE_URL = 'https://zrgthpeffbmxpzvhorla.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_GmiL6H9E7lbKe-dezbgaLA_f22t79ab';
-const supabase = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
 let currentUser = null;
 let currentProfile = null;
 
 // ── INIT ──
 async function initAuth() {
-  const { data: { session } } = await supabase.auth.getSession();
+  const { data: { session } } = await supabaseClient.auth.getSession();
   if (session) {
     await loadProfile(session.user);
   }
@@ -6273,7 +6273,7 @@ async function initAuth() {
 
 async function loadProfile(user) {
   currentUser = user;
-  const { data: profile } = await supabase
+  const { data: profile } = await supabaseClient
     .from('profiles')
     .select('*')
     .eq('id', user.id)
@@ -6281,12 +6281,12 @@ async function loadProfile(user) {
 
   if (profile) {
     if (profile.status === 'banned') {
-      await supabase.auth.signOut();
+      await supabaseClient.auth.signOut();
       showError('login-error', 'Tài khoản của bạn đã bị banned.');
       return;
     }
     if (profile.status === 'pending') {
-      await supabase.auth.signOut();
+      await supabaseClient.auth.signOut();
       showError('login-error', 'Tài khoản đang chờ admin xác thực.');
       return;
     }
@@ -6327,26 +6327,24 @@ async function handleLogin() {
     showError('login-error', 'Vui lòng nhập đủ thông tin.'); return;
   }
 
-  // Tìm email theo username
-  const { data: profile } = await supabase
+  // Tìm email thật theo username
+  const { data: profile, error: lookupError } = await supabaseClient
     .from('profiles')
-    .select('id')
+    .select('email')
     .eq('username', username)
     .single();
 
-  if (!profile) {
+  if (lookupError || !profile || !profile.email) {
     showError('login-error', 'Username không tồn tại.'); return;
   }
 
-  // Lấy email từ auth (dùng admin client không được, nên ta dùng username làm email fake)
-  const fakeEmail = `${username}@copymastery.local`;
-  const { data, error } = await supabase.auth.signInWithPassword({
-    email: fakeEmail,
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: profile.email,
     password: password
   });
 
   if (error) {
-    showError('login-error', 'Sai mật khẩu hoặc tài khoản không tồn tại.'); return;
+    showError('login-error', 'Sai mật khẩu, hoặc tài khoản chưa được admin xác thực.'); return;
   }
 
   await loadProfile(data.user);
@@ -6368,7 +6366,7 @@ async function handleRegister() {
   }
 
   // Check username đã tồn tại chưa
-  const { data: existing } = await supabase
+  const { data: existing } = await supabaseClient
     .from('profiles')
     .select('id')
     .eq('username', username)
@@ -6378,10 +6376,9 @@ async function handleRegister() {
     showError('reg-error', 'Username đã được sử dụng.'); return;
   }
 
-  // Dùng username làm email fake để tránh email verification
-  const fakeEmail = `${username}@copymastery.local`;
-  const { data, error } = await supabase.auth.signUp({
-    email: fakeEmail,
+  // Dùng email thật để tạo tài khoản (Supabase sẽ từ chối email giả/domain không tồn tại)
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
     password: password,
     options: { data: { username: username } }
   });
@@ -6389,6 +6386,23 @@ async function handleRegister() {
   if (error) {
     showError('reg-error', error.message); return;
   }
+
+  if (!data.user) {
+    showError('reg-error', 'Không tạo được tài khoản, vui lòng thử lại.'); return;
+  }
+
+  // Tạo hồ sơ trong bảng profiles, hoặc cập nhật nếu trigger đã tự tạo sẵn
+  const { error: profileError } = await supabaseClient
+    .from('profiles')
+    .upsert({ id: data.user.id, username: username, email: email, role: 'member', status: 'pending' }, { onConflict: 'id' });
+
+  if (profileError) {
+    showError('reg-error', 'Tài khoản đã tạo nhưng lỗi khi lưu hồ sơ: ' + profileError.message);
+    return;
+  }
+
+  // Đăng xuất ngay để tài khoản pending không tự động có quyền truy cập
+  await supabaseClient.auth.signOut();
 
   document.getElementById('reg-success').style.display = 'block';
   document.getElementById('reg-success').textContent =
@@ -6400,7 +6414,7 @@ async function handleRegister() {
 
 // ── LOGOUT ──
 async function handleLogout() {
-  await supabase.auth.signOut();
+  await supabaseClient.auth.signOut();
   currentUser = null;
   currentProfile = null;
   document.getElementById('user-bar').style.display = 'none';
@@ -6414,7 +6428,7 @@ async function showAdminPanel() {
 }
 
 async function loadPendingUsers() {
-  const { data } = await supabase
+  const { data } = await supabaseClient
     .from('profiles')
     .select('*')
     .eq('status', 'pending')
@@ -6429,7 +6443,7 @@ async function loadPendingUsers() {
 }
 
 async function loadAllUsers() {
-  const { data } = await supabase
+  const { data } = await supabaseClient
     .from('profiles')
     .select('*')
     .neq('username', 'baoanz2102208')
@@ -6484,27 +6498,27 @@ function renderUserCard(u, isPending) {
 }
 
 async function approveUser(id) {
-  await supabase.from('profiles').update({ status: 'active' }).eq('id', id);
+  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
   await loadPendingUsers();
 }
 
 async function rejectUser(id) {
-  await supabase.from('profiles').update({ status: 'banned' }).eq('id', id);
+  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
   await loadPendingUsers();
 }
 
 async function banUser(id) {
-  await supabase.from('profiles').update({ status: 'banned' }).eq('id', id);
+  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
   await loadAllUsers();
 }
 
 async function unbanUser(id) {
-  await supabase.from('profiles').update({ status: 'active' }).eq('id', id);
+  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
   await loadAllUsers();
 }
 
 async function changeRole(id, role) {
-  await supabase.from('profiles').update({ role: role }).eq('id', id);
+  await supabaseClient.from('profiles').update({ role: role }).eq('id', id);
 }
 
 async function resetPassword(username) {
