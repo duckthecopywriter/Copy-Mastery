@@ -937,7 +937,7 @@
   <div class="sidebar-logo">
     <div class="logo-label">// Study Kit</div>
     <h1>Copy Mastery</h1>
-    <p>3 chương · copy.knowledge.base</p>
+    <p>4 chương · copy.knowledge.base</p>
   </div>
   <nav class="sidebar-nav">
     <div class="nav-section-label">Tổng quan</div>
@@ -1019,6 +1019,38 @@
       <span class="nav-dot" style="background:#818cf8"></span> Four Laws of Behavior Change
     </button>
 
+    <div class="nav-section-label" style="color:rgba(96,165,250,.55);border-top:1px solid rgba(96,165,250,.12);padding-top:12px;margin-top:4px">📗 Facebook Ads & Content</div>
+    <button class="nav-item" onclick="showPanel('ads-overview', this)">
+      <span class="nav-dot" style="background:#60a5fa"></span> Tổng quan & Lộ trình
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-formulas', this)">
+      <span class="nav-dot" style="background:#34d399"></span> Công thức & Chỉ số
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-tu-duy', this)">
+      <span class="nav-dot" style="background:#a78bfa"></span> Nền tảng tư duy (P1)
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-tu-dien', this)">
+      <span class="nav-dot" style="background:#fbbf24"></span> Từ điển thuật ngữ (P2)
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-content-tinhhuong', this)">
+      <span class="nav-dot" style="background:#f87171"></span> Chẩn đoán Content · CT
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-campaign-tinhhuong', this)">
+      <span class="nav-dot" style="background:#fb923c"></span> Chẩn đoán Chiến dịch · CA
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-adset-tinhhuong', this)">
+      <span class="nav-dot" style="background:#4ade80"></span> Chẩn đoán Nhóm QC · AS
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-ad-tinhhuong', this)">
+      <span class="nav-dot" style="background:#e879f9"></span> Chẩn đoán Từng QC · AD
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-pb-tinhhuong', this)">
+      <span class="nav-dot" style="background:#22d3ee"></span> Khoanh vùng lỗi · PB
+    </button>
+    <button class="nav-item" onclick="showPanel('ads-18steps', this)">
+      <span class="nav-dot" style="background:#f472b6"></span> 18 Bước kiểm tra
+    </button>
+
     <div class="nav-section-label">Luyện tập</div>
     <button class="nav-item" onclick="showPanel('quiz', this)">
       <span class="nav-dot" style="background:#4ade80"></span> Quiz ôn bài
@@ -1030,7 +1062,7 @@
 <main class="main">
   <div class="topbar">
     <div class="topbar-title" id="topbar-title">Tổng quan</div>
-    <div style="font-size:12px;color:var(--text-dim)">3 chương · Copywriting</div>
+    <div style="font-size:12px;color:var(--text-dim)">4 chương · Copywriting & Ads</div>
   </div>
 
   <div class="content">
@@ -1163,6 +1195,62 @@
           <div class="chip-icon">🧲</div>
           <h3>Leads</h3>
           <p>Traffic → Lead → Engaged Lead và hệ thống Lead Magnet trong sales funnel</p>
+        </div>
+      </div>
+
+      <div class="section" style="margin-top:28px">
+        <div class="section-title" style="font-size:11px;color:rgba(96,165,250,.7)">📗 Cẩm nang Facebook Ads &amp; Content</div>
+      </div>
+      <div class="overview-grid" style="margin-bottom:28px">
+        <div class="overview-chip" style="border-top-color:#60a5fa" onclick="showPanelById('ads-overview')">
+          <div class="chip-icon">🗺️</div>
+          <h3>Tổng quan &amp; Lộ trình</h3>
+          <p>Đọc theo thứ tự 3 tuần · cách tra cứu khi có sự cố</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#34d399" onclick="showPanelById('ads-formulas')">
+          <div class="chip-icon">🧮</div>
+          <h3>Công thức &amp; Chỉ số</h3>
+          <p>CPM, CTR, CPC, CPA, ROAS, phân rã phễu và ROAS hòa vốn</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#a78bfa" onclick="showPanelById('ads-tu-duy')">
+          <div class="chip-icon">🧠</div>
+          <h3>Nền tảng tư duy</h3>
+          <p>Chuỗi tiền → lợi nhuận · 4 căn cứ kết luận · 8 bước ra quyết định</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#fbbf24" onclick="showPanelById('ads-tu-dien')">
+          <div class="chip-icon">📖</div>
+          <h3>Từ điển 186 thuật ngữ</h3>
+          <p>Cấu trúc, ngân sách, đối tượng, chỉ số, content, phễu, đo lường</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#f87171" onclick="showPanelById('ads-content-tinhhuong')">
+          <div class="chip-icon">🎯</div>
+          <h3>28 tình huống Content · CT</h3>
+          <p>Đánh giá content tốt, xấu · hook, CVR, inbox · 6 ô chẩn đoán</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#fb923c" onclick="showPanelById('ads-campaign-tinhhuong')">
+          <div class="chip-icon">📊</div>
+          <h3>16 tình huống Campaign · CA</h3>
+          <p>Đạt mục tiêu, sụt giảm, phân bổ ngân sách, ROAS và kết luận sai</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#4ade80" onclick="showPanelById('ads-adset-tinhhuong')">
+          <div class="chip-icon">👥</div>
+          <h3>16 tình huống Ad Set · AS</h3>
+          <p>Đối tượng, phân phối, tệp bão hòa, learning và cấu hình</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#e879f9" onclick="showPanelById('ads-ad-tinhhuong')">
+          <div class="chip-icon">📢</div>
+          <h3>16 tình huống Ad · AD</h3>
+          <p>Creative, hook, placement, frequency và asset từng quảng cáo</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#22d3ee" onclick="showPanelById('ads-pb-tinhhuong')">
+          <div class="chip-icon">🔬</div>
+          <h3>22 tình huống Khoanh vùng · PB</h3>
+          <p>Ads / content / web / sales / tracking — tìm đúng nguyên nhân</p>
+        </div>
+        <div class="overview-chip" style="border-top-color:#f472b6" onclick="showPanelById('ads-18steps')">
+          <div class="chip-icon">✅</div>
+          <h3>18 Bước kiểm tra tại bàn</h3>
+          <p>Checklist đi hết từ câu hỏi kinh doanh đến kết luận có thể hành động</p>
         </div>
       </div>
 
@@ -4300,6 +4388,725 @@ Nếu muốn đi tập đẩy 4xfail vẫn sung sức, click vào đây nhé.
       </div>
     </div>
 
+    <!-- ══════════ ADS OVERVIEW ══════════ -->
+    <div class="panel" id="panel-ads-overview">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(96,165,250,.1);color:#60a5fa">📗 Facebook Ads &amp; Content</div>
+        <div class="framework-title">Cẩm nang <span style="color:#60a5fa">Facebook Ads</span></div>
+        <div class="framework-subtitle">Từ tiền quảng cáo đến kết quả kinh doanh: đọc chỉ số — nhận biết vấn đề — kiểm chứng nguyên nhân — chọn biện pháp — đo lại.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Lộ trình học 3 tuần</div>
+        <div class="card-grid">
+          <div class="card card-accent" style="border-left-color:#60a5fa">
+            <h4>📅 Tuần 1 · Nền tảng</h4>
+            <p>Phần 1 và 2. Hiểu chuỗi tiền › lợi nhuận, bốn căn cứ kết luận, bản đồ chỉ số và 186 thuật ngữ mức "Phải biết".</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#34d399">
+            <h4>📅 Tuần 2 · Tình huống</h4>
+            <p>Phần 3. Mỗi ngày đọc một nhóm mã: CT (content), CA (chiến dịch), AS (nhóm quảng cáo), AD (quảng cáo), PB (khoanh vùng lỗi).</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#fbbf24">
+            <h4>📅 Tuần 3 · Thực hành</h4>
+            <p>Phần 4. Làm theo 18 bước trên một tài khoản thật, tính lại 8 ví dụ số và ba bài tự luyện.</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#e879f9">
+            <h4>🔧 Khi cần · Vận hành</h4>
+            <p>Phần 5 và Phụ lục. Mẫu biểu, nhịp kiểm tra, bảng tra theo triệu chứng và chỉ mục A–Z.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Khi có sự cố — làm theo thứ tự này</div>
+        <ol class="num-list">
+          <li><b>Kiểm tra dữ liệu và đường đi khách hàng trước</b> — sai số liệu thì mọi kết luận sau đều sai.</li>
+          <li><b>Đọc kết quả kinh doanh cuối phễu</b>, không dừng ở CTR hay CPM.</li>
+          <li><b>Tìm bước thay đổi bằng phân rã số học.</b></li>
+          <li><b>Mở tình huống tương ứng trong Phần 3</b> và làm theo ô "Phải kiểm tra gì".</li>
+          <li><b>Ghi kết luận theo mẫu câu</b> rồi đặt mốc đo lại.</li>
+        </ol>
+      </div>
+
+      <div class="callout" style="border-color:#60a5fa;background:rgba(96,165,250,.08);color:var(--text)">
+        <strong style="color:#60a5fa">⚠️ Lưu ý quan trọng</strong>
+        Mỗi tình huống trong sách là một <em>giả thuyết cần kiểm chứng</em>, không phải kết luận tự động. Hai tài khoản có cùng triệu chứng vẫn có thể khác nguyên nhân. Đọc xong phần "Phải kiểm tra gì" rồi mới kết luận. Mọi con số trong tài liệu là số giả định dùng để luyện cách đọc.
+      </div>
+
+      <div class="section">
+        <div class="section-title">Cấu trúc tài liệu</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <h4 style="color:#60a5fa">Phần 1 · Nền tảng tư duy</h4>
+            <p>10 mục: Chuỗi tiền→lợi nhuận · 4 căn cứ · Dữ liệu đúng · Bản đồ chỉ số · 8 bước · Kết luận hành động</p>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <h4 style="color:#fbbf24">Phần 2 · Từ điển 186 thuật ngữ</h4>
+            <p>12 nhóm: Nền tảng · Cấu trúc · Ngân sách · Đối tượng · Phân phối · Chỉ số · Video · Content · Phễu · Đo lường · Kinh tế · Ký hiệu</p>
+          </div>
+          <div class="card" style="border-left:3px solid #f87171">
+            <h4 style="color:#f87171">Phần 3 · 98 Tình huống chẩn đoán</h4>
+            <p>CT (28) · CA (16) · AS (16) · AD (16) · PB (22) — mỗi tình huống có 6 ô phân tích</p>
+          </div>
+          <div class="card" style="border-left:3px solid #34d399">
+            <h4 style="color:#34d399">Phần 4 · Thực hành &amp; Thử nghiệm</h4>
+            <p>18 bước · 8 ví dụ đọc số · 3 bài tự luyện · Thiết kế thử nghiệm · 6 bài đọc bảng báo cáo</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS FORMULAS ══════════ -->
+    <div class="panel" id="panel-ads-formulas">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(52,211,153,.1);color:#34d399">🧮 Công thức</div>
+        <div class="framework-title">Một trang <span style="color:#34d399">công thức</span></div>
+        <div class="framework-subtitle">Trang này đủ cho phần lớn tình huống hằng ngày. Mục tiêu phải tính ngược từ biên lợi nhuận, không từ benchmark thị trường.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Công thức cốt lõi</div>
+        <div class="card-grid-2">
+          <div class="card" style="border-left:3px solid #34d399">
+            <h4 style="color:#34d399">Chỉ số cơ bản</h4>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:13px;line-height:2;color:var(--text-muted)">
+              CPM = Chi phí / Hiển thị × 1.000<br>
+              CTR = Lượt nhấp / Hiển thị<br>
+              CPC = Chi phí / Lượt nhấp<br>
+              CPA = Chi phí / Số kết quả<br>
+              ROAS = Doanh thu / Chi phí ads<br>
+              AOV = Doanh thu / Số đơn<br>
+              CAC<sub>ads</sub> = Chi phí ads / Số khách mới
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <h4 style="color:#60a5fa">Phân rã CPA — Phễu website</h4>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:12px;line-height:1.8;color:var(--text-muted)">
+              CPA = CPM / (1.000 × CTR × Tỷ lệ đến trang × CVR)
+            </div>
+            <div class="callout" style="border-color:#60a5fa;background:rgba(96,165,250,.08);margin-top:10px;font-size:12.5px">
+              <b>Ví dụ:</b> CPM 100.000đ · CTR 2% · đến trang 80% · CVR 2,5% → <b style="color:#60a5fa">CPA = 250.000đ</b>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <h4 style="color:#fbbf24">Phân rã CAC — Lead &amp; Tin nhắn</h4>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:12px;line-height:1.8;color:var(--text-muted)">
+              CAC = CPL / (Tỷ lệ hợp lệ × Tỷ lệ đủ điều kiện × Tỷ lệ thành khách)
+            </div>
+            <p style="font-size:12px;margin-top:8px;color:var(--text-muted)">Chỉ đúng khi theo cùng cohort và khách không bị đếm trùng. Lead rẻ vẫn có thể đi kèm CAC rất đắt.</p>
+          </div>
+          <div class="card" style="border-left:3px solid #e879f9">
+            <h4 style="color:#e879f9">Ngưỡng kinh tế</h4>
+            <div style="font-family:'Share Tech Mono',monospace;font-size:12px;line-height:1.8;color:var(--text-muted)">
+              Biên trước ads = Doanh thu thuần − COGS − Biến phí<br>
+              Biên sau ads = Biên trước ads − Chi phí ads<br>
+              ROAS hòa vốn = 1 / Tỷ lệ biên trước ads
+            </div>
+            <div class="callout" style="border-color:#e879f9;background:rgba(232,121,249,.07);margin-top:10px;font-size:12px">
+              Biên 40% → ROAS hòa vốn = <b style="color:#e879f9">2,5 lần</b>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Ví dụ giả định cách tính CPA mục tiêu</div>
+        <div class="card">
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+            <div>
+              <div style="font-size:12px;color:var(--text-dim);font-family:'Share Tech Mono',monospace;text-transform:uppercase;margin-bottom:6px">Dữ liệu giả định</div>
+              <ul class="check-list">
+                <li>Doanh thu thuần mỗi đơn: <b>800.000đ</b></li>
+                <li>Giá vốn + biến phí khác: <b>500.000đ</b></li>
+                <li>Biên trước ads còn: <b>300.000đ</b></li>
+                <li>Muốn giữ lại mỗi đơn: <b>100.000đ</b></li>
+              </ul>
+            </div>
+            <div>
+              <div style="font-size:12px;color:var(--text-dim);font-family:'Share Tech Mono',monospace;text-transform:uppercase;margin-bottom:6px">Kết luận</div>
+              <div class="callout" style="border-color:#34d399;background:rgba(52,211,153,.07);font-size:13px">
+                CPA mục tiêu = <b style="color:#34d399">200.000đ</b>
+              </div>
+              <div class="callout" style="border-color:var(--amber);background:var(--amber-dim);font-size:12.5px;margin-top:8px">
+                CPA thực 230.000đ → Chưa đạt nhưng chưa âm biên đóng góp
+              </div>
+              <div class="callout" style="border-color:var(--rose);background:var(--rose-dim);font-size:12.5px;margin-top:6px">
+                CPA thực &gt;300.000đ → Âm biên đóng góp trong giả định này
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Phễu website minh họa (số giả định)</div>
+        <div class="stages">
+          <div class="stage" style="border-left:3px solid #60a5fa">
+            <span class="num" style="color:#60a5fa">100k</span>
+            <span class="name">Hiển thị</span>
+            <span class="quote">CPM 100.000đ → chi 10 triệu</span>
+          </div>
+          <div class="stage">
+            <span class="num" style="color:#34d399">2.000</span>
+            <span class="name">Nhấp ra ngoài</span>
+            <span class="quote">CTR 2%</span>
+          </div>
+          <div class="stage">
+            <span class="num" style="color:#fbbf24">1.600</span>
+            <span class="name">Đến trang đích</span>
+            <span class="quote">80% số nhấp mở được trang</span>
+          </div>
+          <div class="stage" style="border-right:3px solid #e879f9">
+            <span class="num" style="color:#e879f9">40</span>
+            <span class="name">Đơn hàng</span>
+            <span class="quote">CVR 2,5% → CPA 250.000đ</span>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px">Mỗi bước rơi là một chỗ có thể sửa. Nhìn <b>tỷ lệ giữa hai bước liền nhau</b>, không nhìn con số tuyệt đối.</p>
+      </div>
+
+      <div class="callout" style="border-color:#34d399;background:rgba(52,211,153,.07)">
+        <strong style="color:#34d399">🎯 Nguyên tắc cốt lõi</strong>
+        Không có con số chuẩn chung cho mọi ngành. CPM, CTR hay ROAS "tốt" của người khác không dùng làm mục tiêu cho tài khoản của bạn. Mục tiêu phải tính ngược từ biên lợi nhuận.
+      </div>
+    </div>
+
+    <!-- ══════════ ADS TU DUY ══════════ -->
+    <div class="panel" id="panel-ads-tu-duy">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(167,139,250,.1);color:#a78bfa">🧠 Phần 1</div>
+        <div class="framework-title">Nền tảng <span style="color:#a78bfa">tư duy</span></div>
+        <div class="framework-subtitle">Trước khi mở Ads Manager phải biết mình đang tìm gì. Phần này dạy cách nối tiền quảng cáo với kết quả kinh doanh và cách kết luận có bằng chứng.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.1 · Chuỗi tiền quảng cáo → lợi nhuận</div>
+        <div class="flow" style="flex-wrap:wrap">
+          <div class="flow-step" style="border-color:#60a5fa;color:#60a5fa">💰 Tiền QC</div><span class="flow-arrow">→</span>
+          <div class="flow-step">📺 Hiển thị</div><span class="flow-arrow">→</span>
+          <div class="flow-step">👁️ Chú ý</div><span class="flow-arrow">→</span>
+          <div class="flow-step">🖱️ Hành động</div><span class="flow-arrow">→</span>
+          <div class="flow-step">🏪 Đến điểm bán</div><span class="flow-arrow">→</span>
+          <div class="flow-step" style="border-color:#34d399;color:#34d399">📦 Lead/Đơn</div><span class="flow-arrow">→</span>
+          <div class="flow-step">✅ Xác nhận</div><span class="flow-arrow">→</span>
+          <div class="flow-step" style="border-color:#fbbf24;color:#fbbf24">💵 Thu tiền</div><span class="flow-arrow">→</span>
+          <div class="flow-step" style="border-color:#e879f9;color:#e879f9">📈 Biên sau ads</div>
+        </div>
+        <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px">Ads Manager thường chỉ nhìn thấy nửa đầu chuỗi. Mỗi mũi tên là một điểm có thể thất thoát.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.2 · Bốn căn cứ để kết luận tốt hay xấu</div>
+        <div class="card-grid-2">
+          <div class="card card-accent" style="border-left-color:#60a5fa">
+            <h4>01 · Mục tiêu kinh doanh</h4>
+            <p>Viết rõ trước khi chạy: bán có biên, khách mới, lead đủ điều kiện hay phủ đúng người. Chọn một chỉ số chính và các chỉ số bảo vệ.</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#34d399">
+            <h4>02 · Mức chi phí cho phép</h4>
+            <p>Tính ngược từ biên: doanh thu thuần − giá vốn − biến phí khác = trần CPA. Không dùng doanh thu chưa trừ hủy/hoàn.</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#fbbf24">
+            <h4>03 · Mốc so sánh tương đồng</h4>
+            <p>Cùng mục tiêu, sự kiện tối ưu, tệp mới/cũ, sản phẩm, mùa vụ, thiết bị và độ tuổi dữ liệu. Benchmark thị trường chỉ là tham khảo.</p>
+          </div>
+          <div class="card card-accent" style="border-left-color:#e879f9">
+            <h4>04 · Dữ liệu đáng tin</h4>
+            <p>Biết nguồn, công thức, cửa sổ attribution, độ trễ và số quan sát. Không có quy tắc cứ 3/7 ngày là đủ kết luận.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.1 · Ba lớp kết luận — không được trộn lẫn</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <h4 style="color:#60a5fa">① Quan sát</h4>
+            <p>Điều đã ghi nhận. <em>Ví dụ: CPA tăng 25% ở hai nhóm đã đủ độ chín.</em></p>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <h4 style="color:#fbbf24">② Phân rã</h4>
+            <p>Yếu tố số học gắn với thay đổi. <em>Ví dụ: Giá hiển thị tăng và tỷ lệ đến trang giảm.</em></p>
+          </div>
+          <div class="card" style="border-left:3px solid #e879f9">
+            <h4 style="color:#e879f9">③ Nguyên nhân</h4>
+            <p>Cơ chế cần bằng chứng. <em>Ví dụ: Lỗi chuyển hướng trên một dòng máy.</em></p>
+          </div>
+        </div>
+        <div class="callout" style="border-color:var(--rose);background:var(--rose-dim);margin-top:12px">
+          <strong style="color:var(--rose)">⚠️ Lỗi hay gặp nhất</strong>
+          Nói "CPM tăng nên CPA tăng" là nhảy thẳng từ lớp 1 sang lớp 3. CPA tăng cùng CPM chưa đủ để nói CPM là nguyên nhân gốc.
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.3 · Ba nguồn dữ liệu cần đối chiếu</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <h4 style="color:#60a5fa">Meta Ads Manager</h4>
+            <p>Chi tiêu, phân phối, chuyển đổi nền tảng ghi nhận. Phạm vi và hạn chế khác CRM.</p>
+          </div>
+          <div class="card" style="border-left:3px solid #34d399">
+            <h4 style="color:#34d399">Web Analytics</h4>
+            <p>Hành vi được đo trên trang. Chỉ phần giao nhau mới đối chiếu được với Meta.</p>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <h4 style="color:#fbbf24">CRM / Đơn hàng</h4>
+            <p>Lead, khách, đơn, tiền thu, hủy và hoàn. Đây là kết quả kinh doanh thật.</p>
+          </div>
+        </div>
+        <p style="font-size:12.5px;color:var(--text-muted);margin-top:10px">Ba nguồn có phạm vi khác nhau nên số liệu không bao giờ bằng nhau. Việc cần làm là đối chiếu, không phải ép cho bằng.</p>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.2 · Các trạng thái và hành động</div>
+        <div style="display:flex;flex-direction:column;gap:8px">
+          <div class="callout" style="border-color:var(--rose);background:var(--rose-dim)"><strong style="color:var(--rose)">Lỗi vận hành xác nhận:</strong> Sai link, thanh toán hỏng, form không gửi được, giá sai. → Sửa ngay và xác minh.</div>
+          <div class="callout" style="border-color:var(--text-dim);background:var(--surface2)"><strong>Chưa đủ dữ liệu:</strong> Ít quan sát, chưa hết độ trễ, thiếu CRM. → Chưa gắn nhãn thắng thua.</div>
+          <div class="callout" style="border-color:var(--green);background:var(--green-dim)"><strong style="color:var(--green)">Tốt:</strong> Đạt KPI kinh doanh, đủ chất lượng, dữ liệu tin được. → Duy trì, theo dõi scale.</div>
+          <div class="callout" style="border-color:var(--amber);background:var(--amber-dim)"><strong style="color:var(--amber)">Đạt nhưng cần cải thiện:</strong> Còn đạt nhưng một bước suy giảm. → Ưu tiên thử có kiểm soát.</div>
+          <div class="callout" style="border-color:var(--rose);background:var(--rose-dim)"><strong style="color:var(--rose)">Không đạt:</strong> Kết quả đủ trưởng thành không đạt mục tiêu. → Khoanh vùng và quyết định sửa/dừng.</div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">1.5 · Quy trình 8 bước ra quyết định</div>
+        <div class="stages">
+          <div class="stage"><span class="num" style="color:#60a5fa">1</span><span class="name">Câu hỏi KD</span></div>
+          <div class="stage"><span class="num" style="color:#34d399">2</span><span class="name">Tiêu chuẩn</span></div>
+          <div class="stage"><span class="num" style="color:#fbbf24">3</span><span class="name">Cấp báo cáo</span></div>
+          <div class="stage"><span class="num" style="color:#e879f9">4</span><span class="name">Phân rã</span></div>
+          <div class="stage"><span class="num" style="color:#f87171">5</span><span class="name">Khoanh vùng</span></div>
+          <div class="stage"><span class="num" style="color:#fb923c">6</span><span class="name">Giả thuyết</span></div>
+          <div class="stage"><span class="num" style="color:#22d3ee">7</span><span class="name">Thử nghiệm</span></div>
+          <div class="stage"><span class="num" style="color:#4ade80">8</span><span class="name">Kết luận</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS TU DIEN ══════════ -->
+    <div class="panel" id="panel-ads-tu-dien">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(251,191,36,.1);color:#fbbf24">📖 Phần 2</div>
+        <div class="framework-title">Từ điển <span style="color:#fbbf24">186 thuật ngữ</span></div>
+        <div class="framework-subtitle">12 nhóm thuật ngữ. Mỗi mục có: nghĩa dễ hiểu · ví dụ · dễ nhầm. Mức độ: PHẢI BIẾT / CẦN BIẾT / BIẾT THÊM.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 12 nhóm thuật ngữ</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #60a5fa"><h4 style="color:#60a5fa">2.1 · Nền tảng (8)</h4><p>Ads Manager, Meta Business Suite, BM, Ad account, Page, Business Portfolio</p></div>
+          <div class="card" style="border-left:3px solid #34d399"><h4 style="color:#34d399">2.2 · Cấu trúc (15)</h4><p>Campaign, Ad set, Ad, Objective, Performance goal, Optimization event, Learning, Results, Delivery, Active, In review, Rejected, Learning limited, Significant edit</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><h4 style="color:#fbbf24">2.3 · Ngân sách (12)</h4><p>Budget, Daily budget, Lifetime budget, ABO, CBO, Bid, Bid strategy, Cost cap, Bid cap, ROAS goal, Scale, Pacing</p></div>
+          <div class="card" style="border-left:3px solid #e879f9"><h4 style="color:#e879f9">2.4 · Đối tượng (11)</h4><p>Audience, Broad, Interest, Custom Audience, LAL/Lookalike, Prospecting, Retargeting, Cold/Warm/Hot, Exclusion, Saturation, Overlap</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><h4 style="color:#f87171">2.5 · Phân phối (6)</h4><p>Placement, Frequency, Reach, Impression, Delivery optimization, Auction</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><h4 style="color:#fb923c">2.6 · Chỉ số (31)</h4><p>CPM, CTR, CPC, LPV, LPV rate, CPA, ROAS, CVR, Unique, Link clicks, KPI, CPQL, CPL, Quality ranking, Engagement rate ranking, Conversion ranking, Frequency, Reach, Results, Impressions, Amount spent và nhiều hơn</p></div>
+          <div class="card" style="border-left:3px solid #22d3ee"><h4 style="color:#22d3ee">2.7 · Video (8)</h4><p>Hook rate, Hold rate, ThruPlay, 3-second views, Watch time, Video plays, Retention, Autoplay</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><h4 style="color:#4ade80">2.8 · Content (34)</h4><p>Content, Creative, Copy, Primary text, Headline, Caption, CTA, Hook, Concept, Angle, Insight, Pain point, Benefit/Feature, USP, Value proposition, Offer, Proof, Objection, UGC, Testimonial, Demo, Before/After, PAS, Message match, Variant, A/B…</p></div>
+          <div class="card" style="border-left:3px solid #a78bfa"><h4 style="color:#a78bfa">2.9 · Phễu (17)</h4><p>TOFU/MOFU/BOFU, Landing page, Lead, Qualified lead, MQL/SQL, Purchase, Conversion, VC, Funnel, Retargeting audience, Prospecting, Cold traffic, CRM, Pipeline…</p></div>
+          <div class="card" style="border-left:3px solid #f472b6"><h4 style="color:#f472b6">2.10 · Đo lường (25)</h4><p>Attribution, Conversion window, Pixel, CAPI, UTM, Tracking, Incrementality/Lift, A/B test, Sample size, Confidence, Hypothesis, IC, ID, Baseline, Control group, Guard rail metric…</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><h4 style="color:#fb923c">2.11 · Kinh tế (8)</h4><p>Revenue/Net revenue, COGS, Contribution margin, Break-even, ROI, LTV/CLV, Payback period, Marginal performance</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><h4 style="color:#60a5fa">2.12 · Ký hiệu (11)</h4><p>% · pp/điểm% · Δ · ↑/↓ · k/K · M/triệu · x/lần · N/A · 0/blank · WoW/MoM/YoY · ID</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Thuật ngữ quan trọng nhất — PHẢI BIẾT</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="border-left:3px solid #34d399">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+              <div><h4 style="color:#34d399">Learning phase</h4><p>Giai đoạn hệ thống khám phá cách phân phối cho thiết lập hiện tại. <span style="color:var(--rose)">⚠️ Không phải giấy phép bỏ qua link hỏng hay tracking sai.</span></p></div>
+              <span class="pill" style="background:rgba(52,211,153,.12);color:#34d399;border:1px solid #34d399;white-space:nowrap">PHẢI BIẾT</span>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+              <div><h4 style="color:#60a5fa">CTR (Link)</h4><p>Tỷ lệ click ra ngoài trên hiển thị. <span style="color:var(--rose)">⚠️ Không lấy CTR all để đại diện traffic website. Có nhiều loại CTR khác nhau.</span></p></div>
+              <span class="pill" style="background:rgba(96,165,250,.12);color:#60a5fa;border:1px solid #60a5fa;white-space:nowrap">PHẢI BIẾT</span>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+              <div><h4 style="color:#fbbf24">Attribution window</h4><p>Cửa sổ thời gian ghi nhận chuyển đổi cho quảng cáo. <span style="color:var(--rose)">⚠️ Thay đổi window có thể làm số thay đổi lớn mà không phải hiệu quả thực thay đổi.</span></p></div>
+              <span class="pill" style="background:rgba(251,191,36,.12);color:#fbbf24;border:1px solid #fbbf24;white-space:nowrap">PHẢI BIẾT</span>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #e879f9">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+              <div><h4 style="color:#e879f9">Hook rate / Hold rate</h4><p>Hook rate: tỷ lệ người xem đến mốc đầu. Hold rate: tỷ lệ giữ chân đến một mốc sau. <span style="color:var(--rose)">⚠️ Phải ghi rõ định nghĩa mẫu số đội dùng, không so hai dashboard dùng mẫu số khác.</span></p></div>
+              <span class="pill" style="background:rgba(232,121,249,.12);color:#e879f9;border:1px solid #e879f9;white-space:nowrap">PHẢI BIẾT</span>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #f87171">
+            <div style="display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:8px">
+              <div><h4 style="color:#f87171">pp (điểm %)</h4><p>Chênh lệch tuyệt đối giữa hai tỷ lệ. <span style="color:var(--rose)">⚠️ 80% xuống 60%: giảm 20 điểm %, tức giảm tương đối 25%. Hai con số này KHÁC nhau.</span></p></div>
+              <span class="pill" style="background:rgba(248,113,113,.12);color:#f87171;border:1px solid #f87171;white-space:nowrap">PHẢI BIẾT</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS CONTENT TINH HUONG ══════════ -->
+    <div class="panel" id="panel-ads-content-tinhhuong">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(248,113,113,.1);color:#f87171">🎯 Phần 3.1</div>
+        <div class="framework-title">Chẩn đoán <span style="color:#f87171">Content · CT</span></div>
+        <div class="framework-subtitle">28 tình huống. Mỗi thẻ có 6 ô: (1) Chỉ số và ý nghĩa · (2) Cơ sở so sánh · (3) Phải kiểm tra gì · (4) Nguyên nhân có thể · (5) Xử lý hoặc thử nghiệm · (6) Đo lại và giới hạn.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 28 tình huống CT</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CT01 · TỐT</div><h4>Đúng người — tạo kết quả</h4><p>Nội dung tạo câu hỏi đúng nhu cầu, qualified/CAC/biên đạt mục tiêu.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CT02 · TỐT</div><h4>CTR thấp hơn nhưng khách tốt</h4><p>CTR thấp hơn bản khác nhưng CVR/CPQL/CAC tốt hơn, ít lead sai.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CT03 · TỐT CHO GIÁO DỤC</div><h4>Tốt cho giáo dục</h4><p>Save, thời gian đọc/xem, câu hỏi sâu tốt; đơn trực tiếp thấp.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CT04 · TỐT XÂY NIỀM TIN</div><h4>Tốt cho xây niềm tin</h4><p>Khách nhắc demo/review, phản đối được giải quyết, CVR cải thiện.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">CT05 · TỐT CÓ ĐIỀU KIỆN</div><h4>Organic reach nhỏ</h4><p>Reach thấp, tỷ lệ phản hồi có chất lượng cao trong người được tiếp cận.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT06 · CẦN KIỂM TRA</div><h4>Đầu video ít người xem</h4><p>Hook rate nội bộ thấp hơn bản tương đương.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CT07 · XẤU</div><h4>Hook gây sai kỳ vọng</h4><p>Hook/CTR cao nhưng nhiều câu "tưởng miễn phí", lead bị loại hoặc hoàn tăng.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT08 · CẦN KIỂM TRA</div><h4>Rơi sau hook</h4><p>Người xem dừng ngay sau phần mở đầu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT09 · CẦN KIỂM TRA</div><h4>Rơi giữa video</h4><p>Người xem xem được phần đầu nhưng bỏ ở đoạn giữa.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT10 · CẦN KIỂM TRA</div><h4>Xem nhiều — ít nhấp</h4><p>Hold rate tốt nhưng CTR/hành động thấp.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT11 · CẦN KIỂM TRA</div><h4>Click tốt — mua thấp</h4><p>CTR tốt nhưng CVR hoặc CPQL kém hơn kỳ vọng.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT12 · CẦN KIỂM TRA</div><h4>CTR và CVR đều thấp</h4><p>Cả hai chỉ số nhấp và chuyển đổi đều kém.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CT13 · XẤU</div><h4>Xấu về khả năng hiểu</h4><p>Khách hỏi những điều đã nêu rõ, hoặc phản hồi cho thấy không hiểu sản phẩm.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT14 · CẦN KIỂM TRA</div><h4>Thiếu tin cậy</h4><p>Khách hỏi về độ uy tín, review, bảo hành hoặc không chốt vì lo ngại.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT15 · CẦN KIỂM TRA</div><h4>Hỏi giá rồi mất</h4><p>Inbox/lead nhiều nhưng dừng khi biết giá.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CT16 · XẤU</div><h4>Tạo tương tác ngoài chủ đề</h4><p>Engagement nhiều nhưng không liên quan đến sản phẩm/dịch vụ.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT17 · CẦN KIỂM TRA</div><h4>Ít reaction nhưng bán tốt</h4><p>Engagement thấp nhưng chuyển đổi/doanh thu ổn.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CT18 · XẤU</div><h4>Trình bày xấu ở một placement</h4><p>Content ổn ở một vị trí nhưng bị cắt/hiển thị sai ở vị trí khác.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT19 · CẦN KIỂM TRA</div><h4>Video hay nhưng không nhớ thương hiệu</h4><p>Xem nhiều nhưng không gắn kết với thương hiệu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT20 · CẦN KIỂM TRA</div><h4>Giảm dần qua thời gian</h4><p>Hiệu quả tốt lúc đầu nhưng suy giảm theo thời gian.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">CT21 · CHƯA ĐỦ</div><h4>Video ngắn xem hết nhiều</h4><p>ThruPlay cao nhưng chưa thể kết luận hiệu quả tổng thể.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">CT22 · CHƯA ĐỦ</div><h4>Một bản có vài đơn hơn</h4><p>Mẫu A ít đơn hơn mẫu B nhưng chưa đủ cỡ mẫu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT23 · CẦN KIỂM TRA</div><h4>Organic tốt — paid kém</h4><p>Bài tự nhiên tốt nhưng chạy ads không đạt KPI.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT24 · CẦN KIỂM TRA</div><h4>Inbox nhiều nhưng sai nhu cầu</h4><p>Khách hỏi việc không phục vụ, địa lý hoặc mức giá không phù hợp.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CT25 · TỐT VỀ LỌC KHÁCH</div><h4>Tốt về lọc, yếu về quy mô</h4><p>CPQL tốt nhưng số lead phù hợp rất ít.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CT26 · XẤU</div><h4>Hứa khác hàng thực</h4><p>Đơn nhiều nhưng hoàn với lý do "không như quảng cáo".</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CT27 · CẦN KIỂM TRA</div><h4>Offer yếu ở nhiều concept</h4><p>Nhiều cách kể tạo quan tâm nhưng cùng mất ở giá/điều kiện.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">CT28 · TỐT/XẤU TÙY VAI TRÒ</div><h4>Tốt xấu tùy vai trò bài</h4><p>Bài hậu mãi ít reach/share nhưng giảm câu hỏi và dùng sai.</p></div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Cấu trúc 6 ô của mỗi tình huống</div>
+        <div class="card-grid-2">
+          <div class="card" style="border-left:3px solid #60a5fa"><h4 style="color:#60a5fa">① Chỉ số và ý nghĩa</h4><p>Con số nào đang thay đổi và nó nói lên điều gì trong bối cảnh này.</p></div>
+          <div class="card" style="border-left:3px solid #34d399"><h4 style="color:#34d399">② Cơ sở so sánh</h4><p>So với cái gì, trong điều kiện nào mới có ý nghĩa.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><h4 style="color:#fbbf24">③ Phải kiểm tra gì</h4><p>Danh sách cụ thể cần xem trước khi kết luận.</p></div>
+          <div class="card" style="border-left:3px solid #e879f9"><h4 style="color:#e879f9">④ Nguyên nhân có thể</h4><p>Các giả thuyết nguyên nhân — chưa phải kết luận chắc chắn.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><h4 style="color:#f87171">⑤ Xử lý hoặc thử nghiệm</h4><p>Hành động cụ thể có thể làm ngay hoặc thiết kế thử.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><h4 style="color:#4ade80">⑥ Đo lại và giới hạn</h4><p>KPI đo lại, thời điểm đo và giới hạn kết luận trong bối cảnh này.</p></div>
+        </div>
+      </div>
+
+      <div class="callout" style="border-color:#f87171;background:rgba(248,113,113,.07)">
+        <strong style="color:#f87171">📌 Những yếu tố content cần có</strong>
+        Đúng người và đúng vấn đề · Hook giúp người phù hợp nhận ra lý do xem tiếp · Sự rõ ràng · Bằng chứng · Offer rõ ràng · CTA phù hợp mức sẵn sàng · Tính nhất quán giữa quảng cáo và trang đích.
+      </div>
+    </div>
+
+    <!-- ══════════ ADS CAMPAIGN TINH HUONG ══════════ -->
+    <div class="panel" id="panel-ads-campaign-tinhhuong">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(251,146,60,.1);color:#fb923c">📊 Phần 3.2</div>
+        <div class="framework-title">Chẩn đoán <span style="color:#fb923c">Campaign · CA</span></div>
+        <div class="framework-subtitle">16 tình huống cấp chiến dịch. Campaign là tầng quản trị mục tiêu và tổ chức nguồn lực. Kết quả tổng tốt có thể che những nhóm đang kém hoặc thiếu khách mới.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 16 tình huống CA</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CA01 · TỐT</div><h4>Đạt mục tiêu kinh tế</h4><p>Đơn/qualified có chất lượng, CAC hoặc biên đạt mục tiêu đã đặt.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">CA02 · TỐT CÓ ĐIỀU KIỆN</div><h4>Tăng trưởng có lãi</h4><p>Scale ngân sách và vẫn đạt mục tiêu kinh tế, khách mới tăng.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CA03 · KÉM SO MỤC TIÊU</div><h4>Nhiều kết quả sai loại</h4><p>Kết quả nhiều nhưng sai loại: sai người, sai sản phẩm, sai chất lượng.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA04 · CẦN KIỂM TRA</div><h4>Toàn chiến dịch CPA tăng</h4><p>CPA tăng đều trên nhiều nhóm trong cùng một chiến dịch.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA05 · CẦN KIỂM TRA</div><h4>Ít nhóm không phân phối</h4><p>Một số ad set không nhận phân phối hoặc tiêu rất ít.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA06 · CẦN KIỂM TRA</div><h4>Phân bổ ngân sách tập trung</h4><p>CBO tập trung chi vào một nhóm, bỏ qua các nhóm khác.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CA07 · KÉM KINH TẾ</div><h4>Kém kinh tế dù ROAS đẹp</h4><p>ROAS cao nhưng biên thực hoặc CAC không đạt mục tiêu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA08 · CẦN KIỂM TRA</div><h4>ROAS giảm — CPA ổn</h4><p>ROAS giảm nhưng CPA và số đơn không thay đổi nhiều.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CA09 · RỦI RO</div><h4>Nhiều nhóm cùng vai trò — ít tín hiệu</h4><p>Quá nhiều ad set tương tự nhau, mỗi nhóm ít tín hiệu tối ưu.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">CA10 · CHƯA ĐỦ</div><h4>Báo cáo hôm nay xấu</h4><p>Số hôm nay xấu nhưng chưa đủ độ chín để kết luận.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA11 · CẦN KIỂM TRA</div><h4>Retargeting đẹp — khách mới yếu</h4><p>Retargeting hiệu quả tốt nhưng chiến dịch prospecting kém.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">CA12 · CẦN KIỂM TRA</div><h4>Sụt cùng nhiều chiến dịch</h4><p>Nhiều chiến dịch khác nhau cùng sụt giảm trong một giai đoạn.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">CA13 · CHƯA ĐỦ</div><h4>Thay cửa sổ định nghĩa báo cáo</h4><p>Số thay đổi sau khi thay đổi cửa sổ attribution hoặc cột báo cáo.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">CA14 · TỐT VỀ HIỆU SUẤT</div><h4>Yếu về lượng</h4><p>Hiệu suất tốt nhưng số lượng kết quả chưa đủ cho kế hoạch.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CA15 · SAI KẾT LUẬN</div><h4>Sai kết luận do cộng trung bình</h4><p>Trung bình tổng thay đổi do thay đổi cơ cấu, không phải hiệu suất từng nhóm.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">CA16 · XẤU THEO MỤC TIÊU</div><h4>Xấu theo mục tiêu dù click rẻ</h4><p>CPC rẻ nhưng không đạt KPI kinh doanh cuối phễu.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS ADSET TINH HUONG ══════════ -->
+    <div class="panel" id="panel-ads-adset-tinhhuong">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(74,222,128,.1);color:#4ade80">👥 Phần 3.3</div>
+        <div class="framework-title">Chẩn đoán <span style="color:#4ade80">Ad Set · AS</span></div>
+        <div class="framework-subtitle">16 tình huống cấp nhóm quảng cáo. Ad set kiểm soát: đối tượng, placement, sự kiện tối ưu, ngân sách, lịch chạy. Đây là nơi cấu hình phân phối xảy ra.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 16 tình huống AS</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">AS01 · TỐT</div><h4>Phân phối đúng người</h4><p>Nhóm nhận phân phối với tỷ lệ chuyển đổi và chất lượng đạt mục tiêu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS02 · CẦN KIỂM TRA</div><h4>Không phân phối</h4><p>Nhóm được bật nhưng không nhận được chi tiêu hay hiển thị.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS03 · CẦN KIỂM TRA</div><h4>Phân phối thấp bất thường</h4><p>Spend ít hơn nhiều so với ngân sách đặt và kỳ vọng.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AS04 · RỦI RO</div><h4>Overlap cao giữa các nhóm</h4><p>Các ad set cạnh tranh nhau trên cùng tệp đối tượng.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS05 · CẦN KIỂM TRA</div><h4>Tệp bão hòa</h4><p>Frequency cao, CPM tăng, chất lượng khách giảm dần.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS06 · CẦN KIỂM TRA</div><h4>Learning kéo dài</h4><p>Nhóm ở giai đoạn learning quá lâu, không thoát ra được.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS07 · CẦN KIỂM TRA</div><h4>Learning limited</h4><p>Nhóm bị hạn chế học theo đánh giá nền tảng.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AS08 · XẤU</div><h4>Sự kiện tối ưu sai</h4><p>Optimization event không khớp với mục tiêu kinh doanh thực.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">AS09 · TỐT CÓ ĐIỀU KIỆN</div><h4>Broad hiệu quả cao</h4><p>Đối tượng rộng đạt kết quả tốt hơn nhóm hạn chế nhiều.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS10 · CẦN KIỂM TRA</div><h4>Thiết bị phân kỳ mạnh</h4><p>Hiệu quả khác biệt rõ giữa mobile và desktop.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS11 · CẦN KIỂM TRA</div><h4>Placement phân kỳ</h4><p>Một vị trí hiển thị hoạt động tốt hơn nhiều vị trí khác.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS12 · CẦN KIỂM TRA</div><h4>Chỉnh sửa lớn gần đây</h4><p>Kết quả thay đổi sau significant edit ảnh hưởng giai đoạn học.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AS13 · XẤU</div><h4>Retargeting tiếp cận sai người</h4><p>Custom audience không đúng người đã có tương tác/quan tâm thật.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS14 · CẦN KIỂM TRA</div><h4>Đối tượng hẹp quá</h4><p>Tệp quá nhỏ gây hạn chế phân phối và khó tối ưu.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AS15 · CẦN KIỂM TRA</div><h4>CPA nhóm mới cao hơn nhóm cũ</h4><p>Nhóm mới thiết lập có CPA cao hơn nhóm đang chạy ổn.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">AS16 · CHƯA ĐỦ</div><h4>Số liệu mới thiết lập</h4><p>Nhóm mới bật chưa đủ dữ liệu để kết luận tốt/xấu.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS AD TINH HUONG ══════════ -->
+    <div class="panel" id="panel-ads-ad-tinhhuong">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(232,121,249,.1);color:#e879f9">📢 Phần 3.4</div>
+        <div class="framework-title">Chẩn đoán <span style="color:#e879f9">từng Ad · AD</span></div>
+        <div class="framework-subtitle">16 tình huống cấp quảng cáo. Ad gồm: danh tính hiển thị, hình/video, câu chữ, lời kêu gọi, điểm đến và thiết lập liên quan. Đây là nơi creative gặp cấu hình.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 16 tình huống AD</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">AD01 · TỐT</div><h4>Creative hiệu quả tốt</h4><p>Tất cả chỉ số từ hook đến CPA đều đạt trong bối cảnh so sánh hợp lệ.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD02 · CẦN KIỂM TRA</div><h4>Ad ít được phân phối</h4><p>Quảng cáo được bật nhưng nhận rất ít spend dù nhóm đang chạy.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD03 · CẦN KIỂM TRA</div><h4>Điểm đến sai hoặc bị lỗi</h4><p>Link dẫn đến trang sai, lỗi 404, hoặc trang không phù hợp với quảng cáo.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AD04 · XẤU</div><h4>Creative bị cắt/hiển thị sai</h4><p>Hình/video bị crop, chữ bị che, hoặc ratio không đúng ở một placement.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD05 · CẦN KIỂM TRA</div><h4>Hook tốt — CTA yếu</h4><p>Người xem nhiều nhưng dừng ở bước hành động.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD06 · CẦN KIỂM TRA</div><h4>CTR thấp</h4><p>Ít nhấp trên hiển thị so với bối cảnh tương đương.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD07 · CẦN KIỂM TRA</div><h4>CTR tốt — CVR kém</h4><p>Click nhiều nhưng ít chuyển đổi, có thể do message match kém.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AD08 · XẤU</div><h4>Creative gây phản hồi tiêu cực</h4><p>Negative feedback cao, ẩn quảng cáo, hoặc bình luận phàn nàn.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">AD09 · TỐT</div><h4>Thắng ở một placement cụ thể</h4><p>Hiệu quả tốt rõ ràng ở một vị trí hiển thị nhất định.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD10 · CẦN KIỂM TRA</div><h4>Frequency tăng cao</h4><p>Người dùng thấy cùng một ad quá nhiều lần, có thể gây mỏi.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD11 · CẦN KIỂM TRA</div><h4>Biến thể mới không được phân phối</h4><p>Bản mới thêm vào ad set nhưng gần như không nhận spend.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">AD12 · XẤU</div><h4>Thông điệp không nhất quán</h4><p>Quảng cáo hứa khác với trang đích (message mismatch).</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD13 · CẦN KIỂM TRA</div><h4>Creative giảm hiệu quả theo thời gian</h4><p>Ad đang chạy tốt bắt đầu suy giảm sau vài tuần/tháng.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">AD14 · CHƯA ĐỦ</div><h4>Ad mới chạy ít ngày</h4><p>Quảng cáo mới thiếu dữ liệu và thời gian để đánh giá.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">AD15 · TỐT</div><h4>Proof/testimonial hiệu quả cao</h4><p>Phiên bản có bằng chứng thực tế chuyển đổi tốt hơn bản không có.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">AD16 · CẦN KIỂM TRA</div><h4>Danh tính/tên trang không đúng</h4><p>Ad hiển thị tên Page sai hoặc không phù hợp với thương hiệu.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ ADS PB TINH HUONG ══════════ -->
+    <div class="panel" id="panel-ads-pb-tinhhuong">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(34,211,238,.1);color:#22d3ee">🔬 Phần 3.5</div>
+        <div class="framework-title">Khoanh vùng lỗi <span style="color:#22d3ee">· PB</span></div>
+        <div class="framework-subtitle">22 tình huống phân biệt: lỗi từ Ads, Content, Web/kỹ thuật, Sales, hay Tracking? Mỗi tình huống giúp xác định ngành nào cần xử lý trước.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Danh sách 22 tình huống PB</div>
+        <div class="card-grid">
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">PB01 · NGHIÊNG ADS</div><h4>Tốt khi đổi creative</h4><p>Kết quả cải thiện sau khi thay creative, các yếu tố khác giữ nguyên.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">PB02 · NGHIÊNG ADS</div><h4>Tốt khi đổi cấu hình</h4><p>Cải thiện sau khi điều chỉnh đối tượng, placement hoặc optimization event.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">PB03 · NGHIÊNG LỖI VẬN HÀNH</div><h4>Lỗi tái hiện được</h4><p>Lỗi có thể tái hiện: link hỏng, form không gửi, trang lỗi, giá sai.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">PB04 · NGHIÊNG WEB</div><h4>Tốc độ trang kém</h4><p>Trang load chậm gây rơi khách trước khi xem nội dung.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">PB05 · NGHIÊNG WEB</div><h4>Trang không khớp quảng cáo</h4><p>Landing page không phản ánh lời hứa/thông điệp trong quảng cáo.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">PB06 · NGHIÊNG SALES</div><h4>Tỷ lệ chốt thấp bất thường</h4><p>Lead đủ điều kiện nhưng tỷ lệ chốt thấp — có thể lỗi ở khâu tư vấn.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">PB07 · NGHIÊNG SALES</div><h4>Tốc độ phản hồi chậm</h4><p>Lead đến nhưng bị bỏ lỡ vì thời gian phản hồi quá dài.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">PB08 · NGHIÊNG OFFER</div><h4>Offer yếu</h4><p>Nhiều creative đều không chuyển đổi tốt — có thể do đề nghị mua chưa hấp dẫn.</p></div>
+          <div class="card" style="border-left:3px solid #fb923c"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fb923c;margin-bottom:4px">PB09 · NGHIÊNG TRACKING</div><h4>Số Meta và backend lệch nhiều</h4><p>Chênh lệch lớn giữa số Meta báo và đơn/lead thực trên hệ thống.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB10 · CHƯA XÁC ĐỊNH</div><h4>CPA tăng — không rõ nguyên nhân</h4><p>CPA tăng nhưng chưa biết là do ads, content, web hay yếu tố bên ngoài.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB11 · CHƯA XÁC ĐỊNH</div><h4>CPM tăng</h4><p>Giá hiển thị tăng — có thể do mùa vụ, cạnh tranh, chất lượng hoặc cơ cấu.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB12 · CHƯA XÁC ĐỊNH</div><h4>CTR thấp</h4><p>CTR thấp — chưa rõ do creative kém hay do cấu hình/đối tượng.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB13 · CHƯA XÁC ĐỊNH</div><h4>CVR thấp</h4><p>Nhiều click nhưng ít mua — chưa xác định là lỗi trang, content hay offer.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">PB14 · NGHIÊNG MỎICREATIVE</div><h4>Nghiêng mỏi creative (nếu kiểm chứng)</h4><p>Mẫu cũ giảm, mẫu mới cải thiện trong cùng bối cảnh có kiểm soát.</p></div>
+          <div class="card" style="border-left:3px solid #fbbf24"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#fbbf24;margin-bottom:4px">PB15 · NGHIÊNG GIỚI HẠN CƠ HỘI</div><h4>Nghiêng giới hạn cơ hội (nếu kiểm chứng)</h4><p>Nhiều concept mới không cải thiện nhưng mở cấu hình rộng hơn thì có kết quả tốt.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">PB16 · NGHIÊNG LỖI SO SÁNH</div><h4>Sai do thay đổi cơ cấu</h4><p>Tổng CVR giảm nhưng CVR từng nhóm không đổi — do thay đổi tỷ trọng.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB17 · CHƯA XÁC ĐỊNH</div><h4>Organic thắng — paid thua</h4><p>Bài cùng nội dung cho kết quả khác giữa tự nhiên và trả phí.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB18 · CHƯA XÁC ĐỊNH</div><h4>Ad ít được tiêu</h4><p>Mẫu mới ít spend trong nhóm có nhiều mẫu — chưa rõ do phân phối hay nội dung.</p></div>
+          <div class="card" style="border-left:3px solid #f87171"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#f87171;margin-bottom:4px">PB19 · NGHIÊNG LỖI ASSET</div><h4>Lỗi triển khai asset</h4><p>Nội dung gốc rõ nhưng bản hiển thị bị cắt/che do lỗi đóng gói.</p></div>
+          <div class="card" style="border-left:3px solid #60a5fa"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#60a5fa;margin-bottom:4px">PB20 · CHƯA XÁC ĐỊNH</div><h4>Đổi nhiều thứ cùng lúc</h4><p>Kết quả thay đổi sau khi thay đổi nhiều yếu tố — không tách được đóng góp riêng.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">PB21 · NGHIÊNG TRACKING</div><h4>Nghiêng tracking (nếu đối soát xác nhận)</h4><p>Purchase nhảy sau cài CAPI, có dấu hiệu lặp ID hoặc đơn.</p></div>
+          <div class="card" style="border-left:3px solid #4ade80"><div style="font-family:'Share Tech Mono',monospace;font-size:10px;color:#4ade80;margin-bottom:4px">PB22 · NGHIÊNG HIỂU NHẦM</div><h4>Hiểu nhầm về chất lượng lead</h4><p>CTR giảm sau thêm giá nhưng CAC/biên cải thiện — chất lượng tốt hơn, không phải xấu đi.</p></div>
+        </div>
+      </div>
+
+      <div class="callout" style="border-color:#22d3ee;background:rgba(34,211,238,.07)">
+        <strong style="color:#22d3ee">🔑 Nguyên tắc khoanh vùng</strong>
+        Không mặc định kết quả xấu là do ads hoặc content. Kiểm tra theo thứ tự: (1) Lỗi vận hành xác nhận được → sửa ngay. (2) Lỗi tracking → đối soát backend. (3) Web/landing page → kiểm tra trên điện thoại thật. (4) Offer/sales → đọc hội thoại. (5) Ads/content → sau khi loại các nguyên nhân trên.
+      </div>
+    </div>
+
+    <!-- ══════════ ADS 18 STEPS ══════════ -->
+    <div class="panel" id="panel-ads-18steps">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(244,114,182,.1);color:#f472b6">✅ Phần 4.1</div>
+        <div class="framework-title">18 Bước <span style="color:#f472b6">kiểm tra</span></div>
+        <div class="framework-subtitle">Dùng như checklist khi mở một ca điều tra. Mỗi bước ghi bằng chứng và trạng thái: đã làm / chưa làm / không áp dụng. Không đánh dấu "đã kiểm tra" nếu mới chỉ nhìn một chỉ số.</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Nhóm 1 · Đặt nền tảng (Bước 1–5)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="border-left:3px solid #f472b6">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#f472b6;line-height:1;flex-shrink:0">01</span>
+              <div>
+                <h4 style="color:#f472b6">Đặt câu hỏi kinh doanh</h4>
+                <p>Chọn đơn giao, khách mới, qualified hoặc biên cần cải thiện. <b>Viết số hiện tại, mục tiêu và phạm vi.</b></p>
+                <div class="callout" style="border-color:#f472b6;background:rgba(244,114,182,.07);font-size:12px;margin-top:8px">⚠️ Nếu chỉ ghi "ads kém" thì chưa có câu hỏi có thể kiểm chứng.</div>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #a78bfa">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#a78bfa;line-height:1;flex-shrink:0">02</span>
+              <div>
+                <h4 style="color:#a78bfa">Chọn tiêu chuẩn tốt xấu</h4>
+                <p>Tốt là đạt mục tiêu đúng vai trò, với dữ liệu đáng tin và rủi ro chấp nhận được. <b>Ghi KPI chính, KPI bảo vệ và giới hạn kinh tế trước khi xem thắng/thua.</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#60a5fa;line-height:1;flex-shrink:0">03</span>
+              <div>
+                <h4 style="color:#60a5fa">Mở đúng cấp báo cáo</h4>
+                <p>Campaign: tổng/mục tiêu · Ad set: cấu hình/phân phối · Ad: phiên bản/đích. <b>Lưu ID và khoảng thời gian; kiểm tra quan hệ cha/con.</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #34d399">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#34d399;line-height:1;flex-shrink:0">04</span>
+              <div>
+                <h4 style="color:#34d399">Chọn cột theo phễu</h4>
+                <p>Website: Spend, Impressions, Outbound CTR, LPV, Purchase/Value. Lead/chat: thêm chất lượng CRM. <b>Định nghĩa Results, loại click và doanh thu.</b></p>
+              </div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#fbbf24;line-height:1;flex-shrink:0">05</span>
+              <div>
+                <h4 style="color:#fbbf24">So phạm vi và độ chín</h4>
+                <p>Cùng tiền tệ, thời gian, sản phẩm, tệp, attribution và tuổi cohort. <b>Ghi phần không so được và lý do.</b></p>
+                <div class="callout" style="border-color:#fbbf24;background:rgba(251,191,36,.07);font-size:12px;margin-top:8px">⚠️ Không gán số 0 cho ô thiếu; không so hôm nay với tuần đã chốt hết.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Nhóm 2 · Kiểm tra hạ tầng (Bước 6–10)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="border-left:3px solid #e879f9">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#e879f9;line-height:1;flex-shrink:0">06</span>
+              <div><h4 style="color:#e879f9">Kiểm tra đo lường</h4><p>Test một hành trình thật từ nhấp đến kết quả. <b>Lưu ID, thời gian, giá trị; đối soát thiếu/trùng giữa Meta và backend.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #f87171">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#f87171;line-height:1;flex-shrink:0">07</span>
+              <div><h4 style="color:#f87171">Kiểm tra điểm bán</h4><p>Mở đúng link, form, giỏ và thanh toán trên điện thoại và trình duyệt. <b>Tái hiện lỗi hoặc xác nhận luồng chạy được.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #fb923c">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#fb923c;line-height:1;flex-shrink:0">08</span>
+              <div><h4 style="color:#fb923c">Phân rã toán học</h4><p>CPC = CPM / (1.000 × CTR). CPA = CPM / (1.000 × CTR × LPV/click × đơn/LPV). <b>Xác định yếu tố nào thay đổi — chưa gán nguyên nhân gốc.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #22d3ee">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#22d3ee;line-height:1;flex-shrink:0">09</span>
+              <div><h4 style="color:#22d3ee">Khoanh vùng</h4><p>Tách thiết bị, placement, sản phẩm, tệp, mới/cũ, creative, nhân viên nếu dữ liệu hỗ trợ. <b>Ghi nơi giảm, nơi ổn và số mẫu.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #4ade80">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#4ade80;line-height:1;flex-shrink:0">10</span>
+              <div><h4 style="color:#4ade80">Xem nhật ký thay đổi</h4><p>Giá, ưu đãi, budget, tệp, creative, web, tracking, sales và tồn kho. <b>Đánh dấu thời điểm trước/sau hiện tượng.</b></p>
+              <div class="callout" style="border-color:#4ade80;background:rgba(74,222,128,.07);font-size:12px;margin-top:8px">⚠️ Trùng thời điểm tạo giả thuyết, không chứng minh nhân quả.</div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Nhóm 3 · Giả thuyết và thử nghiệm (Bước 11–14)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="border-left:3px solid #f472b6">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#f472b6;line-height:1;flex-shrink:0">11</span>
+              <div><h4 style="color:#f472b6">Lập 2–3 giả thuyết</h4><p>Mỗi giả thuyết có dự đoán, bằng chứng ủng hộ/phản bác và cách kiểm tra. <b>Không bỏ qua giả thuyết ngoài ads và content.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #a78bfa">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#a78bfa;line-height:1;flex-shrink:0">12</span>
+              <div><h4 style="color:#a78bfa">Thử riêng creative</h4><p>Giữ offer/trang/mục tiêu; đổi một phần nội dung. <b>KPI cuối phễu là chỉ số chính; hook/CTR chỉ hỗ trợ.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#60a5fa;line-height:1;flex-shrink:0">13</span>
+              <div><h4 style="color:#60a5fa">Thử riêng cấu hình</h4><p>Giữ asset/phiên bản, offer và trang; đổi một yếu tố cấu hình. <b>Đọc kết quả cuối phễu, không chỉ CPM/CPC.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #34d399">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#34d399;line-height:1;flex-shrink:0">14</span>
+              <div><h4 style="color:#34d399">Thử tương tác 2×2 khi cần</h4><p>Hai creative × hai cấu hình, cùng KPI và điều kiện so. <b>Không mở 4 ô khi nguồn lực quá nhỏ.</b></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Nhóm 4 · Kết luận và hành động (Bước 15–18)</div>
+        <div style="display:flex;flex-direction:column;gap:10px">
+          <div class="card" style="border-left:3px solid #fbbf24">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#fbbf24;line-height:1;flex-shrink:0">15</span>
+              <div><h4 style="color:#fbbf24">Đặt điều kiện dừng trước</h4><p>Sự cố thật dừng/sửa ngay; thử hiệu suất có giới hạn chi và độ chín. <b>Ghi khi nào dừng vì hại, khi nào chờ, khi nào đánh giá.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #e879f9">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#e879f9;line-height:1;flex-shrink:0">16</span>
+              <div><h4 style="color:#e879f9">Đọc và ghi mức kết luận</h4><p>Phân biệt rõ: Quan sát / Giả thuyết / Lỗi tái hiện / Tác động hỗ trợ bởi thử / Chưa đủ dữ liệu. <b>Viết "trong phạm vi này" và những nguyên nhân chưa loại.</b></p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #f87171">
+            <div style="display:flex;gap:12px;align-height:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#f87171;line-height:1;flex-shrink:0">17</span>
+              <div><h4 style="color:#f87171">Viết kết luận có thể hành động</h4><p>Mẫu câu: "Trong [phạm vi X], [chỉ số Y] đang [trạng thái Z]. Nghi ngờ [nguyên nhân A] vì [bằng chứng B]. Sẽ [hành động C] và đo lại [chỉ số D] vào [ngày E]."</p></div>
+            </div>
+          </div>
+          <div class="card" style="border-left:3px solid #4ade80">
+            <div style="display:flex;gap:12px;align-items:flex-start">
+              <span style="font-family:'VT323',monospace;font-size:28px;color:#4ade80;line-height:1;flex-shrink:0">18</span>
+              <div><h4 style="color:#4ade80">Đặt mốc đo lại</h4><p>Ghi cụ thể ngày, chỉ số và người theo dõi. <b>Không để kết luận mở mà không có mốc kiểm tra rõ ràng.</b></p></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="border-color:#f472b6;background:rgba(244,114,182,.07)">
+        <strong style="color:#f472b6">📌 Nguyên tắc xuyên suốt</strong>
+        Mỗi tuần chọn một tài khoản thật, đi hết 18 bước và ghi kết luận theo mẫu. Sau bốn tuần, đội của bạn sẽ báo cáo bằng cùng một ngôn ngữ.
+      </div>
+    </div>
+
     <!-- ══════════ QUIZ ══════════ -->
     <div class="panel" id="panel-quiz">
       <div class="framework-header">
@@ -4343,6 +5150,16 @@ const panelTitles = {
   'pattern-interrupt': '#07 — Thu hút chú ý (Pattern Interruption)',
   'leads': 'Leads & Funnel',
   'four-laws': 'Four Laws of Behavior Change',
+  'ads-overview': '📗 Facebook Ads — Tổng quan & Lộ trình',
+  'ads-formulas': '🧮 Công thức & Chỉ số',
+  'ads-tu-duy': '🧠 Nền tảng tư duy (Phần 1)',
+  'ads-tu-dien': '📖 Từ điển 186 thuật ngữ (Phần 2)',
+  'ads-content-tinhhuong': '🎯 Chẩn đoán Content · CT01–CT28',
+  'ads-campaign-tinhhuong': '📊 Chẩn đoán Chiến dịch · CA01–CA16',
+  'ads-adset-tinhhuong': '👥 Chẩn đoán Nhóm QC · AS01–AS16',
+  'ads-ad-tinhhuong': '📢 Chẩn đoán Từng QC · AD01–AD16',
+  'ads-pb-tinhhuong': '🔬 Khoanh vùng lỗi · PB01–PB22',
+  'ads-18steps': '✅ 18 Bước kiểm tra tại bàn làm việc',
   'quiz': 'Quiz ôn bài',
 };
 
