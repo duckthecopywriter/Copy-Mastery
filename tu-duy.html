@@ -1,0 +1,2961 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Copycodyy — Kho kiến thức Copywriting</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0d0516;
+    --surface: #100a1c;
+    --surface2: rgba(12,5,22,.9);
+    --surface3: rgba(16,7,28,.95);
+    --border: rgba(167,139,250,.12);
+    --text: #e0d8f0;
+    --text-muted: rgba(200,190,230,.55);
+    --text-dim: rgba(167,139,250,.4);
+
+    --teal: #a78bfa;
+    --teal-dim: rgba(167,139,250,.1);
+    --violet: #a78bfa;
+    --violet-dim: rgba(167,139,250,.1);
+    --amber: #ffd060;
+    --amber-dim: rgba(255,208,96,.1);
+    --rose: #ff4466;
+    --rose-dim: rgba(255,68,102,.1);
+    --sky: #00c8ff;
+    --sky-dim: rgba(0,200,255,.1);
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,.1);
+
+    --accent: #a78bfa;
+    --panel-accent: #a78bfa;
+    --radius: 0px;
+    --radius-lg: 0px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Lora', Georgia, serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    font-size: 14px;
+    line-height: 1.7;
+    position: relative;
+  }
+
+  /* ── LAYOUT ── */
+  .app { display: flex; min-height: 100vh; }
+
+  /* ── SIDEBAR ── */
+  .sidebar {
+    width: 260px;
+    flex-shrink: 0;
+    background: var(--surface);
+    border-right: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+  }
+  .sidebar::-webkit-scrollbar { width: 4px; }
+  .sidebar::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+
+  .sidebar-logo {
+    padding: 24px 20px 16px;
+    border-bottom: 1px solid var(--border);
+  }
+  .sidebar-logo .logo-label {
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    color: var(--text-dim);
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+  .sidebar-logo h1 {
+    font-family: 'Fraunces', serif;
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--teal);
+    line-height: 1.1;
+  }
+  .sidebar-logo p {
+    font-size: 12px;
+    color: var(--text-muted);
+    margin-top: 4px;
+  }
+
+  .sidebar-nav { padding: 12px 12px; flex: 1; }
+  .nav-section-label {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    font-weight: 700;
+    padding: 12px 8px 6px;
+  }
+
+  .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 9px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--text-muted);
+    font-size: 13.5px;
+    font-weight: 500;
+    transition: all 0.15s;
+    text-decoration: none;
+    border: none;
+    background: none;
+    width: 100%;
+    text-align: left;
+  }
+  .nav-item:hover { background: var(--surface2); color: var(--text); }
+  .nav-item.active { background: var(--teal-dim); color: var(--teal); font-weight: 600; }
+  .nav-dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ── MAIN ── */
+  .main { flex: 1; overflow-y: auto; }
+
+  /* ── TOP BAR ── */
+  .topbar {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(15,15,20,0.9);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 14px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+  .topbar-title {
+    font-family: 'Fraunces', serif;
+    font-size: 20px;
+    font-style: italic;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .topbar-tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--surface2);
+    padding: 4px;
+    border-radius: 10px;
+  }
+  .topbar-tab {
+    padding: 6px 16px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    border: none;
+    background: none;
+    color: var(--text-muted);
+    transition: all 0.15s;
+  }
+  .topbar-tab.active { background: var(--accent); color: #000; }
+  .topbar-tab:hover:not(.active) { color: var(--text); }
+
+  /* ── CONTENT ── */
+  .content { padding: 32px; max-width: 900px; }
+
+  /* ── FRAMEWORK CARD (overview) ── */
+  .framework-header {
+    margin-bottom: 32px;
+  }
+  .framework-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 20px;
+    margin-bottom: 12px;
+  }
+  .framework-title {
+    font-family: 'Fraunces', serif;
+    font-size: 36px;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 8px;
+  }
+  .framework-subtitle {
+    font-size: 16px;
+    color: var(--text-muted);
+    max-width: 600px;
+    line-height: 1.5;
+  }
+  .framework-quote {
+    margin-top: 16px;
+    padding: 12px 16px;
+    border-left: 3px solid var(--border);
+    color: var(--text-muted);
+    font-style: italic;
+    font-size: 14px;
+  }
+
+  /* ── SECTION ── */
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-title {
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+
+  /* ── CARDS ── */
+  .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+  .card-grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+
+  .card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+  }
+  .card-accent {
+    border-top: 3px solid;
+  }
+  .card h4 {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: var(--text);
+  }
+  .card p, .card li {
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .card ul { padding-left: 16px; }
+  .card ul li { margin-bottom: 4px; }
+
+  /* ── TAGS / PILLS ── */
+  .pill {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin: 3px;
+  }
+
+  /* ── FLOW DIAGRAM ── */
+  .flow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 12px 0;
+  }
+  .flow-step {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    background: var(--surface3);
+    border: 1px solid var(--border);
+  }
+  .flow-arrow { color: var(--text-dim); font-size: 18px; }
+
+  /* ── STAGES ── */
+  .stages { display: flex; gap: 0; margin: 12px 0; }
+  .stage {
+    flex: 1;
+    padding: 14px 12px;
+    text-align: center;
+    border: 1px solid var(--border);
+    border-right: none;
+    font-size: 12px;
+    position: relative;
+    background: var(--surface2);
+  }
+  .stage:first-child { border-radius: 10px 0 0 10px; }
+  .stage:last-child { border-radius: 0 10px 10px 0; border-right: 1px solid var(--border); }
+  .stage .num {
+    display: block;
+    font-size: 18px;
+    font-weight: 800;
+    font-family: 'Fraunces', serif;
+    margin-bottom: 4px;
+  }
+  .stage .name { font-weight: 700; color: var(--text); font-size: 11px; }
+  .stage .quote { font-size: 11px; color: var(--text-muted); margin-top: 4px; font-style: italic; }
+
+  /* ── CALLOUT ── */
+  .callout {
+    padding: 14px 16px;
+    border-radius: 10px;
+    border: 1px solid;
+    margin: 12px 0;
+    font-size: 13.5px;
+    line-height: 1.55;
+  }
+  .callout strong { display: block; margin-bottom: 4px; font-size: 13px; }
+
+  /* ── NUMBERED LIST ── */
+  .num-list { list-style: none; counter-reset: nl; }
+  .num-list li {
+    counter-increment: nl;
+    display: flex;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.55;
+  }
+  .num-list li::before {
+    content: counter(nl);
+    min-width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    background: var(--surface3);
+    color: var(--accent);
+    font-size: 12px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 1px;
+  }
+  .num-list li b { color: var(--text); }
+
+  /* ── CHECK LIST ── */
+  .check-list { list-style: none; }
+  .check-list li {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.5;
+  }
+  .check-list li::before { content: '✓'; color: var(--green); font-weight: 700; flex-shrink: 0; }
+  .check-list li.x::before { content: '✕'; color: var(--rose); }
+  .check-list li.warn::before { content: '⚠'; color: var(--amber); }
+
+  /* ── EMOTION PILLS ── */
+  .emotion-grid { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0; }
+  .e-pill {
+    padding: 6px 14px;
+    border-radius: 8px;
+    font-size: 12.5px;
+    font-weight: 600;
+    border: 1px solid;
+  }
+
+  /* ── COPY PRACTICE ── */
+  .practice-area {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+  }
+  .practice-header {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+  }
+  .practice-header h3 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .practice-header p { font-size: 12.5px; color: var(--text-muted); }
+
+  .copy-upload-zone {
+    padding: 24px;
+    border-bottom: 1px solid var(--border);
+  }
+  .upload-box {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 24px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    background: var(--surface);
+  }
+  .upload-box:hover { border-color: var(--accent); background: var(--teal-dim); }
+  .upload-box.dragging { border-color: var(--accent); background: var(--teal-dim); }
+  .upload-box .icon { font-size: 32px; margin-bottom: 8px; }
+  .upload-box p { font-size: 13px; color: var(--text-muted); }
+  .upload-box strong { color: var(--teal); }
+
+  textarea.copy-input {
+    width: 100%;
+    min-height: 140px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    resize: vertical;
+    margin-top: 12px;
+    transition: border-color 0.15s;
+    outline: none;
+  }
+  textarea.copy-input:focus { border-color: var(--accent); }
+  textarea.copy-input::placeholder { color: var(--text-dim); }
+
+  .selector-row {
+    display: flex;
+    gap: 10px;
+    margin-top: 12px;
+    flex-wrap: wrap;
+  }
+  select.fw-select {
+    flex: 1;
+    min-width: 180px;
+    padding: 9px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    color: var(--text);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13.5px;
+    cursor: pointer;
+    outline: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238884a0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+  }
+  select.fw-select:focus { border-color: var(--accent); }
+
+  .btn {
+    padding: 9px 20px;
+    border-radius: var(--radius);
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 13.5px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.15s;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .btn-primary { background: var(--teal); color: #000; }
+  .btn-primary:hover { background: #25c5ae; }
+  .btn-secondary {
+    background: var(--surface3);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-secondary:hover { border-color: var(--text-muted); }
+  .btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+  /* ── ANALYSIS OUTPUT ── */
+  .analysis-result {
+    padding: 20px 24px;
+    display: none;
+  }
+  .analysis-result.show { display: block; }
+
+  .analysis-score {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+    padding: 16px;
+    background: var(--surface3);
+    border-radius: var(--radius);
+  }
+  .score-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    font-weight: 900;
+    font-family: 'Fraunces', serif;
+    flex-shrink: 0;
+    border: 3px solid;
+  }
+  .score-label { font-size: 12px; color: var(--text-muted); margin-top: 2px; }
+
+  .analysis-points { display: flex; flex-direction: column; gap: 10px; }
+  .analysis-point {
+    padding: 12px 14px;
+    border-radius: 8px;
+    font-size: 13.5px;
+    border-left: 3px solid;
+    background: var(--surface3);
+    line-height: 1.55;
+  }
+  .analysis-point .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    margin-bottom: 4px;
+  }
+
+  .loading-dots {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+    padding: 20px;
+    color: var(--text-muted);
+    font-size: 13.5px;
+  }
+  .dot {
+    width: 8px; height: 8px;
+    border-radius: 50%;
+    background: var(--teal);
+    animation: bounce 1.2s infinite;
+  }
+  .dot:nth-child(2) { animation-delay: 0.2s; }
+  .dot:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes bounce {
+    0%, 80%, 100% { transform: translateY(0); opacity: 0.4; }
+    40% { transform: translateY(-6px); opacity: 1; }
+  }
+
+  /* ── EXAMPLES LIBRARY ── */
+  .examples-grid { display: flex; flex-direction: column; gap: 12px; }
+  .example-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    transition: border-color 0.15s;
+  }
+  .example-card:hover { border-color: var(--text-dim); }
+  .example-card-header {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    cursor: pointer;
+  }
+  .example-meta {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+  }
+  .example-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .example-body {
+    padding: 0 18px 16px;
+    display: none;
+  }
+  .example-body.show { display: block; }
+  .example-text {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 14px;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    line-height: 1.6;
+    white-space: pre-wrap;
+    margin-bottom: 10px;
+  }
+  .example-footer {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+
+  /* ── QUIZ ── */
+  .quiz-card {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px;
+    margin-bottom: 16px;
+  }
+  .quiz-q { font-size: 15px; font-weight: 600; color: var(--text); margin-bottom: 16px; }
+  .quiz-options { display: flex; flex-direction: column; gap: 8px; }
+  .quiz-option {
+    padding: 10px 14px;
+    border-radius: 8px;
+    border: 1px solid var(--border);
+    background: var(--surface3);
+    cursor: pointer;
+    font-size: 13.5px;
+    color: var(--text-muted);
+    transition: all 0.15s;
+    text-align: left;
+  }
+  .quiz-option:hover:not(.selected) { border-color: var(--text-dim); color: var(--text); }
+  .quiz-option.correct { border-color: var(--green); background: var(--green-dim); color: var(--green); }
+  .quiz-option.wrong { border-color: var(--rose); background: var(--rose-dim); color: var(--rose); }
+  .quiz-explain {
+    margin-top: 12px;
+    padding: 12px 14px;
+    background: var(--surface3);
+    border-radius: 8px;
+    font-size: 13px;
+    color: var(--text-muted);
+    display: none;
+    line-height: 1.6;
+  }
+  .quiz-explain.show { display: block; }
+  .quiz-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  .progress-bar {
+    flex: 1;
+    height: 4px;
+    background: var(--surface3);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .progress-fill {
+    height: 100%;
+    background: var(--teal);
+    border-radius: 2px;
+    transition: width 0.3s;
+  }
+
+  /* ── EMPTY / HINTS ── */
+  .empty-state {
+    text-align: center;
+    padding: 48px 24px;
+    color: var(--text-dim);
+  }
+  .empty-state .icon { font-size: 40px; margin-bottom: 12px; }
+  .empty-state p { font-size: 14px; }
+
+  /* ── OVERVIEW GRID ── */
+  .overview-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 12px;
+    margin-bottom: 32px;
+  }
+  .overview-chip {
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 18px;
+    cursor: pointer;
+    transition: all 0.15s;
+    border-top: 3px solid;
+  }
+  .overview-chip:hover { transform: translateY(-2px); }
+  .overview-chip .chip-icon { font-size: 24px; margin-bottom: 10px; }
+  .overview-chip h3 { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: 4px; }
+  .overview-chip p { font-size: 12px; color: var(--text-muted); line-height: 1.4; }
+
+  /* ── BREADCRUMB / PANEL TOGGLE ── */
+  .panel { display: none; }
+  .panel.active { display: block; }
+
+  /* ── SCROLLBAR ── */
+  .main::-webkit-scrollbar { width: 6px; }
+  .main::-webkit-scrollbar-thumb { background: var(--border); border-radius: 3px; }
+
+  /* responsive */
+  @media (max-width: 720px) {
+    .sidebar { display: none; }
+    .topbar { padding: 12px 16px; }
+    .content { padding: 20px 16px; }
+    .card-grid-2 { grid-template-columns: 1fr; }
+    .stages { flex-direction: column; }
+    .stage:first-child { border-radius: 10px 10px 0 0; }
+    .stage:last-child { border-radius: 0 0 10px 10px; border-right: 1px solid var(--border); border-top: none; }
+    .stage { border-right: 1px solid var(--border); border-bottom: none; }
+    .stage:last-child { border-bottom: 1px solid var(--border); }
+  }
+
+  /* utility */
+  .mt-4 { margin-top: 16px; }
+  .mt-2 { margin-top: 8px; }
+  .flex { display: flex; }
+  .gap-2 { gap: 8px; }
+  .gap-3 { gap: 12px; }
+  .flex-wrap { flex-wrap: wrap; }
+  .items-center { align-items: center; }
+  .justify-between { justify-content: space-between; }
+  .text-sm { font-size: 13px; }
+  .text-muted { color: var(--text-muted); }
+  .text-teal { color: var(--teal); }
+  .text-violet { color: var(--violet); }
+  .text-amber { color: var(--amber); }
+  .text-rose { color: var(--rose); }
+  .text-green { color: var(--green); }
+  .text-sky { color: var(--sky); }
+  .font-bold { font-weight: 700; }
+  .mb-3 { margin-bottom: 12px; }
+  .delete-btn {
+    padding: 4px 8px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: none;
+    color: var(--rose);
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+  /* ══ TERMINAL OVERRIDE ══ */
+  /* Grid bg */
+  body::after { content:''; position:fixed; inset:0; pointer-events:none; z-index:0;
+    background-image:linear-gradient(rgba(167,139,250,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,.025) 1px,transparent 1px);
+    background-size:32px 32px; }
+  /* Scanlines */
+  body::before { content:''; position:fixed; inset:0; pointer-events:none; z-index:9999;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.1) 0px,rgba(0,0,0,.1) 1px,transparent 1px,transparent 3px); }
+
+  .app { position:relative; z-index:1; }
+
+  /* SIDEBAR */
+  .sidebar { background:rgba(8,3,16,.97); border-right:1px solid rgba(167,139,250,.15); box-shadow:4px 0 24px rgba(0,0,0,.6); }
+  .sidebar::-webkit-scrollbar-thumb { background:rgba(167,139,250,.25); border-radius:0; }
+  .sidebar-logo { border-bottom:1px solid rgba(167,139,250,.12); }
+  .sidebar-logo::before { content:'▓ COPY.MASTERY.OS ▓'; display:block; font-size:7px; color:rgba(167,139,250,.25); letter-spacing:.2em; margin-bottom:6px; font-family:'Share Tech Mono',monospace; }
+  .sidebar-logo .logo-label { font-size:8px; letter-spacing:.22em; color:rgba(167,139,250,.4); font-family:'Share Tech Mono',monospace; }
+  .sidebar-logo h1 { font-family:'VT323',monospace; font-size:30px; color:#a78bfa; text-shadow:0 0 20px rgba(167,139,250,.5); letter-spacing:.08em; }
+  .sidebar-logo p { font-size:10px; color:rgba(200,190,230,.25); letter-spacing:.1em; font-family:'Share Tech Mono',monospace; }
+  .nav-section-label { font-size:8px; letter-spacing:.22em; color:rgba(167,139,250,.25); padding:14px 8px 5px; font-family:'Share Tech Mono',monospace; }
+  .nav-item { font-family:'Share Tech Mono',monospace; font-size:11.5px; letter-spacing:.03em; color:rgba(200,190,230,.4); border-radius:0;
+    clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%); transition:all .15s; }
+  .nav-item:hover { background:rgba(167,139,250,.06); color:#a78bfa; border-left:2px solid rgba(167,139,250,.4); padding-left:8px; }
+  .nav-item.active { background:rgba(167,139,250,.1); color:#a78bfa; border-left:2px solid rgba(167,139,250,.8); padding-left:8px; }
+  .nav-dot { border-radius:50%; box-shadow:0 0 4px currentColor; }
+
+  /* TOPBAR */
+  .topbar { background:rgba(10,5,20,.97); border-bottom:1px solid rgba(167,139,250,.12); box-shadow:0 4px 24px rgba(0,0,0,.5); position:relative; }
+  .topbar::after { content:'⬡ FRAMEWORK.PROTOCOL.ACTIVE  //  COPY.MASTERY.ONLINE'; position:absolute; bottom:3px; left:28px;
+    font-size:7px; color:rgba(167,139,250,.12); letter-spacing:.16em; white-space:nowrap; overflow:hidden; width:60%; font-family:'Share Tech Mono',monospace; }
+  .topbar-title { font-family:'VT323',monospace; font-size:24px; color:var(--panel-accent); letter-spacing:.1em;
+    text-shadow:0 0 12px rgba(167,139,250,.35); font-style:normal; animation:tsglitch 14s infinite; }
+  @keyframes tsglitch { 0%,90%,100%{transform:translate(0);filter:none} 91%{transform:translate(-2px,0);filter:brightness(1.6)} 92%{transform:translate(2px,0)} 93%{transform:translate(0);filter:none} }
+  .topbar-tabs { background:rgba(10,4,20,.8); border-radius:0; border:1px solid rgba(167,139,250,.12); }
+  .topbar-tab { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:.1em; border-radius:0; color:rgba(200,190,230,.35); }
+  .topbar-tab.active { background:#a78bfa; color:#0d0516; }
+  .topbar-tab:hover:not(.active) { color:#a78bfa; }
+
+  /* FRAMEWORK HEADER */
+  .framework-tag { border-radius:0; clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px)); font-size:9px; letter-spacing:.18em; font-family:'Share Tech Mono',monospace; }
+  .framework-title { font-family:'VT323',monospace; font-size:46px; letter-spacing:.08em; line-height:1; text-shadow:0 0 30px rgba(167,139,250,.15); }
+  .framework-subtitle { font-family:'Lora',Georgia,serif; font-size:14px; color:rgba(200,190,230,.5); letter-spacing:0; line-height:1.6; }
+  .framework-quote { border-left:3px solid rgba(167,139,250,.25); background:rgba(167,139,250,.03); color:rgba(200,190,230,.4); font-family:'Lora',Georgia,serif; font-size:13px; }
+
+  /* SECTION TITLES */
+  .section-title { font-size:9px; letter-spacing:.2em; color:var(--panel-accent); font-family:'Share Tech Mono',monospace; opacity:.7; }
+  .section-title::before { content:'░░'; color:rgba(167,139,250,.25); letter-spacing:0; font-size:12px; margin-right:2px; }
+  .section-title::after { background:linear-gradient(90deg,rgba(167,139,250,.2),rgba(60,30,90,.1),transparent); }
+
+  /* CARDS — Lora for content */
+  .card { background:rgba(10,4,20,.85); border:1px solid rgba(167,139,250,.1); border-left:3px solid rgba(167,139,250,.25); border-radius:0; padding:14px 16px;
+    clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%); position:relative; transition:all .2s; }
+  .card::after { content:''; position:absolute; top:0; right:0; width:0; height:0;
+    border-top:8px solid rgba(167,139,250,.12); border-left:8px solid transparent; }
+  .card:hover { border-color:rgba(167,139,250,.28); box-shadow:0 0 16px rgba(167,139,250,.06); }
+  .card h4 { font-family:'Lora',Georgia,serif; font-size:13.5px; letter-spacing:0; font-weight:700; }
+  .card p, .card li { font-family:'Lora',Georgia,serif; font-size:13px; color:rgba(200,190,230,.6); line-height:1.65; }
+
+  /* CALLOUT */
+  .callout { border-radius:0; clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%); position:relative; font-family:'Lora',Georgia,serif; font-size:13px; }
+  .callout::after { content:''; position:absolute; top:0; right:0; width:0; height:0; border-top:6px solid rgba(255,255,255,.04); border-left:6px solid transparent; }
+  .callout strong { font-size:11.5px; letter-spacing:.04em; font-family:'Share Tech Mono',monospace; }
+
+  /* OVERVIEW CHIPS */
+  .overview-chip { border-radius:0; clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%); position:relative;
+    background:rgba(8,3,16,.85); border:1px solid rgba(167,139,250,.12); border-top:none; transition:all .2s; }
+  .overview-chip::after { content:''; position:absolute; top:0; right:0; width:0; height:0; border-top:8px solid rgba(255,255,255,.04); border-left:8px solid transparent; }
+  .overview-chip:hover { background:rgba(12,6,24,.95); box-shadow:0 0 16px rgba(167,139,250,.08); transform:none; }
+  .overview-chip h3 { font-family:'Lora',Georgia,serif; font-size:13px; letter-spacing:0; font-weight:700; }
+  .overview-chip p { font-family:'Lora',Georgia,serif; font-size:11.5px; color:rgba(200,190,230,.4); }
+
+  /* FLOW */
+  .flow-step { border-radius:0; background:rgba(10,4,20,.8); border:1px solid rgba(167,139,250,.12); border-left:2px solid;
+    clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%); font-family:'Lora',Georgia,serif; font-size:12px; }
+  .flow-arrow { color:rgba(167,139,250,.35); }
+
+  /* STAGES */
+  .stage { background:rgba(10,4,20,.8); border-color:rgba(167,139,250,.12); border-radius:0; font-family:'Lora',Georgia,serif; }
+  .stage:first-child { border-radius:0; border-left:2px solid rgba(167,139,250,.35); }
+  .stage .num { font-family:'VT323',monospace; color:#a78bfa; font-size:24px; }
+  .stage .name { font-family:'Lora',Georgia,serif; }
+  .stage .quote { font-family:'Lora',Georgia,serif; font-style:italic; }
+
+  /* PILLS */
+  .pill { border-radius:0; clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px)); font-family:'Share Tech Mono',monospace; font-size:11px; letter-spacing:.06em; }
+  .e-pill { border-radius:0; clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,4px 100%,0 calc(100% - 4px)); font-family:'Lora',Georgia,serif; font-size:12px; }
+
+  /* LISTS */
+  .check-list li { font-family:'Lora',Georgia,serif; font-size:13px; color:rgba(200,190,230,.6); }
+  .check-list li::before { font-family:'VT323',monospace; font-size:17px; line-height:1.4; color:#4ade80; }
+  .check-list li.x::before { color:var(--rose); }
+  .num-list li { font-family:'Lora',Georgia,serif; font-size:13px; color:rgba(200,190,230,.6); }
+  .num-list li::before { content:'[0'counter(nl)']'; font-family:'VT323',monospace; font-size:18px; color:#a78bfa; line-height:1.2; }
+
+  /* BUTTONS */
+  .btn { border-radius:0; font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:.12em;
+    clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+    border:1px solid rgba(167,139,250,.25); background:rgba(10,4,20,.8); color:rgba(167,139,250,.6); }
+  .btn:hover { background:#a78bfa; color:#0d0516; border-color:#a78bfa; box-shadow:0 0 16px rgba(167,139,250,.35); }
+  .btn-primary { border:1px solid rgba(167,139,250,.55); border-left:3px solid rgba(167,139,250,.9); color:#a78bfa; }
+  .btn-primary:hover { background:#a78bfa; color:#0d0516; }
+  .btn-secondary { background:rgba(10,4,20,.6); border-color:rgba(167,139,250,.18); color:rgba(200,190,230,.5); }
+
+  /* INPUTS */
+  textarea.copy-input { border-radius:0; font-family:'Lora',Georgia,serif; font-size:13px;
+    background:rgba(6,2,14,.95); border:1px solid rgba(167,139,250,.12); border-left:3px solid rgba(167,139,250,.35); color:#e0d8f0; }
+  textarea.copy-input:focus { border-color:rgba(167,139,250,.5); box-shadow:0 0 12px rgba(167,139,250,.06); }
+  textarea.copy-input::placeholder { color:rgba(200,190,230,.18); }
+  select.fw-select { border-radius:0; font-family:'Lora',Georgia,serif; font-size:13px;
+    background:rgba(6,2,14,.9); border:1px solid rgba(167,139,250,.15); border-left:2px solid rgba(167,139,250,.4); color:#e0d8f0; }
+  select.fw-select option { background:#0d0516; }
+
+  /* PRACTICE AREA */
+  .practice-area { border-radius:0; background:rgba(8,3,16,.9); border:1px solid rgba(167,139,250,.12); border-left:4px solid rgba(167,139,250,.4); }
+  .practice-area::before { content:'▓▓ [ COPY.ANALYZER ] ▓▓'; display:block; font-size:7px; color:rgba(167,139,250,.15); letter-spacing:.14em; padding:4px 20px 0; font-family:'Share Tech Mono',monospace; }
+  .practice-header { border-color:rgba(167,139,250,.12); }
+  .practice-header h3 { font-family:'VT323',monospace; font-size:20px; letter-spacing:.08em; color:#a78bfa; }
+  .practice-header p { font-family:'Lora',Georgia,serif; font-size:12px; letter-spacing:0; font-style:italic; color:rgba(200,190,230,.4); }
+  .upload-box { border-radius:0; border:1px dashed rgba(167,139,250,.25); background:rgba(6,2,14,.6); }
+  .upload-box:hover, .upload-box.dragging { border-color:rgba(167,139,250,.55); background:rgba(167,139,250,.05); }
+  .upload-box strong { color:#a78bfa; }
+  .upload-box p { font-family:'Lora',Georgia,serif; font-size:12px; color:rgba(200,190,230,.45); }
+
+  /* LOADING */
+  .loading-dots { font-family:'Share Tech Mono',monospace; color:rgba(200,190,230,.4); font-size:11.5px; letter-spacing:.1em; }
+  .dot { border-radius:0; background:#a78bfa; box-shadow:0 0 6px rgba(167,139,250,.5); }
+  .progress-bar { border-radius:0; background:rgba(167,139,250,.1); }
+  .progress-fill { border-radius:0; background:#a78bfa; box-shadow:0 0 8px rgba(167,139,250,.45); transition:width .3s; }
+
+  /* QUIZ */
+  .quiz-card { background:rgba(8,3,16,.85); border:1px solid rgba(167,139,250,.12); border-left:4px solid rgba(167,139,250,.45);
+    border-radius:0; padding:20px; position:relative; clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%); }
+  .quiz-card::before { content:'// QUESTION.NODE'; display:block; font-size:7px; color:rgba(167,139,250,.18); letter-spacing:.16em; margin-bottom:8px; font-family:'Share Tech Mono',monospace; }
+  .quiz-card::after { content:''; position:absolute; top:0; right:0; width:0; height:0; border-top:10px solid rgba(167,139,250,.2); border-left:10px solid transparent; }
+  .quiz-q { font-family:'Lora',Georgia,serif; font-size:14.5px; color:#e0d8f0; margin-bottom:14px; line-height:1.6; }
+  .quiz-option { border-radius:0; font-family:'Lora',Georgia,serif; font-size:13px; letter-spacing:0;
+    background:rgba(6,2,14,.8); border:1px solid rgba(167,139,250,.12); color:rgba(200,190,230,.55);
+    clip-path:polygon(0 0,calc(100% - 5px) 0,100% 5px,100% 100%,0 100%); padding:10px 14px; }
+  .quiz-option:hover:not(.selected) { border-color:rgba(167,139,250,.4); color:#e0d8f0; background:rgba(167,139,250,.05); }
+  .quiz-option.correct { border-color:rgba(74,222,128,.6); background:rgba(74,222,128,.08); color:#4ade80; }
+  .quiz-option.wrong { border-color:rgba(255,68,102,.5); background:rgba(255,68,102,.08); color:var(--rose); }
+  .quiz-explain { border-radius:0; background:rgba(6,2,14,.9); border:1px solid rgba(167,139,250,.1); border-left:2px solid rgba(167,139,250,.35);
+    font-family:'Lora',Georgia,serif; font-size:13px; color:rgba(200,190,230,.6); line-height:1.65; }
+  .quiz-progress { margin-bottom:18px; }
+
+  /* EXAMPLE CARDS */
+  .example-card { border-radius:0; background:rgba(8,3,16,.85); border:1px solid rgba(167,139,250,.12); border-left:3px solid rgba(167,139,250,.25);
+    clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%); }
+  .example-card:hover { border-color:rgba(167,139,250,.4); }
+  .example-title { font-family:'Lora',Georgia,serif; font-size:13.5px; letter-spacing:0; color:#e0d8f0; }
+  .example-text { border-radius:0; background:rgba(6,2,14,.95); border:1px solid rgba(167,139,250,.1); border-left:2px solid rgba(167,139,250,.25);
+    font-family:'Share Tech Mono',monospace; font-size:11.5px; color:rgba(200,190,230,.55); }
+
+  /* ANALYSIS */
+  .analysis-score { border-radius:0; background:rgba(10,4,20,.8); border:1px solid rgba(167,139,250,.12); border-left:3px solid rgba(167,139,250,.45); }
+  .score-circle { border-radius:0; font-family:'VT323',monospace; font-size:30px; }
+  .score-label { font-family:'Share Tech Mono',monospace; font-size:10px; letter-spacing:.06em; }
+  .analysis-point { border-radius:0; background:rgba(8,3,16,.8); border:1px solid rgba(167,139,250,.08); border-left:3px solid; }
+  .analysis-point .label { font-family:'Share Tech Mono',monospace; font-size:9px; letter-spacing:.14em; color:rgba(167,139,250,.55); }
+
+  /* EMPTY STATE */
+  .empty-state { color:rgba(200,190,230,.28); }
+  .empty-state .icon { filter:grayscale(1); opacity:.4; }
+  .empty-state p { font-family:'Lora',Georgia,serif; font-size:13px; }
+
+  /* SCROLLBARS */
+  .main::-webkit-scrollbar { width:4px; }
+  .main::-webkit-scrollbar-thumb { background:rgba(167,139,250,.25); border-radius:0; }
+  .sidebar::-webkit-scrollbar { width:3px; }
+
+  /* DELETE BTN */
+  .delete-btn { border-radius:0; font-family:'Share Tech Mono',monospace; font-size:11px; border-color:rgba(255,68,102,.3);
+    clip-path:polygon(0 0,calc(100% - 4px) 0,100% 4px,100% 100%,0 100%); }
+  .delete-btn:hover { background:rgba(255,68,102,.12); }
+
+  /* CARD-ACCENT */
+  .card-accent { border-top:none; border-left:3px solid; }
+
+
+  a.nav-item { display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:8px;
+    cursor:pointer;color:var(--text-muted);font-size:13.5px;font-weight:500;transition:all 0.15s;
+    text-decoration:none;border:none;background:none;width:100%;text-align:left; }
+  a.nav-item:hover { background:var(--surface2);color:var(--text); }
+  a.nav-item.active { background:var(--teal-dim);color:var(--teal);font-weight:600; }
+  
+  /* Mini homepage grid */
+  .mini-home { padding: 0; }
+  .mini-home-header { margin-bottom:28px; }
+  .mini-home-grid { display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px; }
+  .mini-card {
+    background:rgba(12,5,22,.9);
+    border:1px solid rgba(167,139,250,.12);
+    border-left:3px solid;
+    padding:16px 18px;
+    cursor:pointer;
+    transition:all .18s;
+    clip-path:polygon(0 0,calc(100% - 8px) 0,100% 8px,100% 100%,0 100%);
+    text-decoration:none;
+    display:block;
+  }
+  .mini-card:hover { background:rgba(167,139,250,.07);border-color:rgba(167,139,250,.35);
+    transform:translateY(-1px); }
+  .mini-card .mc-num { font-family:'Share Tech Mono',monospace;font-size:9px;
+    letter-spacing:.12em;color:rgba(167,139,250,.45);margin-bottom:6px; }
+  .mini-card .mc-title { font-size:13.5px;font-weight:700;color:var(--text);
+    margin-bottom:4px;line-height:1.3; }
+  .mini-card .mc-desc { font-size:12px;color:var(--text-muted);line-height:1.45; }
+  
+  /* Back button */
+  .back-btn {
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.08em;
+    color:rgba(167,139,250,.55);cursor:pointer;background:none;border:none;
+    padding:6px 0;margin-bottom:20px;transition:color .15s;
+  }
+  .back-btn:hover { color:#a78bfa; }
+
+</style>
+<body>
+<div class="app">
+
+<aside class="sidebar">
+  <div class="sidebar-logo">
+    <div class="logo-label">// Study Kit</div>
+    <h1>Copycodyy</h1>
+    <p>copy.knowledge.base</p>
+  </div>
+  <nav class="sidebar-nav">
+    <div class="nav-section-label">Điều hướng</div>
+    <a class="nav-item" href="index.html"><span class="nav-dot" style="background:#2dd4bf"></span> 🏠 Trang chủ</a>
+    <a class="nav-item active" href="tu-duy.html"><span class="nav-dot" style="background:#22d3ee"></span> 🧠 Tư duy Copywriting</a>
+    <a class="nav-item" href="neuro.html"><span class="nav-dot" style="background:#818cf8"></span> 🧬 Neuroscience</a>
+    <a class="nav-item" href="fb-ads.html"><span class="nav-dot" style="background:#60a5fa"></span> 📗 Copy in Action (FB Ads)</a>
+    <a class="nav-item" href="kt41.html"><span class="nav-dot" style="background:#f97316"></span> 📙 41 Kỹ thuật bán hàng</a>
+    <a class="nav-item" href="tl17.html"><span class="nav-dot" style="background:#a78bfa"></span> 📘 17 Nguyên tắc tâm lý học</a>
+    <a class="nav-item" href="tools.html"><span class="nav-dot" style="background:#ffd060"></span> 🛠️ Copywriting Tools</a>
+    <a class="nav-item" href="luyen-tap.html"><span class="nav-dot" style="background:#4ade80"></span> Luyện tập</a>
+  </nav>
+</aside>
+
+<main class="main">
+  <div class="topbar">
+    <div class="topbar-title" id="topbar-title">🧠 🧠 Tư duy Copywriting</div>
+    <div style="font-size:12px;color:var(--text-dim)">Copycodyy · copy.knowledge.base</div>
+  </div>
+
+  <div class="content" style="max-width:900px">
+
+    <div class="panel active" id="panel-mini-home">
+      <div class="framework-header mini-home-header">
+        <div class="framework-tag" style="background:rgba(167,139,250,.1);color:#a78bfa">🧠 Mục lục</div>
+        <div class="framework-title">🧠 Tư duy Copywriting</div>
+        <div class="framework-subtitle">Chọn bài học bạn muốn xem.</div>
+      </div>
+      <div class="mini-home-grid">
+        <div class="mini-card" style="border-left-color:#4ade80" onclick="showSection('o2o-aida')">
+          <div class="mc-num">01</div>
+          <div class="mc-title">AIDA × O2O — Vòng lặp lòng tin</div>
+          <div class="mc-desc">Từ ngày xưa đến bây giờ — cách xây niềm tin đã thay đổi</div>
+        </div>
+        <div class="mini-card" style="border-left-color:#22d3ee" onclick="showSection('leads')">
+          <div class="mc-num">02</div>
+          <div class="mc-title">Leads</div>
+          <div class="mc-desc">Traffic → Lead → Engaged Lead và hệ thống Lead Magnet</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ O2O × AIDA ══════════ -->
+    <div class="panel" id="panel-o2o-aida">
+      <button class="back-btn" onclick="goHome()">← Quay về mục lục</button>
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(74,222,128,.1);color:#4ade80">🧠 Tư duy Copywriting</div>
+        <div class="framework-title">AIDA × <span style="color:#4ade80">O2O</span></div>
+        <div class="framework-subtitle">Từ ngày xưa đến bây giờ, cùng một mô hình — nhưng chiến trường đã thay đổi. Offline tạo niềm tin. Online lan tỏa niềm tin.</div>
+        <div class="framework-quote">"Không chỉ là bán hàng... Đó là xây dựng niềm tin dài hạn."</div>
+      </div>
+
+      <!-- 1. MẨU CHUYỆN MỞ ĐẦU -->
+      <div class="section">
+        <div class="section-title">① Một câu chuyện để hình dung</div>
+        <div class="card" style="border-left:3px solid #4ade80">
+          <p style="font-size:14px;line-height:1.8;color:var(--text-muted)">
+            Bạn muốn mua một cái máy lạnh. Bật Google lên tìm kiếm — nhan nhản kết quả, nhưng toàn SEO được tối ưu để lên top, không phải để bạn mua đúng sản phẩm. Một nửa trông như scam. Nửa còn lại thì thông tin mâu thuẫn nhau.
+          </p>
+          <p style="font-size:14px;line-height:1.8;color:var(--text-muted);margin-top:10px">
+            Bạn thử hỏi AI. AI trả lời tự tin, nhưng hallucinate khá mạnh — gợi ý model không tồn tại, đưa giá sai, không nắm được nhu cầu thật của bạn là gì. Bạn hỏi muốn biết BTU phù hợp cho phòng 20m², nó bắt đầu dạy bạn vật lý nhiệt.
+          </p>
+          <p style="font-size:14px;line-height:1.8;color:var(--text-muted);margin-top:10px">
+            Cuối cùng bạn làm gì?
+          </p>
+          <div style="margin-top:14px;padding:12px 16px;border:1px dashed rgba(74,222,128,.3);background:rgba(74,222,128,.04);font-size:13px;font-style:italic;color:rgba(200,190,230,.5)">
+            // Đọc xong framework bên dưới, bạn sẽ tự biết câu trả lời.
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. AIDA QUA CÁC THỜI ĐẠI -->
+      <div class="section">
+        <div class="section-title">② Cùng một mô hình AIDA — bối cảnh đã thay đổi</div>
+        <div class="card-grid-2">
+          <div class="card card-accent" style="border-top-color:var(--text-dim)">
+            <h4 style="color:var(--text-muted)">📼 Ngày xưa</h4>
+            <ul class="check-list" style="margin-top:8px">
+              <li class="x">Chưa có nhu cầu nhiều — hoặc quá nhiều / quá rộng rãi</li>
+              <li class="x">Chưa nhiều sự mất uy tín</li>
+              <li class="x">Chưa có AI</li>
+            </ul>
+            <p style="font-size:12.5px;color:var(--text-dim);margin-top:10px;font-style:italic">AIDA hoạt động tốt trong môi trường đơn giản hơn.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:#4ade80">
+            <h4 style="color:#4ade80">📱 Bây giờ (và tương lai)</h4>
+            <ul class="check-list" style="margin-top:8px">
+              <li class="warn">Scam tràn lan — người mua mất tin tưởng mặc định</li>
+              <li>Nhu cầu đã có sẵn, thậm chí khá nhiều</li>
+              <li>AI xuất hiện nhan nhản — hỗ trợ nhưng cũng hallucinate</li>
+            </ul>
+            <p style="font-size:12.5px;color:rgba(74,222,128,.6);margin-top:10px;font-style:italic">AIDA vẫn đúng — nhưng cách thực thi Attention và Desire đã khác.</p>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <h4 style="margin-bottom:14px">🔁 AIDA — Mô hình vẫn phù hợp cả hiện tại lẫn tương lai</h4>
+          <div class="stages">
+            <div class="stage">
+              <span class="num" style="color:#f87171">A</span>
+              <div class="name">Attention</div>
+              <div class="quote">Thu hút sự chú ý</div>
+            </div>
+            <div class="stage">
+              <span class="num" style="color:#fbbf24">I</span>
+              <div class="name">Interest</div>
+              <div class="quote">Tạo sự quan tâm</div>
+            </div>
+            <div class="stage">
+              <span class="num" style="color:#4ade80">D</span>
+              <div class="name">Desire</div>
+              <div class="quote">Kích thích nhu cầu</div>
+            </div>
+            <div class="stage">
+              <span class="num" style="color:#a78bfa">A</span>
+              <div class="name">Action</div>
+              <div class="quote">Thúc đẩy hành động</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. TẠI SAO O2O -->
+      <div class="section">
+        <div class="section-title">③ Vì sao nên dùng mô hình O2O?</div>
+        <div class="callout" style="border-color:#4ade80;background:rgba(74,222,128,.06);color:var(--text)">
+          <strong style="color:#4ade80">📌 O2O = Online to Offline / Offline to Online</strong>
+          Kết hợp sức mạnh của cả hai thế giới. Không phải chọn một — mà dùng cả hai để tạo ra thứ bên kia không có được.
+        </div>
+        <div class="card-grid" style="margin-top:14px">
+          <div class="card card-accent" style="border-top-color:var(--sky)">
+            <h4>🏆 Sức cạnh tranh hiện đã quá lớn</h4>
+            <p>Cần một cách tiếp cận khác biệt để tạo niềm tin — không thể chỉ dựa vào content online khi scam cũng dùng content online.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:#a78bfa">
+            <h4>🧠 O2O + GEO/AIO để AI biết đến sản phẩm</h4>
+            <p>Thông qua copywriting và marketing, đưa thông tin sản phẩm (chất lượng, giá cả,...) lên Internet. AI ghi nhận, xác thực và gợi ý khi người dùng tra cứu, benchmark.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:#fbbf24">
+            <h4>🛡️ Bước scam bị thắt chặt</h4>
+            <p>Có yếu tố offline (cửa hàng thật, con người thật, sản phẩm thật) → khó scam hơn. Người mua thấy → sờ → trải nghiệm = tăng niềm tin, giảm lo ngại.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:#f87171">
+            <h4>👥 Nhu cầu đã có sẵn</h4>
+            <p>Chỉ cần làm đúng cách để tiếp cận và chuyển đổi. Không cần tạo nhu cầu từ đầu — chỉ cần trở thành lựa chọn đáng tin.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. O2O GIÚP GIẢM SCAM -->
+      <div class="section">
+        <div class="section-title">④ Tại sao O2O giúp giảm scam?</div>
+        <div class="card-grid-2">
+          <div class="card" style="border-left:3px solid #4ade80">
+            <h4>🏪 Online</h4>
+            <ul class="check-list" style="margin-top:8px">
+              <li>GEO / AIO — AI biết đến sản phẩm</li>
+              <li>Nội dung uy tín được index</li>
+              <li>AI ghi nhận và gợi ý đúng</li>
+              <li>Tăng nhận diện thương hiệu</li>
+            </ul>
+          </div>
+          <div class="card" style="border-left:3px solid #60a5fa">
+            <h4>🏬 Offline</h4>
+            <ul class="check-list" style="margin-top:8px">
+              <li>Cửa hàng thật — có thể đến xem</li>
+              <li>Con người thật — có thể gặp trực tiếp</li>
+              <li>Sờ nắm sản phẩm thật</li>
+              <li>Trải nghiệm trực tiếp — không hallucinate</li>
+            </ul>
+          </div>
+        </div>
+        <div class="callout mt-4" style="border-color:#fbbf24;background:rgba(255,208,96,.07);color:var(--text)">
+          <strong style="color:#fbbf24">⭐ Cơ chế</strong>
+          Vì yếu tố Offline (cửa hàng thật, con người thật, sờ nắm sản phẩm thật) nên người mua cực kỳ tin tưởng, không sợ bị lừa đảo như mua 100% online qua các trang web lạ. Online lan tỏa niềm tin đó đi xa hơn.
+        </div>
+        <div class="callout mt-4" style="border-color:var(--sky);background:var(--sky-dim);color:var(--text);font-size:13px">
+          <strong style="color:var(--sky)">📦 Khuyến khích mô hình cho: Sản phẩm vật lý</strong>
+          Đồ điện tử, thời trang, mỹ phẩm, đồ gia dụng,... — những thứ người ta muốn <em>thấy trước khi mua</em>.
+        </div>
+      </div>
+
+      <!-- 5. VÒNG LẶP LÒNG TIN -->
+      <div class="section">
+        <div class="section-title">⑤ Vòng lặp lòng tin hoàn hảo</div>
+        <div class="card">
+          <div class="flow" style="justify-content:center;gap:20px">
+            <div style="text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">🏪</div>
+              <div class="flow-step" style="border-color:#4ade80;color:#4ade80;font-size:12px;flex-direction:column;gap:2px;text-align:center">
+                <span style="font-weight:800">O2O</span>
+                <span style="font-size:11px;opacity:.7">Xây dựng uy tín thực tế</span>
+                <span style="font-size:11px;opacity:.5">(Offline)</span>
+              </div>
+            </div>
+            <div style="font-size:32px;color:var(--text-dim);align-self:center">∞</div>
+            <div style="text-align:center">
+              <div style="font-size:28px;margin-bottom:6px">🤖</div>
+              <div class="flow-step" style="border-color:#60a5fa;color:#60a5fa;font-size:12px;flex-direction:column;gap:2px;text-align:center">
+                <span style="font-weight:800">GEO / AIO</span>
+                <span style="font-size:11px;opacity:.7">AI ghi nhận uy tín trên Internet</span>
+                <span style="font-size:11px;opacity:.5">(Online)</span>
+              </div>
+            </div>
+          </div>
+          <div style="text-align:center;margin-top:20px;font-size:13px;color:var(--text-muted);font-style:italic;line-height:1.8">
+            Offline tạo niềm tin. Online lan tỏa niềm tin.<br>
+            Cùng nhau tạo ra doanh số.
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. KEY TAKEAWAY -->
+      <div class="callout" style="border-color:#4ade80;background:rgba(74,222,128,.06);color:var(--text)">
+        <strong style="color:#4ade80">🎯 Kết luận</strong>
+        <ul class="check-list" style="margin-top:12px">
+          <li>Dùng <strong>O2O</strong> để xây dựng uy tín thực tế (Offline).</li>
+          <li>Dùng <strong>GEO/AIO</strong> (Copywriting & Marketing) để AI ghi nhận uy tín đó trên Internet (Online).</li>
+          <li>Hai thứ kết hợp tạo ra <strong>vòng lặp lòng tin hoàn hảo</strong>.</li>
+          <li class="warn">Mô hình này đặc biệt phù hợp với <strong>sản phẩm vật lý</strong> — nơi trải nghiệm thực tế là lợi thế cạnh tranh không thể fake.</li>
+        </ul>
+        <div style="margin-top:14px;padding:12px 16px;border:1px solid rgba(74,222,128,.25);background:rgba(74,222,128,.04);font-size:13.5px;font-style:italic;text-align:center;color:var(--text-muted)">
+          Real Store + Smart Marketing = Lasting Trust
+        </div>
+      </div>
+    </div>
+
+    <!-- ══════════ LEADS ══════════ -->
+    <div class="panel" id="panel-leads">
+      <button class="back-btn" onclick="goHome()">← Quay về mục lục</button>
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(34,211,238,.1);color:#22d3ee">🧲 Tư duy Copywriting</div>
+        <div class="framework-title">Leads <span style="color:#22d3ee">&amp; Funnel</span></div>
+        <div class="framework-subtitle">Traffic → Lead → Engaged Lead — và hệ thống Lead Magnet tạo ra relationship dẫn đến doanh thu.</div>
+        <div class="framework-quote">"If they think your lead magnet is worth their time, they will think your core offer is worth their money."</div>
+      </div>
+
+      <!-- 1. BA KHÁI NIỆM CỐT LÕI -->
+      <div class="section">
+        <div class="section-title">① Traffic · Lead · Engaged Lead</div>
+        <div class="card-grid">
+          <div class="card card-accent" style="border-top-color:#22d3ee">
+            <h4 style="color:#22d3ee">📡 Traffic</h4>
+            <p>Những người nhìn thấy hoặc truy cập tài sản marketing của bạn — xem TikTok, YouTube, vào website, thấy quảng cáo. Bạn chưa có cách liên hệ trực tiếp với họ.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--violet)">
+            <h4 style="color:var(--violet)">📋 Lead</h4>
+            <p>Một người mà bạn <em>có thể contact</em> — có email, số điện thoại, để lại contact info, nằm trong database của bạn. Miễn là bạn có khả năng liên lạc thì họ là lead.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--amber)">
+            <h4 style="color:var(--amber)">🔥 Engaged Lead</h4>
+            <p>Lead thể hiện sự quan tâm đến thứ bạn bán. Đây mới là thứ đáng quan tâm — họ đã tự chứng minh interest, không chỉ đơn thuần là có contact.</p>
+          </div>
+        </div>
+        <div class="callout mt-4" style="border-color:#22d3ee;background:rgba(34,211,238,.06);color:var(--text)">
+          <strong style="color:#22d3ee">📌 Ví dụ minh hoạ</strong>
+          100.000 người xem video = 100.000 traffic. Nhưng chỉ 2.000 người để lại email = 2.000 leads. Và chỉ những ai đăng ký vì thực sự quan tâm = engaged leads — thứ tạo ra doanh thu thật sự.
+        </div>
+      </div>
+
+      <!-- 2. LEAD MAGNET -->
+      <div class="section">
+        <div class="section-title">② Lead Magnet là gì?</div>
+        <div class="card-grid-2">
+          <div class="card">
+            <h4>📌 Định nghĩa</h4>
+            <p>Một free hoặc low-cost offer dùng để <strong>tìm ra ai thực sự quan tâm</strong> đến thứ bạn bán. Sau đó nó giải quyết một vấn đề nhỏ — vấn đề nhỏ đó mở ra vấn đề lớn hơn mà Core Offer giải quyết.</p>
+          </div>
+          <div class="card">
+            <h4>⚙️ 2 chức năng chính</h4>
+            <ul class="check-list">
+              <li><strong>Thu lead:</strong> Khiến người ta bỏ email/contact vì thấy đáng.</li>
+              <li><strong>Qualify + engage:</strong> Xác định ai thực sự quan tâm và bắt đầu xây dựng relationship.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card mt-4">
+          <h4 style="margin-bottom:12px">🔗 Cơ chế Problem → Lead Magnet → Core Offer</h4>
+          <div class="flow">
+            <div class="flow-step" style="border-color:var(--text-dim)">Problem nhỏ</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:#22d3ee;color:#22d3ee">Lead Magnet giải quyết</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:var(--amber);color:var(--amber)">Problem lớn hơn lộ ra</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:var(--violet);color:var(--violet)">Core Offer giải quyết</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. EXAMPLES & TYPES -->
+      <div class="section">
+        <div class="section-title">③ Ví dụ Lead Magnet → Core Offer theo ngành</div>
+        <div class="card-grid">
+          <div class="card card-accent" style="border-top-color:var(--green)">
+            <h4>🏃 Fitness App</h4>
+            <div class="flow" style="flex-direction:column;gap:4px;align-items:stretch">
+              <div class="flow-step" style="justify-content:center;font-size:12px">Free 1-month trial</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:12px">↓ thấy hiệu quả</div>
+              <div class="flow-step" style="justify-content:center;font-size:12px;border-color:var(--green);color:var(--green)">Paid subscription</div>
+            </div>
+          </div>
+          <div class="card card-accent" style="border-top-color:#22d3ee">
+            <h4>✍️ Copywriting Course</h4>
+            <div class="flow" style="flex-direction:column;gap:4px;align-items:stretch">
+              <div class="flow-step" style="justify-content:center;font-size:12px">Free copywriting course</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:12px">↓ muốn học sâu hơn</div>
+              <div class="flow-step" style="justify-content:center;font-size:12px">Low-ticket course</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:12px">↓ muốn hỗ trợ trực tiếp</div>
+              <div class="flow-step" style="justify-content:center;font-size:12px;border-color:#22d3ee;color:#22d3ee">1-on-1 coaching</div>
+            </div>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--rose)">
+            <h4>🧑‍💻 Freelance Copywriter</h4>
+            <div class="flow" style="flex-direction:column;gap:4px;align-items:stretch">
+              <div class="flow-step" style="justify-content:center;font-size:12px">Free first month</div>
+              <div style="text-align:center;color:var(--text-dim);font-size:12px">↓ client quen workflow</div>
+              <div class="flow-step" style="justify-content:center;font-size:12px;border-color:var(--rose);color:var(--rose)">Retainer dài hạn</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. LEAD MAGNET TYPES -->
+      <div class="section">
+        <div class="section-title">④ Các dạng Lead Magnet phổ biến</div>
+        <div class="card">
+          <div class="emotion-grid">
+            <div class="e-pill" style="background:rgba(34,211,238,.1);border-color:#22d3ee;color:#22d3ee">📄 PDF / Ebook</div>
+            <div class="e-pill" style="background:var(--violet-dim);border-color:var(--violet);color:var(--violet)">✅ Checklist</div>
+            <div class="e-pill" style="background:var(--amber-dim);border-color:var(--amber);color:var(--amber)">🎓 Free course</div>
+            <div class="e-pill" style="background:var(--green-dim);border-color:var(--green);color:var(--green)">🧪 Trial</div>
+            <div class="e-pill" style="background:var(--rose-dim);border-color:var(--rose);color:var(--rose)">🛠️ Template</div>
+            <div class="e-pill" style="background:var(--sky-dim);border-color:var(--sky);color:var(--sky)">🎙️ Workshop</div>
+            <div class="e-pill" style="background:rgba(34,211,238,.1);border-color:#22d3ee;color:#22d3ee">📚 Resource list</div>
+            <div class="e-pill" style="background:var(--violet-dim);border-color:var(--violet);color:var(--violet)">🤝 Free service</div>
+          </div>
+          <p class="mt-4" style="font-size:13px;color:var(--text-muted)">Miễn là nó tạo ra một bước tiến đủ giá trị cho prospect — và liên quan đến vấn đề mà Core Offer giải quyết.</p>
+        </div>
+      </div>
+
+      <!-- 5. FUNNEL FLOW -->
+      <div class="section">
+        <div class="section-title">⑤ Full funnel: từ Social → Sale</div>
+        <div class="card">
+          <div class="flow">
+            <div class="flow-step" style="border-color:var(--text-dim)">📱 Social Media</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:#22d3ee;color:#22d3ee">🧲 Lead Magnet</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:var(--violet);color:var(--violet)">📧 Email List</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:var(--amber);color:var(--amber)">🤝 Relationship</div>
+            <span class="flow-arrow">→</span>
+            <div class="flow-step" style="border-color:var(--green);color:var(--green)">💰 Offer</div>
+          </div>
+          <div class="callout mt-4" style="border-color:var(--violet);background:var(--violet-dim);font-size:13px">
+            <strong style="color:var(--violet)">💡 Tại sao Email List quan trọng?</strong>
+            Social media = bạn thuê traffic. Email list = bạn sở hữu contact. Khi có name + email, bạn có thể educate, build trust, send offers — độc lập với thuật toán platform.
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. KEY RULES -->
+      <div class="section">
+        <div class="section-title">⑥ Nguyên tắc quan trọng cần nhớ</div>
+        <div class="card-grid">
+          <div class="card card-accent" style="border-top-color:#22d3ee">
+            <h4>🎯 Một content = Một CTA</h4>
+            <p>Business có thể có nhiều Lead Magnets — nhưng một video, một bài đăng chỉ nên có một CTA. Nhiều CTA cùng lúc làm loãng tất cả.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--amber)">
+            <h4>⚡ Không phải lúc nào cũng cần Lead Magnet</h4>
+            <p>Sản phẩm &lt;$50, short course, workshop — có thể test direct sale trước. Nếu không hiệu quả mới xây funnel. Giảm friction, đo kết quả nhanh hơn.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--green)">
+            <h4>🏗️ Thu leads trước, sản phẩm tính sau</h4>
+            <p>Chưa có sản phẩm hoàn chỉnh vẫn có thể content → Lead Magnet → thu leads. Khi có offer, bạn đã có audience để bán — thay vì ngược lại.</p>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--rose)">
+            <h4>📊 Welcome Sequence ≠ Sales Sequence</h4>
+            <p>Welcome sequence có thể chỉ cần establish expertise và trust, không bán ngay. Weekly newsletter mới là nơi bắt đầu pitch offer. Mỗi sequence có job riêng.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. RESEARCH STRATEGY -->
+      <div class="section">
+        <div class="section-title">⑦ Cách research bằng cách "chui vào funnel" của người khác</div>
+        <div class="card">
+          <ol class="num-list">
+            <li><div><b>Tìm creator/business</b> trong lĩnh vực bạn muốn nghiên cứu.</div></li>
+            <li><div><b>Nhận lead magnet</b> — để lại email thật của bạn.</div></li>
+            <li><div><b>Đọc lead magnet</b> và quan sát kỹ nội dung, cách trình bày, giá trị được deliver.</div></li>
+            <li><div><b>Theo dõi email sequence</b> những ngày tiếp theo — welcome email, subject lines, CTA, story, offer, frequency, sales pitch, nurturing.</div></li>
+            <li><div><b>Phân tích lý do:</b> "Tại sao họ làm như vậy?" — áp dụng các framework đã học để giải mã.</div></li>
+          </ol>
+          <div class="callout mt-4" style="border-color:var(--amber);background:var(--amber-dim);font-size:13px">
+            <strong style="color:var(--amber)">💡 Trick freelance: tìm cơ hội từ gap</strong>
+            Nhận lead magnet → đợi vài ngày → không có email? Creator có audience và leads nhưng chưa khai thác email marketing. Đây là business opportunity để cold outreach pitch email marketing service.
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. RESEARCH TOOLS -->
+      <div class="section">
+        <div class="section-title">⑧ Tìm Lead Magnet của creator ở đâu?</div>
+        <div class="card-grid">
+          <div class="card card-accent" style="border-top-color:var(--rose)">
+            <h4>📸 Instagram</h4>
+            <ul class="check-list">
+              <li>Bio → "DM me..." hoặc link in bio</li>
+              <li>Pinned posts → freebie / checklist / training</li>
+            </ul>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--sky)">
+            <h4>🌐 Website</h4>
+            <ul class="check-list">
+              <li>Tìm từ khoá: free, freebies, free training</li>
+              <li>Email form, sign up, "Get my free..."</li>
+            </ul>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--rose)">
+            <h4>▶️ YouTube</h4>
+            <ul class="check-list">
+              <li>Channel homepage → bio / links</li>
+              <li>Description của video → free resource</li>
+            </ul>
+          </div>
+          <div class="card card-accent" style="border-top-color:var(--violet)">
+            <h4>📘 Facebook Ads Library</h4>
+            <ul class="check-list">
+              <li>Search business → xem ads đang chạy</li>
+              <li>Phân tích angle, offer, lead magnet — kể cả ads cũ</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. BẢN ĐỒ TƯ DUY -->
+      <div class="section">
+        <div class="section-title">⑨ Bản đồ hệ thống — 7 câu hỏi then chốt</div>
+        <div class="card">
+          <ol class="num-list">
+            <li><div><b>Tôi đang muốn tiếp cận ai?</b> → Target audience</div></li>
+            <li><div><b>Họ đang ở đâu?</b> → Traffic channels</div></li>
+            <li><div><b>Tôi có contact được họ không?</b> → Lead</div></li>
+            <li><div><b>Họ có thực sự quan tâm đến thứ tôi bán không?</b> → Engaged Lead</div></li>
+            <li><div><b>Tôi cho họ thứ gì đủ giá trị để họ bước vào relationship?</b> → Lead Magnet</div></li>
+            <li><div><b>Tôi làm gì để họ tin tưởng và hiểu tôi?</b> → Email / Community / Content</div></li>
+            <li><div><b>Tôi kiếm tiền từ relationship đó như thế nào?</b> → Offer → Upsell</div></li>
+          </ol>
+        </div>
+      </div>
+
+      <!-- 10. BIG PICTURE -->
+      <div class="callout" style="border-color:#22d3ee;background:rgba(34,211,238,.06);color:var(--text)">
+        <strong style="color:#22d3ee">🎯 Insight lớn nhất</strong>
+        Copywriting nằm bên trong một hệ thống bán hàng. Bạn có thể viết email cực hay — nhưng nếu sai audience, sai offer, sai lead magnet, sai funnel, CTA sai, audience không engaged thì copy hay vẫn không tạo ra kết quả. Hãy luôn hỏi: <em>"Email này đang làm nhiệm vụ gì trong funnel?"</em> — không chỉ "câu này viết có hay không?"
+      </div>
+
+      <div class="callout mt-4" style="border-color:var(--violet);background:var(--violet-dim);color:var(--text)">
+        <strong style="color:var(--violet)">🔬 TEST là nguyên tắc xuyên suốt</strong>
+        Lead Magnet A vs B → test. Direct sale vs funnel → test. Welcome sequence bán hàng vs educate → test. Không test thì không biết. Data thực tế mới là thứ cho câu trả lời đáng tin về funnel của bạn.
+      </div>
+    </div>
+
+
+  </div>
+</main>
+</div>
+
+<script>
+function showSection(id) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  const target = document.getElementById('panel-' + id);
+  if (target) {
+    target.classList.add('active');
+    document.getElementById('topbar-title').textContent = panelTitles[id] || id;
+    window.scrollTo(0,0);
+  }
+}
+function goHome() {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-mini-home').classList.add('active');
+  document.getElementById('topbar-title').textContent = '🧠 🧠 Tư duy Copywriting';
+  window.scrollTo(0,0);
+}
+
+</script>
+<script>
+// ══════════════════════════════════════════
+// NAVIGATION
+// ══════════════════════════════════════════
+const panelTitles = {
+  'overview': 'Tổng quan',
+  'data-emotion': 'Data vs Emotion',
+  'so-sanh': 'So sánh nước đôi',
+  'momentum': 'Momentum Architecture',
+  'elm': 'ELM Model',
+  'de-khang': 'Thuyết đề kháng',
+  'ttm': 'TTM Model',
+  'whitman': 'Đám đông toàn diện',
+  'means-end': 'Means-End Chain',
+  'repetition': 'Repetition & Redundancy',
+  'rhetorical': 'Rhetorical Question',
+  'evidence': 'Evidence (Bằng chứng)',
+  'inference': 'Phương thức phỏng đoán (Inference)',
+  'lf8': 'LF8 & 9 Nguyên tắc thứ yếu',
+  'simplicity': '#01 — Tâm lý học về sự đơn giản',
+  'benefits': '#02 — Bombard with Benefits',
+  'headline': '#03 — Đặt lợi ích lớn nhất vào tiêu đề',
+  'scarcity': '#04 — Scarcity (Sự khan hiếm)',
+  'headline-openers': '#05 — 22 Ngôn từ mở đầu tiêu đề',
+  'reader-hooks': '#06 — 12 Cách mở đầu bài viết',
+  'pattern-interrupt': '#07 — Thu hút chú ý (Pattern Interruption)',
+  'text-contrast': '#08 — Chữ trắng nền đen vs chữ đen nền trắng',
+  'specificity': '#09 — Lấn lướt đối thủ bằng sự riêng biệt',
+  'ogilvy-layout': '#10 — Nguyên tắc bài trí Ogilvy',
+  'typeface-psychology': '#11 — Tâm lý học Typeface',
+  'leads': 'Leads & Funnel',
+  'four-laws': 'Four Laws of Behavior Change',
+  'ads-overview': '📗 Facebook Ads — Tổng quan & Lộ trình',
+  'ads-formulas': '🧮 Công thức & Chỉ số',
+  'ads-tu-duy': '🧠 Nền tảng tư duy (Phần 1)',
+  'ads-tu-dien': '📖 Từ điển 186 thuật ngữ (Phần 2)',
+  'ads-content-tinhhuong': '🎯 Chẩn đoán Content · CT01–CT28',
+  'ads-campaign-tinhhuong': '📊 Chẩn đoán Chiến dịch · CA01–CA16',
+  'ads-adset-tinhhuong': '👥 Chẩn đoán Nhóm QC · AS01–AS16',
+  'ads-ad-tinhhuong': '📢 Chẩn đoán Từng QC · AD01–AD16',
+  'ads-pb-tinhhuong': '🔬 Khoanh vùng lỗi · PB01–PB22',
+  'ads-18steps': '✅ 18 Bước kiểm tra tại bàn làm việc',
+  'chatgpt-ads-checklist': '🔎 Checklist kiểm ngành ChatGPT Ads tại Việt Nam',
+  'quiz': 'Quiz ôn bài',
+  'story-questions': '✍️ 90 Câu hỏi khơi nguồn câu chuyện bán hàng',
+};
+
+const panelAccents = {
+  'overview':'#a78bfa','data-emotion':'#a78bfa','so-sanh':'#38bdf8',
+  'momentum':'#fbbf24','elm':'#fb7185','de-khang':'#4ade80','ttm':'#f97316',
+  'whitman':'#e879f9','means-end':'#2dd4bf','repetition':'#f43f5e',
+  'rhetorical':'#c084fc','evidence':'#06b6d4','inference':'#10b981',
+  'lf8':'#f59e0b','simplicity':'#f97316','benefits':'#ec4899','headline':'#6366f1','scarcity':'#ef4444',
+  'headline-openers':'#14b8a6','reader-hooks':'#a855f7','pattern-interrupt':'#eab308','text-contrast':'#84cc16',
+  'leads':'#22d3ee','four-laws':'#818cf8','specificity':'#f59e0b','ogilvy-layout':'#d97706','typeface-psychology':'#8b5cf6','chatgpt-ads-checklist':'#38bdf8','quiz':'#4ade80',
+  'story-questions':'#ffd060',
+};
+
+function showPanel(id, btn) {
+  document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+  if (btn) btn.classList.add('active');
+  document.getElementById('topbar-title').textContent = panelTitles[id] || id;
+  // Apply panel accent color
+  const accent = panelAccents[id] || '#a78bfa';
+  document.documentElement.style.setProperty('--panel-accent', accent);
+  if (id === 'quiz') initQuiz();
+}
+
+function showPanelById(id) {
+  const btn = [...document.querySelectorAll('.nav-item')].find(b => b.getAttribute('onclick')?.includes("'"+id+"'"));
+  showPanel(id, btn);
+}
+
+// ══════════════════════════════════════════
+// QUIZ
+// ══════════════════════════════════════════
+/* --- removed analyzeCopy, saveCopy, renderExamples --- */
+const _frameworkPrompts_REMOVED = {
+  'data-emotion': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Data vs Emotion.
+
+Framework: Data vs Emotion
+- Data (Số liệu): cho prospect cái để tin — thông số, hiệu năng, bằng chứng, độ tin cậy
+- Emotion (Cảm xúc): cho prospect cái để muốn — hình ảnh tương lai, cảm giác, kết nối, mong muốn
+- Route A: Emotion → desire → Data → justification
+- Route B: Data → superiority → Emotion → ý nghĩa
+- Emotion gồm: Desire, Fear, Relief, Pride, Belonging, Nostalgia, Status, Frustration, Aspiration
+
+Hãy:
+1. Xác định copy này dùng Data hay Emotion nhiều hơn (hoặc cả hai)
+2. Chỉ ra các yếu tố Data cụ thể trong copy
+3. Chỉ ra các yếu tố Emotion cụ thể (loại emotion nào?)
+4. Route nào đang được dùng (A, B, hay cả hai)?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cải thiện cụ thể
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'so-sanh': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework So sánh nước đôi.
+
+Framework: So sánh nước đôi
+- Mục tiêu: vừa tôn trọng đối thủ, vừa chứng minh sản phẩm tốt hơn
+- Lợi ích: tạo thiện cảm, tăng độ tin cậy, giảm kháng cự, tăng khả năng mua
+- 4 bước: (1) công nhận giá trị đối thủ → (2) chỉ ra giới hạn trong bối cảnh hiện nay → (3) giới thiệu giải pháp → (4) số liệu so sánh (nếu cần)
+- Tránh: "dim hàng" đối thủ, so sánh không có cơ sở
+
+Hãy:
+1. Copy này có dùng kỹ thuật so sánh nước đôi không?
+2. Các bước nào đã được thực hiện tốt?
+3. Có yếu tố nào "dim hàng" không phù hợp không?
+4. Điểm mạnh & điểm cần cải thiện
+5. Gợi ý cụ thể để áp dụng so sánh nước đôi hiệu quả hơn
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'momentum': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Momentum Architecture.
+
+Framework: Momentum Architecture = Low Friction + Open Loop/Curiosity Gap + Variable Reward
+- Low Friction: câu từ dễ hiểu, bước tiếp theo rõ ràng, giảm rào cản
+- Open Loop / Curiosity Gap: câu hỏi chưa trả lời, thông tin hé lộ một phần, kích thích tò mò
+- Variable Reward: kết quả bất ngờ, phần thưởng từng bước, hệ lộ dần giá trị
+- Mục đích: tạo chuỗi trải nghiệm khiến họ muốn tiếp tục
+
+Hãy:
+1. Mức độ Low Friction của copy (1-10 điểm, giải thích)
+2. Các Open Loop / Curiosity Gap nào có trong copy?
+3. Variable Reward được tạo ra như thế nào?
+4. Momentum tổng thể của đoạn copy này mạnh/yếu ở đâu?
+5. Gợi ý cải thiện cụ thể
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'elm': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên ELM Model.
+
+Framework: ELM (Elaboration Likelihood Model)
+- Elaboration cao (Central Processing): prospect đánh giá, phân tích, kiểm tra argument, logic, evidence
+- Elaboration thấp (Peripheral Processing): prospect bị ảnh hưởng bởi cues bên ngoài — authority, social proof, reputation, attractiveness, familiarity
+- 2 yếu tố quyết định: Motivation (muốn suy nghĩ không?) & Ability (đủ khả năng xử lý không?)
+- Argument tốt = claim + bằng chứng thuyết phục
+
+Hãy:
+1. Copy này hướng đến Elaboration cao hay thấp?
+2. Các Peripheral Cues nào được dùng (authority, social proof…)?
+3. Các Central Arguments nào có trong copy (logic, evidence, mechanism)?
+4. Prospect mục tiêu có Motivation và Ability như thế nào?
+5. Copy có phù hợp với mức elaboration của prospect không?
+6. Gợi ý cải thiện
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'de-khang': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên Thuyết đề kháng.
+
+Framework: Thuyết đề kháng (Inoculation Theory)
+- Cơ chế: như vaccine — phơi nhiễm nhẹ với phản bác → tạo phản ứng → tăng khả năng chống lại
+- Counterargument cần "đủ yếu": giống mối đe dọa thật, có điểm yếu để prospect tự phản bác, không quá mạnh, không quá yếu
+- Prospect phải TỰ phản bác, không bị "dắt" đi
+- Thất bại khi: quá yếu, quá mạnh, sai hướng, niềm tin quá yếu, backfire
+
+Hãy:
+1. Copy này có dùng kỹ thuật đề kháng không? Ở đâu?
+2. Counterargument được đưa ra "đủ yếu" không?
+3. Prospect có cơ hội tự phản bác không?
+4. Rủi ro gặp phải (quá yếu, quá mạnh, backfire…)?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cải thiện
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'ttm': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên TTM Model.
+
+Framework: Transtheoretical Model (TTM) — 5 giai đoạn
+1. Precontemplation: chưa nhận thức vấn đề — copy cần tạo awareness, tò mò
+2. Contemplation: đang suy nghĩ — copy cần tăng nhận thức về hậu quả
+3. Preparation: chuẩn bị — copy cần giảm rào cản, hướng dẫn cụ thể
+4. Action: đang hành động — copy cần hỗ trợ, duy trì
+5. Maintenance: duy trì — copy cần củng cố kết quả, cộng đồng
+
+Hãy:
+1. Copy này hướng đến prospect ở giai đoạn nào? (1-5)
+2. Thông điệp có phù hợp với giai đoạn đó không?
+3. Có đang "ép" prospect nhảy stage quá nhanh không?
+4. Điểm mạnh & điểm cần cải thiện
+5. Gợi ý: nếu muốn target stage khác thì thay đổi gì?
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'whitman': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên Đám đông toàn diện.
+
+Framework: Hiệu ứng đám đông toàn diện
+- Cơ chế: "Nếu nhiều người làm vậy, hẳn nó tốt/an toàn/đáng tin"
+- Không chỉ "nhiều người mua" mà là "nhiều người mua cùng loại, cùng thời điểm, cùng bối cảnh"
+- 5 dạng: (1) Số lượng rõ ràng, (2) Đám đông thực tế, (3) KOL/người ảnh hưởng, (4) Đánh giá/review, (5) Sự lan tỏa
+- Hoạt động tốt nhất: kết hợp với KOL, review, lan tỏa
+- Không hiệu quả: sản phẩm quá đặc thù, khách hàng có tư duy phản biện cao, thông tin bị nghi ngờ làm giả
+
+Hãy:
+1. Copy này dùng Đám đông toàn diện không? Dạng nào trong 5 dạng?
+2. Hiệu ứng đám đông được thể hiện như thế nào?
+3. Bối cảnh đám đông có đủ cụ thể và đáng tin không?
+4. Prospect mục tiêu có dễ bị ảnh hưởng bởi hiệu ứng này không?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cải thiện
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'means-end': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên Means-End Chain.
+
+Framework: Means-End Chain — Chuỗi 4 tầng
+1. Feature: sản phẩm có gì? (thuộc tính vật lý, tính năng)
+2. Functional Benefit: giúp họ làm được gì? (lợi ích thực tế)
+3. Emotional/Psychological Benefit: họ cảm thấy thế nào? (lợi ích cảm xúc)
+4. End Value/Identity: họ đạt được điều gì sau cùng? (giá trị cuộc sống, identity)
+- Không nhất thiết phải đi đến tầng 4
+- Đôi khi chỉ cần cue đủ mạnh, prospect tự hoàn thành chain
+
+Hãy:
+1. Mapping chain của copy này: Feature → Functional → Emotional → End Value (identify từng tầng nếu có)
+2. Copy dừng ở tầng nào? Có phù hợp với prospect không?
+3. Liên kết giữa các tầng có mượt mà và logic không?
+4. Có bỏ sót tầng quan trọng nào không?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cải thiện
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'repetition': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Repetition & Redundancy (Cashvertising Principle #14).
+
+Framework:
+- Repetition: lặp lại chính xác cùng một thông điệp/copy nhiều lần — dễ gây nhàm, tăng kháng cự
+- Redundancy: cùng một thông điệp cốt lõi nhưng thể hiện qua nhiều hình thức, cách diễn đạt, kênh khác nhau — tăng ghi nhớ mà không gây nhàm
+- Cơ chế: Repetition → Familiarity → Acceptance → Affinity → Trust
+- Không phải "càng lặp càng tốt" — overuse có thể phản tác dụng
+
+Hãy:
+1. Copy này dùng Repetition hay Redundancy (hay cả hai)?
+2. Thông điệp cốt lõi được lặp lại như thế nào?
+3. Nếu là Redundancy: các hình thức thể hiện có đủ đa dạng không?
+4. Mức độ nhàm chán/phản tác dụng có thể xảy ra?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cụ thể để cải thiện hiệu quả lặp lại
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'rhetorical': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Rhetorical Question (Cashvertising Principle #15).
+
+Framework:
+- Rhetorical Question: khẳng định một điều (statement) bằng một câu hỏi
+- Cơ chế: prospect dừng lại → suy nghĩ về proposition → ghi nhớ thông điệp tốt hơn
+- Tác dụng chính: tăng attention và message retention
+- Điều kiện hiệu quả: đơn giản, dễ hiểu, relevant với prospect, phù hợp context và buying stage
+- Không cứu được proposition yếu; có thể phản tác dụng nếu dùng sai
+
+Hãy:
+1. Copy có dùng Rhetorical Question không? Ở đâu?
+2. Mỗi câu hỏi ngầm khẳng định điều gì?
+3. Câu hỏi có relevant và đủ mạnh với prospect mục tiêu không?
+4. Proposition bên dưới câu hỏi có đủ mạnh không?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý cải thiện hoặc viết lại rhetorical question hiệu quả hơn
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'evidence': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Evidence (Copywriting Principle #16).
+
+Framework:
+- Evidence = những thông tin/dấu hiệu giúp prospect tin rằng claim về sản phẩm là có cơ sở
+- Không nhất thiết là số liệu hay bên thứ ba — quan trọng là có sức thuyết phục và phù hợp với claim
+- Công thức: Claim + Evidence → Belief → Action
+- Các loại: Data, Test/Kiểm định, Testimonial, Case study, Expert endorsement, Certification, Demo/Sample, Guarantee
+- ELM: Elaboration cao → evidence là part of argument; Elaboration thấp → evidence là cue tăng credibility
+- Claim càng lớn / rủi ro càng cao / khoảng cách càng lớn → càng cần evidence
+
+Hãy:
+1. Copy này dùng loại evidence nào? Liệt kê cụ thể.
+2. Evidence có phù hợp với claim không?
+3. Mức độ rủi ro/claim của sản phẩm → cần bao nhiêu evidence?
+4. Evidence có đủ đáng tin và rõ ràng không?
+5. Thiếu loại evidence nào quan trọng?
+6. Gợi ý cải thiện cụ thể
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'inference': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau dựa trên framework Phương thức phỏng đoán - Inference (Copywriting Principle #17).
+
+Framework:
+- Inference = cung cấp đủ thông tin để prospect tự hình thành kết luận, không nói thẳng họ phải tin gì
+- Con người lười kiểm chứng → dùng thông tin có sẵn để tự suy luận
+- Hiệu quả phụ thuộc: mức độ liên quan, độ tin cậy nguồn, mức độ rủi ro, động lực & kiến thức của prospect
+- Không phải copy dài là hay; không phải nhiều thông tin là họ tin; bối cảnh thiếu có thể tạo kết luận tiêu cực
+- 3 bước áp dụng: Hiểu claim chính → Chọn thông tin phù hợp → Đảm bảo tính thuyết phục
+
+Hãy:
+1. Copy đang muốn prospect kết luận điều gì?
+2. Những thông tin nào trong copy dẫn đến kết luận đó?
+3. Thông tin có đủ liên quan và đáng tin không?
+4. Có rủi ro nào từ bối cảnh thiếu hoặc thông tin sai lệch không?
+5. Prospect target có động lực kiểm chứng thêm không?
+6. Gợi ý cải thiện để kết luận tự nhiên hơn
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'lf8': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau theo framework LF8 & 9 Secondary Wants (17 động lực của Whitman).
+
+Framework:
+- LF8 (bẩm sinh): LF1 Survival, LF2 Food/Pleasure, LF3 Freedom from Fear/Pain, LF4 Sexual Companionship, LF5 Comfort, LF6 Superiority/Winning, LF7 Care of Loved Ones, LF8 Social Approval
+- 9 Secondary Wants (học được): W1 Informed, W2 Curiosity, W3 Cleanliness, W4 Efficiency, W5 Convenience, W6 Quality, W7 Beauty/Style, W8 Economy/Profit, W9 Bargains
+- Một sản phẩm có thể chạm nhiều desire cùng lúc
+- Chuỗi: Product → Feature → Benefit → Desire → Emotion → Copy angle
+
+Hãy:
+1. Copy đang kích hoạt những desire nào? (LF hay Secondary?)
+2. Desire mạnh nhất được khai thác là gì?
+3. Có desire tiềm năng nào chưa được dùng nhưng phù hợp với sản phẩm?
+4. Copy có đi đủ sâu từ Feature → Desire → Emotional outcome không?
+5. Gợi ý 1-2 copy angle mới dựa trên desire chưa được khai thác
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'simplicity': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau theo kỹ thuật #01: Tâm lý học về sự đơn giản (Psychology of Simplicity).
+
+Framework:
+- Mục tiêu: giảm cognitive load — giúp prospect xử lý dễ hơn, tốn ít công sức hơn
+- 4 chỉ dẫn Whitman: từ ngắn/đơn giản, câu ngắn tập trung 1 ý, mẹo câu ngắn để dẫn dắt, dùng đại từ nhân xưng (bạn/tôi/chúng ta)
+- Đơn giản ≠ ngắn nhất; câu dài vẫn ổn nếu giữ mạch logic
+- Ngắn nhưng mơ hồ = KHÔNG đơn giản
+
+Hãy:
+1. Từ ngữ: có từ nào phức tạp, thuật ngữ không cần thiết không?
+2. Câu: độ dài và mạch logic có ổn không?
+3. Đại từ nhân xưng: có dùng 'bạn/bạn/anh/chị' không? Cảm giác có gần gũi không?
+4. Cognitive load tổng thể: prospect cần bỏ bao nhiêu công sức để đọc?
+5. Điểm mạnh & điểm cần đơn giản hóa
+6. Gợi ý cụ thể để rewrite 1-2 câu khó nhất
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'benefits': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau theo kỹ thuật #02: Bombard Your Readers with Benefits.
+
+Framework:
+- Feature (đặc tính) → Functional benefit (lợi ích chức năng) → Personal benefit (lợi ích cá nhân/cảm xúc)
+- Prospect mua vì personal benefit, không phải feature
+- Cùng feature, mỗi prospect cần benefit khác nhau tùy nhu cầu
+- Tránh: feature giả benefit, benefit sai nhu cầu, benefit quá xa feature, hứa hẹn quá mức
+- LF8: 8 nhu cầu cốt lõi + 9 nhu cầu thứ yếu = 17 động lực mua hàng
+
+Hãy:
+1. Phân loại từng claim: Feature hay Functional benefit hay Personal benefit?
+2. Personal benefit có đúng với nhu cầu prospect target không?
+3. Có benefit nào quá xa feature, cần evidence không?
+4. Thiếu benefit nào quan trọng với prospect?
+5. Điểm mạnh & điểm cần cải thiện
+6. Gợi ý chuyển 1-2 feature thành benefit mạnh hơn
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'headline': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau theo kỹ thuật #03: Đặt lợi ích lớn nhất của sản phẩm vào tiêu đề (Cashvertising Principle #3).
+
+Framework:
+- Tiêu đề là nơi prospect nhìn đầu tiên — lợi ích lớn nhất phải xuất hiện ở đây
+- Lợi ích đúng + Đúng đối tượng = Tăng khả năng đọc tiếp & hành động
+- 4 bước: Xác định desire lớn nhất → Chọn lợi ích cụ thể nhất → Đưa lên tiêu đề → Kiểm tra với tệp KH
+- Nếu 2 tiêu đề tương đương, chọn tiêu đề ngắn hơn
+- Tránh: lợi ích quá chung chung, lợi ích không phải điều KH thực sự muốn, hứa hẹn vượt quá sản phẩm
+
+Hãy phân tích:
+1. Tiêu đề/headline hiện tại đang nói về gì — tính năng hay lợi ích?
+2. Lợi ích được đặt trong tiêu đề có phải điều prospect thực sự muốn nhất không?
+3. Tiêu đề có cụ thể và rõ ràng không, hay còn chung chung mơ hồ?
+4. Có rủi ro hứa hẹn quá mức so với sản phẩm có thể deliver không?
+5. Điểm mạnh & điểm cần cải thiện của tiêu đề
+6. Gợi ý viết lại tiêu đề theo đúng kỹ thuật
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'scarcity': `Bạn là chuyên gia copywriting. Phân tích đoạn copy sau theo kỹ thuật #04: Scarcity — Sự khan hiếm.
+
+Framework:
+- Scarcity không tạo nhu cầu mới — nó tăng tốc quyết định của người đã muốn
+- 2 hình thức: Khan hiếm thời gian (deadline) và khan hiếm số lượng/tiếp cận
+- 4 nguyên tắc dùng đúng: Thật → Cụ thể → Liên quan → Có lý do
+- Scarcity giả (không có thật) = mất tin cậy dài hạn, phản tác dụng
+- 3 cơ chế tâm lý: Tạo khẩn cấp → Tăng giá trị cảm nhận → Tăng chi phí chờ đợi
+
+Hãy phân tích:
+1. Copy có dùng scarcity không? Loại nào (thời gian / số lượng / tiếp cận)?
+2. Scarcity đó có thật hay không? Dựa vào đâu để nhận định?
+3. Có đủ cụ thể không, hay còn mơ hồ?
+4. Scarcity có gắn với điều prospect thực sự quan tâm không?
+5. Có lý do giải thích cho giới hạn không? Có tăng trust không?
+6. Gợi ý cải thiện hoặc thêm scarcity phù hợp nếu chưa có
+
+Trả lời bằng tiếng Việt, có cấu trúc rõ ràng.`,
+
+  'all': `Bạn là chuyên gia copywriting. Phân tích TỔNG HỢP đoạn copy sau theo 2 chương:
+
+📘 CHƯƠNG: 17 NGUYÊN TẮC TÂM LÝ HỌC
+1. DATA vs EMOTION: nghiêng về data hay emotion? Route nào?
+2. SO SÁNH NƯỚC ĐÔI: có dùng so sánh không? Hiệu quả không?
+3. MOMENTUM ARCHITECTURE: Low Friction? Open Loop? Variable Reward?
+4. ELM MODEL: Elaboration cao hay thấp? Cues hay arguments?
+5. THUYẾT ĐỀ KHÁNG: có counterargument không? Đủ yếu chưa?
+6. TTM MODEL: hướng đến stage nào trong 5 stage?
+7. ĐÁM DÔNG TOÀN DIỆN: có dùng social proof không?
+8. MEANS-END CHAIN: Feature → Functional → Emotional → End Value?
+9. REPETITION & REDUNDANCY: Repetition hay Redundancy? Gây nhàm không?
+10. RHETORICAL QUESTION: có dùng không? Ngầm khẳng định gì?
+11. EVIDENCE: loại evidence nào? Phù hợp claim & rủi ro không?
+12. INFERENCE: prospect được dẫn đến kết luận gì?
+
+📙 CHƯƠNG: 41 KỸ THUẬT BÁN HÀNG
+13. LF8 & 17 DESIRES: copy kích hoạt desire nào? Có đi đủ sâu Feature→Desire→Emotion không?
+14. SIMPLICITY (#01): từ ngữ và câu có dễ xử lý không? Cognitive load?
+15. BENEFITS (#02): Feature hay Benefit? Personal benefit có đúng nhu cầu không?
+16. HEADLINE BENEFIT (#03): tiêu đề có đặt lợi ích lớn nhất không? Đúng desire của prospect chưa?
+17. SCARCITY (#04): có dùng khan hiếm không? Thật hay giả? Có lý do không?
+
+Cuối cùng: điểm mạnh tổng thể + 3 điểm cần cải thiện quan trọng nhất.
+
+Trả lời bằng tiếng Việt, ngắn gọn cho mỗi mục.`
+};
+
+const allQuestions = [
+  {
+    q: "Theo Data vs Emotion framework, role của Data là gì?",
+    opts: ["Cho prospect cái để muốn", "Cho prospect cái để tin", "Tạo cảm giác kết nối", "Kích thích cảm xúc mua hàng"],
+    ans: 1, explain: "Data (Số liệu) cho prospect cái để tin — thông số sản phẩm, hiệu năng, bằng chứng, độ tin cậy. Còn Emotion mới cho prospect cái để muốn."
+  },
+  {
+    q: "Route 'Emotion → desire → Data → justification' nghĩa là gì?",
+    opts: ["Data trước để chứng minh, rồi Emotion để tạo ý nghĩa", "Emotion tạo ra mong muốn trước, Data là để biện hộ cho quyết định", "Dùng cảm xúc thay thế hoàn toàn cho số liệu", "Số liệu tạo ra cảm xúc, cảm xúc tạo ra mua hàng"],
+    ans: 1, explain: "Route A: Emotion tạo desire (mong muốn) trước, rồi Data là justification (bằng chứng hợp lý hóa) cho quyết định mà prospect đã muốn thực hiện."
+  },
+  {
+    q: "Trong So sánh nước đôi, bước đầu tiên là gì?",
+    opts: ["Giới thiệu giải pháp của bạn ngay", "Đưa ra số liệu so sánh", "Công nhận giá trị của đối thủ", "Chỉ ra điểm yếu của đối thủ"],
+    ans: 2, explain: "Bước 1 là công nhận giá trị của đối thủ — nói về cách cũ/giải pháp cũ đã tồn tại và có lý do khiến nó được tin dùng. Điều này tạo thiện cảm và độ tin cậy."
+  },
+  {
+    q: "Momentum Architecture bao gồm 3 yếu tố nào?",
+    opts: ["Hook + Story + CTA", "Low Friction + Open Loop + Variable Reward", "Awareness + Interest + Desire", "Data + Emotion + Social Proof"],
+    ans: 1, explain: "Momentum Architecture = Low Friction (càng dễ bắt đầu, càng dễ tiếp tục) + Open Loop/Curiosity Gap (còn điều chưa giải đáp) + Variable Reward (phần thưởng không đoán trước được)."
+  },
+  {
+    q: "Trong ELM Model, Elaboration cao có nghĩa là gì?",
+    opts: ["Prospect mua hàng đắt tiền", "Prospect xử lý thông tin theo cảm xúc", "Prospect phân tích, kiểm tra chất lượng argument và logic", "Prospect bị ảnh hưởng bởi social proof và authority"],
+    ans: 2, explain: "Elaboration cao (Central Processing): prospect đánh giá, phân tích, kiểm tra chất lượng argument. Họ sẽ hỏi: Claim này có đúng không? Evidence đâu? Logic ở đâu?"
+  },
+  {
+    q: "Peripheral cues trong ELM là gì?",
+    opts: ["Số liệu và bằng chứng khoa học", "Authority, Social proof, Reputation, Attractiveness, Familiarity", "Logic và mechanism của sản phẩm", "Case study và testimonial chi tiết"],
+    ans: 1, explain: "Peripheral cues là các yếu tố bên ngoài argument: Authority (chuyên gia), Social proof (đám đông), Reputation (thương hiệu), Attractiveness (hấp dẫn), Familiarity (quen thuộc)."
+  },
+  {
+    q: "Thuyết đề kháng hoạt động giống cơ chế nào?",
+    opts: ["Đòn tâm lý gaslighting", "Vaccine — tiếp xúc nhẹ để tạo kháng thể", "Quảng cáo lặp lại nhiều lần", "Storytelling tạo cảm xúc"],
+    ans: 1, explain: "Giống như vaccine: tiếp xúc nhẹ với mối đe dọa sẽ khiến cơ thể nhận diện nguy cơ, từ đó tạo ra khả năng chống lại tốt hơn khi gặp phiên bản thật."
+  },
+  {
+    q: "Counterargument trong Thuyết đề kháng cần 'đủ yếu' nghĩa là?",
+    opts: ["Không cần thực sự liên quan đến sản phẩm", "Giống mối đe dọa thật, có điểm yếu để prospect tự phản bác, không quá mạnh cũng không quá yếu", "Chỉ dùng cho sản phẩm rẻ tiền", "Phải được chuyên gia xác nhận"],
+    ans: 1, explain: "Counterargument cần 'đủ yếu': đủ giống mối đe dọa thật (nghe có lý), có điểm yếu để prospect tự phát hiện và phản bác, không quá mạnh (tránh overwhelm), không quá yếu (tránh thờ ơ)."
+  },
+  {
+    q: "Trong TTM, prospect ở Stage 2 (Contemplation) cần loại copy nào?",
+    opts: ["Giảm rào cản, hướng dẫn cụ thể", "Làm họ nhận ra vấn đề, tạo tò mò", "Hỗ trợ quá trình thực hiện, duy trì", "Tăng nhận thức về hậu quả nếu không thay đổi"],
+    ans: 3, explain: "Stage 2 (Contemplation) — đã nhận thức vấn đề: copy cần tăng nhận thức về hậu quả nếu không thay đổi, khuấy lên sự quan tâm, VD: 'Bạn có biết dùng điện thoại quá nhiều có thể ảnh hưởng đến…'"
+  },
+  {
+    q: "TTM Model nói rằng 'Không phải ai cũng sẵn sàng mua' có nghĩa gì trong copywriting?",
+    opts: ["Cần giảm giá để kích thích mua", "Phải nói đúng điều phù hợp với stage mà prospect đang ở", "Cần tạo urgency để ép họ mua ngay", "Không nên target người chưa biết sản phẩm"],
+    ans: 1, explain: "TTM dạy chúng ta: Meet people where they are — nói đúng điều họ cần ở đúng thời điểm. Không ép prospect ở Stage 1 phải mua ngay như Stage 4."
+  },
+  {
+    q: "Đám đông toàn diện là dạng nào của Social Proof?",
+    opts: ["Social Proof thông thường tập trung vào số lượng người mua", "Social Proof toàn diện — không chỉ số lượng mà còn 'cùng loại, cùng thời điểm, cùng bối cảnh'", "Social Proof từ chuyên gia và KOL", "Social Proof từ review sản phẩm"],
+    ans: 1, explain: "Đám đông toàn diện là dạng social proof mạnh hơn vì không chỉ 'nhiều người mua' mà là 'nhiều người mua cùng loại, cùng thời điểm, trong cùng một bối cảnh' — tạo sự đồng bộ và lan tỏa trong cộng đồng."
+  },
+  {
+    q: "Trong Means-End Chain, sau Feature là tầng nào?",
+    opts: ["End Value / Identity", "Emotional Benefit", "Functional Benefit", "Social Proof"],
+    ans: 2, explain: "Chuỗi Means-End Chain: Feature → Functional Benefit (giúp họ làm được gì?) → Emotional/Psychological Benefit (họ cảm thấy thế nào?) → End Value/Identity (họ đạt điều gì sau cùng?)."
+  },
+  {
+    q: "Means-End Chain có nhất thiết phải đi đến tầng Identity không?",
+    opts: ["Có, phải đến tầng sâu nhất", "Không, dừng ở tầng nào có ý nghĩa với prospect là đủ", "Chỉ cần tầng Feature và Functional Benefit", "Phải bắt đầu từ Identity rồi mới về Feature"],
+    ans: 1, explain: "Không nhất thiết! Chain nên dừng ở tầng nào có ý nghĩa với prospect. Research quyết định nên dừng ở đâu. Ví dụ bàn phím êm: không cần đến identity, chỉ cần đến 'tiếng êm' là đủ."
+  },
+  {
+    q: "Điều kiện nào quyết định Elaboration cao hay thấp trong ELM?",
+    opts: ["Giá sản phẩm — đắt hơn thì elaboration cao hơn", "Motivation (muốn suy nghĩ không?) và Ability (đủ khả năng xử lý không?)", "Thời gian prospect có để đọc copy", "Loại ngành hàng (tech vs FMCG)"],
+    ans: 1, explain: "ELM nói rõ: giá không quyết định route xử lý. Hai yếu tố quyết định là Motivation (họ có muốn bỏ công sức suy nghĩ không?) và Ability (họ có đủ kiến thức và điều kiện để xử lý không?)."
+  },
+  {
+    q: "Khi nào Momentum Architecture hoạt động kém hiệu quả?",
+    opts: ["Khi sản phẩm quá đắt", "High-stakes decisions cần friction và cognitive pause để suy nghĩ kỹ", "Khi copy quá dài", "Khi không dùng CTA rõ ràng"],
+    ans: 1, explain: "High-stakes (quyết định quan trọng) cần thêm friction và cognitive pause để prospect suy nghĩ kỹ. Ngoài ra, Trust thấp + Open Loop bị lạm dụng → thành clickbait, phản tác dụng."
+  },
+  {
+    q: "Sự khác biệt cốt lõi giữa Repetition và Redundancy là gì?",
+    opts: ["Repetition dùng nhiều kênh hơn Redundancy", "Repetition lặp lại y nguyên cùng copy; Redundancy lặp thông điệp cốt lõi qua nhiều hình thức khác nhau", "Redundancy chỉ dùng cho social media, Repetition cho email", "Không có sự khác biệt, hai khái niệm giống nhau"],
+    ans: 1, explain: "Repetition = lặp y nguyên cùng một copy/quảng cáo nhiều lần → dễ gây nhàm chán. Redundancy = giữ nguyên thông điệp cốt lõi nhưng thể hiện qua nhiều phiên bản, hình thức, kênh khác nhau → giảm nhàm, tăng ghi nhớ."
+  },
+  {
+    q: "Chuỗi cơ chế hoạt động của Repetition theo Whitman là gì?",
+    opts: ["Repetition → Trust → Familiarity → Affinity → Acceptance", "Repetition → Familiarity → Acceptance → Affinity → Trust", "Familiarity → Repetition → Trust → Affinity → Acceptance", "Repetition → Acceptance → Familiarity → Trust → Affinity"],
+    ans: 1, explain: "Chuỗi đúng: Repetition (lặp lại) → Familiarity (làm quen) → Acceptance (chấp nhận) → Affinity (thiện cảm) → Trust (tin tưởng). Lặp lại tạo ra sự quen thuộc, từ đó dẫn đến chấp nhận và tin tưởng."
+  },
+  {
+    q: "Vì sao Redundancy hiệu quả hơn Repetition trong hầu hết trường hợp?",
+    opts: ["Vì Redundancy tốn ít chi phí hơn", "Vì cùng một thông điệp nhưng nhiều hình thức → giảm cảm giác lặp lại, tăng độ tiếp cận và ghi nhớ", "Vì Redundancy chỉ dùng cho sản phẩm cao cấp", "Vì Redundancy không cần chiến lược rõ ràng"],
+    ans: 1, explain: "Redundancy hiệu quả hơn vì: giảm cảm giác bị lặp đi lặp lại nhàm chán, tăng độ tiếp cận trên nhiều kênh, dễ tạo sự tin tưởng hơn. Thông điệp vẫn nhất quán nhưng cách thể hiện luôn mới."
+  },
+  {
+    q: "Rhetorical Question trong copywriting là gì?",
+    opts: ["Câu hỏi cần prospect trả lời để hiểu sản phẩm hơn", "Khẳng định một điều (statement) bằng hình thức câu hỏi, không cần câu trả lời", "Câu hỏi dùng để tạo confusion và bắt prospect đọc tiếp", "Câu hỏi mở để prospect tự đánh giá sản phẩm"],
+    ans: 1, explain: "Rhetorical Question = khẳng định một điều bằng một câu hỏi. Ví dụ: 'Wouldn't you love to wake up with more energy?' không cần trả lời — nó ngầm khẳng định 'Bạn sẽ thích có nhiều năng lượng hơn.'"
+  },
+  {
+    q: "Tại sao Rhetorical Question giúp tăng message retention?",
+    opts: ["Vì nó khiến copy ngắn hơn và dễ đọc hơn", "Khi gặp câu hỏi, prospect tự dừng lại → suy nghĩ về proposition → tự xử lý → ghi nhớ tốt hơn", "Vì câu hỏi tạo ra cảm giác bí ẩn kéo dài", "Vì prospect cảm thấy bị thách thức và muốn chứng minh bản thân"],
+    ans: 1, explain: "Cơ chế: (1) Prospect dừng lại khi gặp câu hỏi → (2) Nghĩ về proposition copy đang truyền tải → (3) Tự xử lý thông tin → ghi nhớ thông điệp tốt hơn. Tác dụng chính: tăng attention và message retention."
+  },
+  {
+    q: "Ví dụ nào là Rhetorical Question đúng nghĩa?",
+    opts: ["'What are the ingredients in our product?'", "'Would you like to try a free sample?'", "'Wouldn't it feel amazing to wake up energized every single morning?'", "'What if you could earn more by working less?'"],
+    ans: 2, explain: "'Wouldn't it feel amazing...' là rhetorical question — nó ngầm khẳng định 'Bạn sẽ thích cảm giác đó.' Câu hỏi cuối ('What if...') thực sự đặt ra một khả năng mới và yêu cầu prospect suy nghĩ, xem xét — không phải rhetorical question."
+  },
+  {
+    q: "Evidence trong copywriting được định nghĩa là gì?",
+    opts: ["Chỉ là số liệu và thống kê từ nghiên cứu khoa học", "Những thông tin hoặc dấu hiệu giúp prospect tin rằng một claim về sản phẩm là có cơ sở", "Bằng chứng bắt buộc phải từ bên thứ ba độc lập", "Chỉ là testimonial và review từ khách hàng"],
+    ans: 1, explain: "Evidence = bất kỳ thông tin hoặc dấu hiệu nào giúp prospect tin rằng claim là có cơ sở. Không nhất thiết phải là số liệu hay từ bên thứ ba — quan trọng là nó có sức thuyết phục và phù hợp với claim."
+  },
+  {
+    q: "Công thức cốt lõi của Evidence trong copywriting là gì?",
+    opts: ["Evidence → Desire → Action", "Claim → Evidence → Belief → Action", "Feature → Evidence → Trust → Buy", "Data → Emotion → Evidence → Convert"],
+    ans: 1, explain: "Công thức: Claim (thông điệp) + Evidence (bằng chứng) → Belief (niềm tin) → Action (hành động). Evidence không tạo ra desire từ con số 0 mà làm tăng mức độ tin tưởng vào claim đã có."
+  },
+  {
+    q: "Khi nào Evidence càng trở nên quan trọng hơn?",
+    opts: ["Khi sản phẩm có màu sắc đẹp và thiết kế hiện đại", "Khi claim càng lớn, rủi ro càng cao, và khoảng cách giữa điều họ biết và điều bạn hứa càng lớn", "Chỉ khi bán sản phẩm trong ngành y tế", "Khi prospect đã quen với brand"],
+    ans: 1, explain: "Ba yếu tố khiến Evidence quan trọng hơn: (1) Claim càng lớn (giá cao, hứa hẹn lớn), (2) Rủi ro càng cao (tiền bạc, sức khỏe, thời gian), (3) Khoảng cách càng lớn giữa điều họ biết và điều bạn hứa → Càng nhiều nghi ngờ, càng cần lý do để tin."
+  },
+  {
+    q: "Trong ELM Model, khi Elaboration thấp, Evidence đóng vai trò gì?",
+    opts: ["Là argument chính để thuyết phục logic", "Là cue làm tăng perceived credibility", "Không có tác dụng gì", "Chỉ dùng để trang trí landing page"],
+    ans: 1, explain: "Elaboration thấp (xử lý nhanh): prospect lướt qua, dựa vào heuristic, tìm cue đơn giản → Evidence đóng vai trò như một cue làm tăng perceived credibility. Ngược lại, Elaboration cao → Evidence trở thành một phần của argument để phân tích, kiểm tra."
+  },
+  {
+    q: "Phương thức phỏng đoán (Inference) trong copywriting là gì?",
+    opts: ["Đoán tâm lý khách hàng để viết copy phù hợp", "Cung cấp đủ thông tin để prospect tự hình thành kết luận mà không cần nói thẳng", "Dùng số liệu để chứng minh claim là đúng", "Hỏi prospect về nhu cầu trước khi viết"],
+    ans: 1, explain: "Inference = khi prospect được cung cấp đủ thông tin trong copy, họ tự hình thành kết luận về sản phẩm ('sản phẩm này vẻ tốt / đáng tin / phù hợp với mình') mà không cần tự kiểm chứng từng thông tin. Không phải 'nói thẳng' mà là 'để họ tự nghĩ ra'."
+  },
+  {
+    q: "Tại sao con người dễ bị ảnh hưởng bởi Inference?",
+    opts: ["Vì họ thích đọc copy dài và chi tiết", "Vì con người có xu hướng lười tư duy — dùng thông tin có sẵn để tự hình thành kết luận thay vì kiểm chứng tất cả", "Vì họ luôn tin tưởng vào brand nổi tiếng", "Vì họ không có thời gian đọc copy"],
+    ans: 1, explain: "Con người có xu hướng tránh những thứ đòi hỏi nhiều công sức. Họ thường dùng thông tin có sẵn để tự hình thành kết luận thay vì kiểm chứng tất cả — dẫn đến hành vi lướt nhanh, tin vào số đông/chuyên gia, không xác minh từng claim."
+  },
+  {
+    q: "Khi nào Inference có thể tạo ra kết luận TIÊU CỰC?",
+    opts: ["Khi copy quá ngắn và không đủ thông tin", "Khi cùng một thông tin nhưng thiếu bối cảnh phù hợp", "Khi không dùng testimonial", "Khi không có CTA rõ ràng"],
+    ans: 1, explain: "Counterexample 2: Cùng một thông tin, nhưng thiếu bối cảnh phù hợp → Có thể tạo ra kết luận tiêu cực. Ví dụ: một tài liệu dày 50 trang về cáo buộc với một chính trị gia có thể khiến người đọc kết luận 'Chắc là có vấn đề đó thật.'"
+  },
+  {
+    q: "3 bước áp dụng Inference đúng cách trong copywriting là gì?",
+    opts: ["Viết dài → Thêm hình ảnh → Thêm CTA mạnh", "Hiểu claim chính → Chọn thông tin phù hợp → Đảm bảo tính thuyết phục (liên quan, đáng tin, phù hợp đối tượng)", "Nghiên cứu competitor → Copy ý tưởng → Thêm giá khuyến mãi", "Xác định audience → Viết headline → Thêm evidence"],
+    ans: 1, explain: "3 bước đúng: (1) Hiểu claim chính — bạn muốn họ kết luận điều gì?, (2) Chọn thông tin phù hợp — những chi tiết nào sẽ khiến kết luận đó trở nên tự nhiên?, (3) Đảm bảo tính thuyết phục — thông tin đó có đủ liên quan, đáng tin cậy và phù hợp với đối tượng không?"
+  },
+
+  /* ── LF8 & 9 Secondary Wants ── */
+  {
+    q: "Sự khác biệt cốt lõi giữa Life-Force 8 và 9 Secondary Wants là gì?",
+    opts: ["LF8 là 8 wants, Secondary là 9 wants — chỉ khác về số lượng", "LF8 là bẩm sinh/sinh học (hardwired), 9 Secondary Wants được học qua quá trình sống và văn hóa", "LF8 chỉ áp dụng cho sản phẩm cao cấp", "Secondary Wants mạnh hơn LF8 vì phổ biến hơn"],
+    ans: 1, explain: "LF8 (Life-Force 8) là những ham muốn có tính bẩm sinh, sinh học — hardwired trong não người. 9 Secondary Wants được hình thành qua quá trình sống và văn hóa. Theo Whitman, LF8 mạnh hơn Secondary Wants vì chúng là động lực sinh học cơ bản."
+  },
+  {
+    q: "Fitness coaching có thể kết nối với những Life-Force nào? (Chọn cái phù hợp nhất theo ví dụ trong document)",
+    opts: ["Chỉ LF1 (sức khỏe) vì đây là sản phẩm sức khỏe", "LF1, LF3, LF4, LF6, LF7, LF8 cùng lúc — tùy prospect và angle", "Chỉ LF6 (superiority) và LF8 (social approval)", "Fitness chỉ liên quan đến Secondary Wants về Efficiency"],
+    ans: 1, explain: "Whitman nhấn mạnh một sản phẩm hiếm khi chỉ chạm 1 desire. Fitness coaching có thể đồng thời kích hoạt: LF1 (sống khỏe lâu), LF3 (thoát đau, thoát mệt), LF4 (hấp dẫn hơn), LF6 (hơn người trong nhóm bạn), LF7 (theo kịp con cái), LF8 (tự tin trước xã hội). Nhiệm vụ copywriter: tìm cái mạnh nhất với prospect cụ thể."
+  },
+  {
+    q: "LF3 — Freedom from Fear, Pain and Danger — áp dụng đúng cách là gì?",
+    opts: ["Tạo ra nỗi sợ mới để prospect mua ngay lập tức", "Identify một nỗi sợ đang tồn tại → cụ thể hóa nó → chỉ ra sản phẩm giúp giảm nó như thế nào", "Chỉ dùng cho sản phẩm bảo hiểm và an ninh", "Tránh nhắc đến nỗi sợ vì gây cảm giác tiêu cực"],
+    ans: 1, explain: "LF3 là một trong những desire quan trọng nhất với copywriter. Não người rất nhạy với nguy hại tiềm ẩn. Copy tốt KHÔNG tạo nỗi sợ không có thật (fear mongering). Thay vào đó: Identify existing fear → make it concrete → show how your product reduces it. Ví dụ: 'Stop checking your bank account with that knot in your stomach.'"
+  },
+  {
+    q: "5 bước áp dụng LF8 khi viết copy theo đúng thứ tự là gì?",
+    opts: ["Viết headline → Tìm audience → Chọn channel → Thêm CTA → Test", "Product → Feature → Functional benefit → Desire (LF) → Emotional outcome", "Research → Brief → Draft → Review → Publish", "Audience → Pain point → Solution → Social proof → CTA"],
+    ans: 1, explain: "5 bước của Whitman: (1) Product — đang bán gì?, (2) Feature — nó có gì?, (3) Functional benefit — nó giúp khách hàng làm được gì?, (4) Desire — 'So what?' → kết nối với LF nào?, (5) Emotional outcome — khách hàng muốn cảm thấy hoặc trở thành gì? Ví dụ cuối: 'From constantly worrying about money → to feeling in control of it.'"
+  },
+  {
+    q: "Difference giữa LF6 (Superiority) và LF8 (Social Approval) là gì?",
+    opts: ["Chúng giống nhau hoàn toàn, chỉ là 2 tên gọi khác nhau", "LF6 là muốn hơn/thắng/không bị tụt lại; LF8 là muốn được chấp nhận/yêu thích/không bị rejection", "LF6 chỉ dùng cho B2B, LF8 chỉ cho B2C", "LF8 mạnh hơn LF6 vì phổ biến hơn"],
+    ans: 1, explain: "LF6 (Superiority): 'Tôi muốn hơn người, thắng, không bị tụt lại.' — Focus vào vị trí cao hơn so với người khác. LF8 (Social Approval): 'Tôi muốn được chấp nhận, yêu thích, tôn trọng.' — Focus vào thuộc về, không bị reject. Ví dụ: 'Become the fittest person in your friend group' (LF6) vs 'Feel confident walking into the gym instead of wondering whether everyone is judging you' (LF8)."
+  },
+
+  /* ── Kỹ thuật #01: Simplicity ── */
+  {
+    q: "Mục tiêu thực sự của 'Tâm lý học về sự đơn giản' trong copywriting là gì?",
+    opts: ["Làm cho mọi câu trong copy càng ngắn càng tốt", "Giảm cognitive load — giúp prospect xử lý thông tin dễ hơn, tốn ít công sức hơn", "Loại bỏ hoàn toàn các từ chuyên ngành", "Viết copy dưới 100 chữ"],
+    ans: 1, explain: "Đơn giản không có nghĩa là ngắn nhất có thể. Mục tiêu là giảm công sức nhận thức (cognitive load) cần thiết để hiểu. Một câu dài vẫn có thể 'đơn giản' nếu nó giữ mạch logic tốt và dễ xử lý. Câu ngắn nhưng mơ hồ thì không đơn giản."
+  },
+  {
+    q: "Đây là 4 chỉ dẫn của Drew Whitman về sự đơn giản, câu nào SAI?",
+    opts: ["Dùng từ ngắn, đơn giản — ưu tiên từ thông dụng", "Câu càng ngắn càng tốt — mỗi câu tập trung một ý", "Tận dụng đại từ nhân xưng để tạo cảm giác đối thoại", "Tránh hoàn toàn các câu có quan hệ nguyên nhân — kết quả"],
+    ans: 3, explain: "Câu sai là 'Tránh hoàn toàn câu nguyên nhân—kết quả.' Whitman không nói vậy. Đôi khi câu dài cần thiết để giữ mạch logic và quan hệ nguyên nhân—kết quả. Mục tiêu là dễ hiểu, không phải ngắn bằng mọi giá."
+  },
+  {
+    q: "Câu copy nào thể hiện đúng nguyên tắc 'tận dụng đại từ nhân xưng'?",
+    opts: [
+      "'Sản phẩm có thể giúp người dùng tiết kiệm thời gian.'",
+      "'Bạn có thể tiết kiệm thời gian với sản phẩm này.'",
+      "'Thời gian tiết kiệm được nhờ sử dụng sản phẩm là đáng kể.'",
+      "'Người tiêu dùng thường tiết kiệm được nhiều thời gian hơn.'"
+    ],
+    ans: 1, explain: "Câu B ('Bạn có thể...') dùng 'bạn' để nói chuyện trực tiếp với prospect — tạo cảm giác đang đối thoại cá nhân. Các câu còn lại dùng 'người dùng', 'sản phẩm', 'người tiêu dùng' — xa cách, thiếu tính kết nối."
+  },
+  {
+    q: "Câu ngắn nào dưới đây vi phạm nguyên tắc 'đơn giản' vì vẫn khó hiểu?",
+    opts: [
+      "'John yêu Mary.'",
+      "'Tiết kiệm 2 giờ mỗi ngày.'",
+      "'We use big systems to make better.'",
+      "'Bạn muốn biết bí mật không?'"
+    ],
+    ans: 2, explain: "'We use big systems to make better.' — ngắn nhưng mơ hồ hoàn toàn: 'big systems' là gì? 'make better' nghĩa là gì? Người đọc phải suy nghĩ. Ngắn không đồng nghĩa đơn giản nếu từ ngữ không rõ ràng."
+  },
+
+  /* ── Kỹ thuật #02: Benefits ── */
+  {
+    q: "Sự khác biệt giữa Feature, Functional benefit và Personal benefit là gì?",
+    opts: [
+      "Đây chỉ là 3 cách diễn đạt khác nhau của cùng một thứ",
+      "Feature mô tả sản phẩm có gì; Functional benefit giải quyết vấn đề cụ thể; Personal benefit gắn với cuộc sống và cảm xúc thật của prospect",
+      "Feature quan trọng hơn benefit vì nó cụ thể hơn",
+      "Personal benefit chỉ dùng cho sản phẩm cao cấp"
+    ],
+    ans: 1, explain: "Ba tầng lợi ích: Feature (đặc tính sản phẩm) → Functional benefit (lợi ích chức năng, giải quyết vấn đề cụ thể) → Personal benefit (lợi ích cá nhân, đáp ứng cảm xúc, nhu cầu cuộc sống). Càng đi xa feature, lợi ích càng gần với cuộc sống thật của prospect."
+  },
+  {
+    q: "Câu copy 'Pin 40 giờ.' là ví dụ của điều gì?",
+    opts: [
+      "Personal benefit — tiết kiệm thời gian sạc",
+      "Functional benefit — dùng được lâu hơn",
+      "Feature — mô tả đặc tính sản phẩm, chưa nói được giá trị thực",
+      "Đây là copy tốt vì rõ ràng và cụ thể"
+    ],
+    ans: 2, explain: "'Pin 40 giờ' là Feature — nó mô tả đặc tính của sản phẩm nhưng chưa nói prospect được lợi gì thực sự. Benefit tốt hơn sẽ là: 'Dùng cả ngày không lo hết pin' (Functional) hoặc 'Không cần mang theo sạc khi đi công tác' (Personal)."
+  },
+  {
+    q: "Vì sao cùng một feature có thể cần viết thành nhiều benefit khác nhau?",
+    opts: [
+      "Để tăng số lượng chữ trong copy",
+      "Vì mỗi prospect có nhu cầu và bối cảnh khác nhau — cùng feature, mỗi người quan tâm đến lợi ích khác nhau",
+      "Vì một benefit không đủ để thuyết phục",
+      "Vì quy tắc SEO yêu cầu lặp lại từ khóa nhiều lần"
+    ],
+    ans: 1, explain: "Ví dụ áo thun: Người thích phong cách cá nhân nghe 'thể hiện gu thẩm mỹ riêng'; người cần phối đồ nghe 'kết hợp nhiều outfit'; người quan tâm bền nghe 'vải dày, bền màu'. Cùng 1 feature nhưng benefit phải khớp với nhu cầu cụ thể của từng prospect."
+  },
+  {
+    q: "Điều nào dưới đây là dấu hiệu 'benefit quá xa feature' cần tránh?",
+    opts: [
+      "'Thiết kế đơn giản, dễ kết hợp nhiều outfit.'",
+      "'Vải dày, bền màu, sử dụng lâu dài.'",
+      "'Bạn sẽ tìm được tình yêu của đời mình nhờ chiếc áo này.'",
+      "'Mang lại sự tự tin và thần thái sang xịn.'"
+    ],
+    ans: 2, explain: "'Bạn sẽ tìm được tình yêu của đời mình nhờ chiếc áo' — đây là hứa hẹn quá xa feature, không có cơ sở chứng minh và trở thành manipulation. Benefit tốt phải có liên kết rõ ràng với feature và không hứa hẹn quá mức mà không có evidence."
+  },
+
+  /* ── Kỹ thuật #03: Headline Benefit ── */
+  {
+    q: "Lý do cốt lõi để đặt lợi ích lớn nhất vào tiêu đề là gì?",
+    opts: [
+      "Vì tiêu đề dài sẽ giúp SEO tốt hơn",
+      "Con người đọc những gì họ quan tâm nhất trước — nếu thấy ngay lợi ích lớn nhất, họ bị thu hút và tiếp tục đọc",
+      "Vì quy tắc copywriting bắt buộc phải có lợi ích trong tiêu đề",
+      "Để phân biệt với quảng cáo của đối thủ"
+    ],
+    ans: 1, explain: "Con người đọc có chọn lọc — họ ưu tiên những gì liên quan đến mình. Tiêu đề là nơi họ nhìn đầu tiên. Nếu thấy ngay lợi ích họ mong muốn, họ sẽ dừng lại và đọc tiếp. Lợi ích đúng + Đúng đối tượng = Tăng khả năng đọc tiếp và hành động."
+  },
+  {
+    q: "Khi 2 tiêu đề có hiệu quả tương đương nhau, nên chọn cái nào?",
+    opts: [
+      "Tiêu đề dài hơn vì cung cấp nhiều thông tin hơn",
+      "Tiêu đề ngắn hơn vì nghiên cứu cho thấy tiêu đề ngắn giúp nhiều người đọc hơn",
+      "Tiêu đề nào có nhiều từ cảm xúc hơn",
+      "Tiêu đề nào được viết trước"
+    ],
+    ans: 1, explain: "Khi 2 tiêu đề hiệu quả tương đương, chọn tiêu đề ngắn hơn — nghiên cứu cho thấy tiêu đề ngắn giúp nhiều người đọc hơn. Tuy nhiên, tiêu đề dài vẫn có thể thắng nếu nó rõ ràng, mạch lạc và đúng đối tượng hơn. Độ dài không phải yếu tố duy nhất."
+  },
+  {
+    q: "Headline nào thể hiện đúng kỹ thuật đặt lợi ích lớn nhất vào tiêu đề cho khóa học Photoshop?",
+    opts: [
+      "'Học Photoshop từ cơ bản đến nâng cao'",
+      "'Làm chủ Photoshop trong 7 ngày'",
+      "'Có khách hàng đầu tiên của bạn bằng PTS!'",
+      "'Photoshop cho người mới bắt đầu'"
+    ],
+    ans: 2, explain: "'Có khách hàng đầu tiên của bạn bằng PTS!' đúng vì nó đặt lợi ích mà người học thực sự muốn (có khách hàng = kiếm được tiền) lên tiêu đề, thay vì chỉ nói về kỹ năng. Các headline khác chỉ mô tả tính năng/kỹ năng, không chạm đến desire thật sự của người học."
+  },
+  {
+    q: "4 bước áp dụng kỹ thuật đặt lợi ích vào tiêu đề theo đúng thứ tự là gì?",
+    opts: [
+      "Viết tiêu đề → Test A/B → Chọn tiêu đề ngắn hơn → Publish",
+      "Xác định desire lớn nhất của KH → Chọn lợi ích cụ thể nhất → Đưa lên tiêu đề → Kiểm tra với tệp KH",
+      "Research đối thủ → Copy angle hay nhất → Sửa lại cho sản phẩm mình → Publish",
+      "Liệt kê tính năng → Chọn tính năng tốt nhất → Viết thành tiêu đề → Thêm từ khóa"
+    ],
+    ans: 1, explain: "4 bước đúng: (1) Xác định desire lớn nhất của KH — ví dụ: có việc làm, tiết kiệm tiền, khỏe mạnh; (2) Chọn lợi ích cụ thể nhất có thể đáp ứng — tránh câu chung chung; (3) Đưa lên tiêu đề — viết ngắn gọn, rõ ràng; (4) Kiểm tra với tệp KH — họ có thấy đúng nhu cầu của mình không?"
+  },
+
+  /* ── Kỹ thuật #05: 22 Ngôn từ mở đầu tiêu đề ── */
+  {
+    q: "Ngôn từ 'Cảnh báo!' trong tiêu đề hoạt động dựa trên cơ chế tâm lý nào?",
+    opts: [
+      "Tạo cảm giác vui vẻ và hứng thú với nội dung",
+      "Kích hoạt phản xạ cảnh giác của não — não người phản ứng nhanh với tín hiệu nguy hiểm tiềm ẩn",
+      "Cho thấy thông tin mang tính học thuật, đáng tin cậy",
+      "Khiến người đọc nghĩ sản phẩm đang được giảm giá"
+    ],
+    ans: 1, explain: "'Cảnh báo!' kích hoạt cơ chế sinh tồn cơ bản của não — attention bị kéo về phía thứ có thể gây hại. Đây là lý do nó hiệu quả ngay cả khi nội dung không nguy hiểm thực sự. Tuy nhiên, lạm dụng sẽ mất trust vì người đọc nhận ra đây là thủ thuật."
+  },
+  {
+    q: "Sự khác biệt giữa 'Bạn có', 'Bạn sẽ' và 'Bạn có thể' là gì?",
+    opts: [
+      "Ba cụm từ này hoàn toàn giống nhau, chỉ là biến thể ngữ pháp",
+      "'Bạn có' kết nối cá nhân qua câu hỏi; 'Bạn sẽ' tạo kỳ vọng về lợi ích tương lai; 'Bạn có thể' giảm e ngại bằng cảm giác khả thi",
+      "'Bạn có thể' là mạnh nhất vì cho phép tự do lựa chọn",
+      "'Bạn sẽ' không hiệu quả vì nghe như ra lệnh"
+    ],
+    ans: 1, explain: "Ba cụm từ này phục vụ mục đích khác nhau: 'Bạn có' → kết nối cá nhân, đặt câu hỏi khiến họ tự đánh giá bản thân. 'Bạn sẽ' → tạo hình dung về lợi ích sắp tới, kỳ vọng. 'Bạn có thể' → giảm rào cản tâm lý, cho thấy điều này nằm trong tầm tay. Tùy vào giai đoạn nhận thức của prospect để chọn đúng."
+  },
+  {
+    q: "Ngôn từ nào phù hợp nhất khi muốn nhấn mạnh tính thời điểm và thúc đẩy hành động tức thì?",
+    opts: [
+      "'Giới thiệu' — vì nó mang thông tin mới nhất",
+      "'Cuối cùng' — vì đây là giải pháp hoàn thiện",
+      "'Ngay bây giờ' — vì nó tạo áp lực thời gian và cảm giác không thể trì hoãn",
+      "'Mới' — vì sự mới lạ luôn thu hút"
+    ],
+    ans: 2, explain: "'Ngay bây giờ' nhấn mạnh tính thời điểm và urgency — đặc biệt hiệu quả cho giảm giá có thời hạn, sự kiện đang diễn ra, hoặc khi muốn kéo người đọc ra khỏi trạng thái thụ động. Khác với 'Cảnh báo!' (nguy hiểm tiềm ẩn), 'Ngay bây giờ' tập trung vào cơ hội sẽ mất nếu không hành động."
+  },
+  {
+    q: "Tại sao 'Rốt cuộc là' là ngôn từ mở đầu hiệu quả cho những chủ đề có nhiều quan điểm trái chiều?",
+    opts: [
+      "Vì nó cho thấy nội dung ngắn gọn và dễ đọc",
+      "Vì nó tạo cảm giác sắp được giải đáp câu hỏi lâu nay — kích hoạt 'curiosity gap' và mong muốn có câu trả lời chính thức",
+      "Vì nó phù hợp với mọi loại sản phẩm và dịch vụ",
+      "Vì nó nghe có vẻ học thuật và chuyên nghiệp hơn"
+    ],
+    ans: 1, explain: "'Rốt cuộc là' hứa hẹn một câu trả lời dứt khoát cho điều mà người đọc đã thắc mắc từ lâu. Nó khai thác 'curiosity gap' — khoảng cách giữa điều họ biết và điều họ muốn biết. Đặc biệt hiệu quả cho các chủ đề gây tranh cãi như giảm cân, kiếm tiền, học ngoại ngữ — nơi người đọc đã thấy quá nhiều 'giải pháp' mâu thuẫn nhau."
+  },
+
+  /* ── Kỹ thuật #06: 12 Cách mở đầu bài viết ── */
+  {
+    q: "Kỹ thuật 'Tiếp tục mạch suy nghĩ từ tiêu đề' hoạt động theo nguyên tắc nào?",
+    opts: [
+      "Lặp lại tiêu đề để người đọc nhớ rõ hơn",
+      "Giải thích ý nghĩa của tiêu đề bằng từ ngữ đơn giản hơn",
+      "Không tạo khoảng hở — câu đầu bài dẫn thẳng từ điểm dừng của tiêu đề, duy trì momentum đọc",
+      "Đặt một câu hỏi liên quan đến tiêu đề để kích thích tò mò"
+    ],
+    ans: 2, explain: "Kỹ thuật này hoạt động vì: tiêu đề tạo ra một 'câu chuyện chưa xong', và câu đầu bài tiếp tục câu chuyện đó ngay lập tức — không cho người đọc cơ hội dừng lại. Ví dụ: Tiêu đề 'Làm việc 2 tiếng mỗi ngày, bạn sẽ đạt được điều gì?' → Câu mở đầu 'Và đây là 3 điều bạn sẽ thấy sau 14 ngày...' — tiếp nối hoàn hảo, không mất momentum."
+  },
+  {
+    q: "Vì sao kỹ thuật 'Gậy ông đập lưng ông' hiệu quả trong mở đầu bài viết?",
+    opts: [
+      "Vì nó khiến người đọc cảm thấy bị công kích và muốn phản bác",
+      "Vì nó tạo cognitive dissonance — khi thấy mâu thuẫn trong hành vi của mình, não bộ cần đọc tiếp để xử lý và giải quyết mâu thuẫn đó",
+      "Vì nó chứng minh copywriter hiểu sâu về tâm lý học",
+      "Vì nó phù hợp với mọi loại sản phẩm và dịch vụ"
+    ],
+    ans: 1, explain: "Cognitive dissonance là trạng thái khó chịu khi giữ hai niềm tin mâu thuẫn nhau. 'Gậy ông đập lưng ông' tạo ra dissonance bằng cách chỉ ra khoảng cách giữa điều họ nói/tin và điều họ làm. Não bộ muốn giải quyết dissonance này → đọc tiếp. Hiệu quả nhất với: lời khuyên tài chính, sức khỏe, năng suất — những lĩnh vực mà gap giữa biết và làm rất lớn."
+  },
+  {
+    q: "Tại sao khi dùng kỹ thuật 'Trích dẫn chuyên gia', bài học nhấn mạnh '(Nó phải thực sự từ chuyên gia)'?",
+    opts: [
+      "Vì trích dẫn giả sẽ không hay về mặt văn phong",
+      "Vì trích dẫn giả vi phạm bản quyền",
+      "Vì trích dẫn giả phá hủy trust ngay lập tức khi bị phát hiện — hiệu ứng ngược hoàn toàn so với mục đích ban đầu",
+      "Vì chỉ chuyên gia mới có câu nói hay"
+    ],
+    ans: 2, explain: "Mục đích của trích dẫn chuyên gia là mượn uy tín từ bên ngoài để tăng credibility ngay từ đầu bài. Nhưng nếu bị phát hiện là giả hoặc bịa đặt, tác hại gấp đôi: (1) mất trust với nội dung này, (2) mất trust toàn bộ thương hiệu. Não người đặc biệt nhạy với sự không trung thực — một lần phát hiện gian lận có thể xóa sạch tất cả trust trước đó."
+  },
+  {
+    q: "Kỹ thuật 'Đưa ra thông số cực kỳ chi tiết' hiệu quả hơn con số làm tròn vì lý do gì?",
+    opts: [
+      "Vì con số chi tiết dài hơn và chiếm nhiều diện tích hơn trong bài",
+      "Vì người đọc thích toán học và thống kê",
+      "Vì não người liên kết sự chi tiết với sự chính xác — '87% người giảm 4,2kg' đáng tin hơn '9 trong 10 người giảm 4kg'",
+      "Vì con số chi tiết giúp tối ưu SEO tốt hơn"
+    ],
+    ans: 2, explain: "Hiện tượng này gọi là 'precision heuristic' — não người dùng độ cụ thể làm tín hiệu để đánh giá độ chính xác. Con số làm tròn (90%, 4kg) nghe như ước tính; con số chi tiết (87%, 4,2kg) nghe như từ nghiên cứu thực tế. Tuy nhiên, con số phải thật — nếu bịa chi tiết thì còn phản tác dụng hơn làm tròn."
+  },
+
+  /* ── Kỹ thuật #07: Pattern Interruption ── */
+  {
+    q: "Mục tiêu cuối cùng của kỹ thuật 'Thu hút chú ý (Pattern Interruption)' là gì?",
+    opts: [
+      "Tạo ra thứ gì đó thật khác lạ và kỳ dị để nổi bật hoàn toàn",
+      "Phá vỡ pattern quen thuộc để kéo sự chú ý — rồi dẫn ngay về thông điệp muốn truyền đạt",
+      "Khiến đối thủ không thể bắt chước phong cách của mình",
+      "Tăng CTR bằng mọi cách có thể"
+    ],
+    ans: 1, explain: "Pattern interruption không phải để 'lạ hóa' — mà là một chuỗi: phá pattern → thu hút chú ý → dẫn ngay về thông điệp (payoff). Nếu chỉ dừng ở bước phá pattern mà không kết nối với message, đó chỉ là 'attention device', không phải 'persuasive device'."
+  },
+  {
+    q: "Vì sao não bộ bị thu hút bởi thứ phá vỡ pattern?",
+    opts: [
+      "Vì não luôn ưu tiên xử lý thông tin mới hơn thông tin cũ",
+      "Vì não thích sự mới lạ (survival instinct), nhận diện pattern rất nhanh để bỏ qua, và bị kéo về phía thứ tạo tương phản",
+      "Vì con người vốn chán những thứ quen thuộc",
+      "Vì quảng cáo khác lạ thường có budget cao hơn nên chất lượng hơn"
+    ],
+    ans: 1, explain: "Ba cơ chế tâm lý: (1) Não thích sự mới lạ — survival instinct đánh giá xem thứ khác biệt có nguy hiểm/quan trọng không. (2) Nhận diện pattern nhanh — thứ quen bị auto-skip; thứ phá pattern được 'bật đèn xanh'. (3) Contrast tạo impact — nổi bật trong môi trường loạn không cần to hơn, chỉ cần khác hơn."
+  },
+  {
+    q: "Nước hoa dùng con vịt cao su khổng lồ để quảng cáo là ví dụ của lỗi gì?",
+    opts: [
+      "Không đủ ngân sách để thực hiện ý tưởng lớn hơn",
+      "Tone không phù hợp với đối tượng khách hàng của nước hoa",
+      "'Càng dị càng tốt' — thu hút attention nhưng attention bị tách khỏi thông điệp vì con vịt không liên quan đến brand",
+      "Visual quá phức tạp khiến người xem bị phân tâm"
+    ],
+    ans: 2, explain: "Case 1 điển hình: Con vịt cao su tạo sự chú ý nhưng không có liên kết nào đến nước hoa hay giá trị brand. Kết quả: attention bị tách khỏi thông điệp. Pattern interruption đúng phải vừa gây chú ý vừa liên kết với message — khác biệt phải phục vụ cho thông điệp, không tồn tại độc lập."
+  },
+  {
+    q: "Khi nào KHÔNG nên dùng pattern interruption?",
+    opts: [
+      "Khi sản phẩm đã nổi tiếng và không cần quảng cáo thêm",
+      "Khi ngành đang quá cạnh tranh và attention quá phân tán",
+      "Khi pattern hiện tại đang tạo trust (tài chính, y tế, B2B cao cấp...), khi khác biệt làm tổn hại positioning, hoặc khi sai audience/context",
+      "Khi copy đã đủ dài và không cần thêm yếu tố gây chú ý"
+    ],
+    ans: 2, explain: "Đây là điểm tinh tế nhất của kỹ thuật này. Công ty kế toán cao cấp dùng headline 'YOUR ACCOUNTANT IS LYING TO YOU' — phá pattern thành công nhưng làm mất credibility và phá vỡ positioning tin cậy. Trong tài chính, y tế, B2B cao cấp: tuân theo pattern của ngành đôi khi tạo ra sự tin tưởng quan trọng hơn sự nổi bật."
+  },
+  /* ── Kỹ thuật #08: Chữ trắng nền đen vs chữ đen nền trắng ── */
+  {
+    q: "Khi copy trực quan cần chứa nhiều chữ để đọc, lựa chọn nào thường có lợi thế về legibility?",
+    opts: [
+      "White-on-black, vì tương phản mạnh hơn nên dễ đọc hơn",
+      "Black-on-white (chữ đen nền trắng)",
+      "Hai kiểu hoàn toàn như nhau trong mọi điều kiện",
+      "Chữ xám trên nền xám để dịu mắt"
+    ],
+    ans: 1, explain: "Các nghiên cứu cổ điển (Holmes, Starch, Paterson & Tinker) nghiêng về black-on-white cho legibility và tốc độ đọc. Đây là xu hướng có điều kiện chứ không phải luật tuyệt đối."
+  },
+  {
+    q: "'Legibility ≠ Attention' có nghĩa là gì?",
+    opts: [
+      "Chữ dễ đọc thì chắc chắn cũng gây chú ý",
+      "Legibility là giúp người ta đọc dễ hơn; Attention là đập vào mắt — một visual có thể nổi bật nhưng lại bắt người ta tốn công để đọc",
+      "Attention quan trọng hơn legibility trong mọi trường hợp",
+      "Hai khái niệm này là một, chỉ khác cách gọi"
+    ],
+    ans: 1, explain: "Legibility phục vụ việc ĐỌC (ít friction, dễ scan). Attention phục vụ việc CHÚ Ý (tạo tương phản, bắt mắt). Một visual có thể nổi bật nhưng làm người ta tốn công đọc — nên cần chọn theo chức năng của đoạn copy."
+  },
+  {
+    q: "White-on-black vẫn hợp lý nhất cho thành phần nào sau đây?",
+    opts: [
+      "Toàn bộ đoạn body dài 300 chữ",
+      "Điều khoản và chính sách in cỡ chữ nhỏ",
+      "Headline ngắn, label/badge, callout — những thành phần cần attention mà không cần đọc đoạn dài",
+      "Bất kỳ đoạn nào mà designer thấy trông ngầu"
+    ],
+    ans: 2, explain: "White-on-black tạo tương phản thị giác mạnh nên hợp với headline ngắn, label/badge, callout và những thành phần cần attention. Nếu dùng cho text dài, cần đặc biệt chú ý font và kích thước."
+  },
+  {
+    q: "Vì sao không nên kết luận 'white-on-black = xấu'?",
+    opts: [
+      "Vì mọi nghiên cứu đều chứng minh white-on-black tốt hơn",
+      "Vì nghiên cứu cổ điển thiên về black-on-white nhưng nghiên cứu hiện đại thì lẫn lộn (ví dụ nghiên cứu ký tự Hàn Quốc không thấy hiệu ứng chính có ý nghĩa thống kê), và kết quả còn tùy bối cảnh, đối tượng",
+      "Vì dark mode đang phổ biến nên mặc định là đúng",
+      "Vì người đọc không bao giờ để ý đến màu nền"
+    ],
+    ans: 1, explain: "Bằng chứng không đồng nhất: nghiên cứu cổ điển nghiêng về black-on-white, nhưng nghiên cứu hiện đại có kết quả lẫn lộn và phụ thuộc bối cảnh. Vì vậy hãy xem nó là xu hướng có điều kiện, không phải quy luật."
+  },
+  {
+    q: "Thay vì hỏi 'màu nào đẹp hơn?', copywriter nên hỏi câu nào?",
+    opts: [
+      "'Màu nào đang trending?'",
+      "'Đoạn copy này cần người ta đọc hay cần người ta chú ý?'",
+      "'Đối thủ đang dùng màu nào?'",
+      "'Màu nào dễ làm hơn trong Canva?'"
+    ],
+    ans: 1, explain: "Câu hỏi chọn nền chữ nên dựa vào chức năng: cần ĐỌC (body) → black-on-white; cần CHÚ Ý (hook ngắn) → có thể đảo màu sang white-on-black để tạo tương phản."
+  },
+
+
+  /* ── Kỹ thuật #04: Scarcity ── */
+  {
+    q: "Scarcity (sự khan hiếm) trong copywriting làm được điều gì?",
+    opts: [
+      "Tạo ra nhu cầu mới từ con số 0 cho prospect",
+      "Khiến một mong muốn đã có trở nên cấp bách hơn — biến 'tôi muốn' thành 'tôi cần ngay bây giờ'",
+      "Thuyết phục prospect rằng sản phẩm có chất lượng cao hơn",
+      "Giảm giá sản phẩm để thu hút nhiều người mua hơn"
+    ],
+    ans: 1, explain: "Scarcity không tạo ra nhu cầu mới — nó tăng tốc quyết định của người đã muốn. Nó khiến một mong muốn đã có trở nên cấp bách hơn bằng cách tạo áp lực thời gian hoặc số lượng. Biến 'tôi muốn' thành 'tôi cần ngay bây giờ'."
+  },
+  {
+    q: "Điều kiện bắt buộc để scarcity hoạt động hiệu quả là gì?",
+    opts: [
+      "Tiêu đề phải viết in hoa và có dấu chấm than",
+      "Giới hạn phải là thật — không được bịa hoặc phóng đại",
+      "Phải kết hợp cùng discount ít nhất 50%",
+      "Chỉ dùng được cho sản phẩm số lượng có hạn"
+    ],
+    ans: 1, explain: "Scarcity giả (không có thật) sẽ mất độ tin cậy dài hạn. Khi prospect thấy 'hạn chốt' ngày mai vẫn còn, họ nhận ra sự thao túng và không còn tin vào các thông điệp sau. Giới hạn phải là thật — thời hạn, số lượng, hoặc quyền truy cập đều phải có cơ sở thực tế."
+  },
+  {
+    q: "Vì sao ví dụ freelancer '4 dự án/tháng' là scarcity tốt hơn '1 dự án/tháng'?",
+    opts: [
+      "Vì con số 4 lớn hơn nghe có vẻ ít giới hạn hơn",
+      "Vì nó có lý do rõ ràng: đảm bảo mỗi KH nhận đủ thời gian nghiên cứu, viết và chỉnh sửa — xây dựng tin cậy thay vì chỉ tạo áp lực",
+      "Vì freelancer nhận được nhiều tiền hơn",
+      "Vì số lượng cao hơn làm prospect ít áp lực hơn khi quyết định"
+    ],
+    ans: 1, explain: "Scarcity tốt nhất khi có lý do hợp lý và minh bạch. '4 dự án/tháng để đảm bảo chất lượng' cho thấy: giới hạn có căn cứ thực tế (năng lực), lý do quan tâm đến khách hàng (không phải chỉ vì tiền), tạo cảm giác chuyên nghiệp. Đây là scarcity xây dựng trust thay vì chỉ tạo FOMO."
+  },
+  {
+    q: "3 cơ chế tâm lý khiến scarcity hoạt động là gì?",
+    opts: [
+      "Giảm giá cảm nhận → Tăng số lượng mua → Tạo loyalty",
+      "Tạo sự khẩn cấp → Tăng giá trị cảm nhận → Làm tăng chi phí chờ đợi",
+      "Tạo tò mò → Kích thích curiosity gap → Dẫn đến click",
+      "Gây sợ hãi → Giảm sự kháng cự → Buộc mua ngay"
+    ],
+    ans: 1, explain: "3 cơ chế: (1) Tạo sự khẩn cấp — áp lực về thời gian và nỗi sợ bỏ lỡ; (2) Tăng giá trị cảm nhận — thứ khan hiếm có vẻ giá trị hơn; (3) Làm tăng chi phí chờ đợi — khiến 'hành động ngay' trở nên hợp lý hơn so với 'để sau'. Kết hợp 3 cơ chế này thúc đẩy quyết định nhanh hơn."
+  },
+];
+
+let quizState = { questions: [], current: 0, score: 0, answered: false };
+
+function initQuiz() {
+  const shuffled = [...allQuestions].sort(() => Math.random() - 0.5).slice(0, 10);
+  quizState = { questions: shuffled, current: 0, score: 0, answered: false };
+  renderQuiz();
+}
+
+function renderQuiz() {
+  const container = document.getElementById('quizContainer');
+  if (quizState.current >= quizState.questions.length) {
+    const pct = Math.round(quizState.score / quizState.questions.length * 100);
+    const emoji = pct >= 80 ? '🎉' : pct >= 60 ? '👍' : '📚';
+    container.innerHTML = `
+      <div class="quiz-card" style="text-align:center">
+        <div style="font-size:48px;margin-bottom:12px">${emoji}</div>
+        <div style="font-family:'Fraunces',serif;font-size:32px;font-weight:900;color:var(--teal);margin-bottom:8px">${quizState.score}/${quizState.questions.length}</div>
+        <div style="font-size:16px;color:var(--text-muted);margin-bottom:20px">${pct}% đúng — ${pct >= 80 ? 'Xuất sắc!' : pct >= 60 ? 'Khá tốt!' : 'Cần ôn thêm!'}</div>
+        <button class="btn btn-primary" onclick="initQuiz()">🔄 Chơi lại</button>
+      </div>`;
+    return;
+  }
+
+  const q = quizState.questions[quizState.current];
+  const progress = ((quizState.current) / quizState.questions.length * 100).toFixed(0);
+
+  container.innerHTML = `
+    <div class="quiz-progress">
+      <span style="font-size:12px;color:var(--text-dim);white-space:nowrap">${quizState.current + 1} / ${quizState.questions.length}</span>
+      <div class="progress-bar"><div class="progress-fill" style="width:${progress}%"></div></div>
+      <span style="font-size:12px;color:var(--teal);white-space:nowrap">✓ ${quizState.score} đúng</span>
+    </div>
+    <div class="quiz-card">
+      <div class="quiz-q">${q.q}</div>
+      <div class="quiz-options">
+        ${q.opts.map((o, i) => `<button class="quiz-option" onclick="answerQuiz(${i})" id="qopt-${i}">${o}</button>`).join('')}
+      </div>
+      <div class="quiz-explain" id="quizExplain">💡 ${q.explain}</div>
+    </div>
+  `;
+}
+
+function answerQuiz(idx) {
+  if (quizState.answered) return;
+  quizState.answered = true;
+  const q = quizState.questions[quizState.current];
+
+  document.querySelectorAll('.quiz-option').forEach((el, i) => {
+    el.style.pointerEvents = 'none';
+    if (i === q.ans) el.classList.add('correct');
+    else if (i === idx && i !== q.ans) el.classList.add('wrong');
+  });
+
+  if (idx === q.ans) quizState.score++;
+  document.getElementById('quizExplain').classList.add('show');
+
+  setTimeout(() => {
+    quizState.current++;
+    quizState.answered = false;
+    renderQuiz();
+  }, 2200);
+}
+
+// ══════════════════════════════════════════
+// INIT
+// ══════════════════════════════════════════
+
+// Terminal aesthetic: convert border-top colors → border-left
+(function() {
+  document.querySelectorAll('.card[style], .card-accent[style], .overview-chip[style]').forEach(el => {
+    const s = el.getAttribute('style') || '';
+    const m = s.match(/border-top(?:-color)?:\s*([^;]+)/);
+    if (m) {
+      el.style.borderTop = 'none';
+      el.style.borderLeft = '3px solid ' + m[1].trim();
+    }
+  });
+})();
+</script>
+</body>
+<!-- ══════════ AUTH LAYER — paste này vào TRƯỚC thẻ </body> của index.html ══════════ -->
+
+<!-- Auth Screen Overlay -->
+<div id="auth-overlay" style="
+  position:fixed;inset:0;z-index:99999;
+  background:#0d0516;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Share Tech Mono',monospace;
+">
+  <!-- Scanlines -->
+  <div style="position:fixed;inset:0;pointer-events:none;
+    background:repeating-linear-gradient(0deg,rgba(0,0,0,.1) 0px,rgba(0,0,0,.1) 1px,transparent 1px,transparent 3px);z-index:1"></div>
+  <!-- Grid -->
+  <div style="position:fixed;inset:0;pointer-events:none;z-index:0;
+    background-image:linear-gradient(rgba(167,139,250,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(167,139,250,.025) 1px,transparent 1px);
+    background-size:32px 32px;"></div>
+
+  <div style="position:relative;z-index:2;width:100%;max-width:420px;padding:24px;">
+
+    <!-- Logo -->
+    <div style="text-align:center;margin-bottom:32px;">
+      <div style="font-size:8px;color:rgba(167,139,250,.25);letter-spacing:.22em;margin-bottom:6px;">▓ COPY.MASTERY.OS ▓</div>
+      <h1 style="font-family:'VT323',monospace;font-size:42px;color:#a78bfa;text-shadow:0 0 20px rgba(167,139,250,.5);letter-spacing:.08em;line-height:1;">Copy Mastery</h1>
+      <p style="font-size:10px;color:rgba(200,190,230,.25);letter-spacing:.1em;margin-top:4px;">copy.knowledge.base</p>
+    </div>
+
+    <!-- Tab switcher -->
+    <div id="auth-tabs" style="display:flex;gap:0;margin-bottom:0;border:1px solid rgba(167,139,250,.15);overflow:hidden;">
+      <button onclick="switchTab('login')" id="tab-btn-login"
+        style="flex:1;padding:10px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;
+        background:#a78bfa;color:#0d0516;transition:all .15s;">
+        LOGIN
+      </button>
+      <button onclick="switchTab('register')" id="tab-btn-register"
+        style="flex:1;padding:10px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;
+        background:rgba(10,4,20,.8);color:rgba(200,190,230,.4);transition:all .15s;">
+        REGISTER
+      </button>
+    </div>
+
+    <!-- Auth Box -->
+    <div style="background:rgba(8,3,16,.95);border:1px solid rgba(167,139,250,.15);border-top:none;padding:24px;
+      clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,0 100%);position:relative;">
+      <div style="position:absolute;top:0;right:0;width:0;height:0;border-top:10px solid rgba(167,139,250,.15);border-left:10px solid transparent;"></div>
+
+      <!-- LOGIN FORM -->
+      <div id="form-login">
+        <div style="font-size:7px;color:rgba(167,139,250,.18);letter-spacing:.14em;margin-bottom:16px;">// AUTH.PROTOCOL.INIT</div>
+        <div style="margin-bottom:14px;">
+          <label style="font-size:9px;letter-spacing:.16em;color:rgba(167,139,250,.45);display:block;margin-bottom:6px;">USERNAME</label>
+          <input id="login-username" type="text" placeholder="username..."
+            style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);border-left:3px solid rgba(167,139,250,.4);
+            color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;
+            clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="font-size:9px;letter-spacing:.16em;color:rgba(167,139,250,.45);display:block;margin-bottom:6px;">PASSWORD</label>
+          <input id="login-password" type="password" placeholder="password..."
+            style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);border-left:3px solid rgba(167,139,250,.4);
+            color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;
+            clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+        </div>
+        <div id="login-error" style="display:none;font-size:11px;color:#ff4466;margin-bottom:12px;letter-spacing:.04em;"></div>
+        <button onclick="handleLogin()"
+          style="width:100%;padding:12px;background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.4);border-left:3px solid rgba(167,139,250,.8);
+          color:#a78bfa;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;cursor:pointer;
+          clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+          transition:all .15s;">
+          [ AUTHENTICATE ]
+        </button>
+      </div>
+
+      <!-- REGISTER FORM -->
+      <div id="form-register" style="display:none;">
+        <div style="font-size:7px;color:rgba(167,139,250,.18);letter-spacing:.14em;margin-bottom:16px;">// NEW.USER.REGISTRATION</div>
+        <div style="margin-bottom:14px;">
+          <label style="font-size:9px;letter-spacing:.16em;color:rgba(167,139,250,.45);display:block;margin-bottom:6px;">USERNAME</label>
+          <input id="reg-username" type="text" placeholder="choose username..."
+            style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);border-left:3px solid rgba(167,139,250,.4);
+            color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;
+            clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+        </div>
+        <div style="margin-bottom:14px;">
+          <label style="font-size:9px;letter-spacing:.16em;color:rgba(167,139,250,.45);display:block;margin-bottom:6px;">EMAIL</label>
+          <input id="reg-email" type="email" placeholder="email@example.com..."
+            style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);border-left:3px solid rgba(167,139,250,.4);
+            color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;
+            clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+        </div>
+        <div style="margin-bottom:20px;">
+          <label style="font-size:9px;letter-spacing:.16em;color:rgba(167,139,250,.45);display:block;margin-bottom:6px;">PASSWORD</label>
+          <input id="reg-password" type="password" placeholder="password..."
+            style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);border-left:3px solid rgba(167,139,250,.4);
+            color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;outline:none;
+            clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+        </div>
+        <div id="reg-error" style="display:none;font-size:11px;color:#ff4466;margin-bottom:12px;letter-spacing:.04em;"></div>
+        <div id="reg-success" style="display:none;font-size:11px;color:#4ade80;margin-bottom:12px;letter-spacing:.04em;line-height:1.6;"></div>
+        <button onclick="handleRegister()"
+          style="width:100%;padding:12px;background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.4);border-left:3px solid rgba(167,139,250,.8);
+          color:#a78bfa;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.14em;cursor:pointer;
+          clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,6px 100%,0 calc(100% - 6px));
+          transition:all .15s;">
+          [ REQUEST ACCESS ]
+        </button>
+        <p style="font-size:10px;color:rgba(200,190,230,.25);letter-spacing:.04em;margin-top:12px;line-height:1.6;text-align:center;">
+          Tài khoản sẽ ở trạng thái pending cho đến khi được admin xác thực.
+        </p>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- User Bar (hiển thị khi đã đăng nhập) -->
+<div id="user-bar" style="display:none;position:fixed;bottom:16px;right:16px;z-index:9999;
+  background:rgba(8,3,16,.95);border:1px solid rgba(167,139,250,.2);border-left:3px solid rgba(167,139,250,.6);
+  padding:10px 16px;font-family:'Share Tech Mono',monospace;font-size:11px;color:rgba(200,190,230,.6);
+  clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+  <span id="user-bar-name" style="color:#a78bfa;"></span>
+  <span id="user-bar-role" style="color:rgba(167,139,250,.4);margin:0 8px;"></span>
+  <button onclick="handleLogout()" style="background:none;border:none;color:rgba(255,68,102,.6);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">
+    [logout]
+  </button>
+  <button id="admin-panel-btn" onclick="showAdminPanel()" style="display:none;background:none;border:none;color:rgba(167,139,250,.6);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;margin-left:4px;">
+    [admin]
+  </button>
+</div>
+
+<!-- Admin Panel Modal -->
+<div id="admin-panel" style="display:none;position:fixed;inset:0;z-index:99998;background:rgba(0,0,0,.85);overflow-y:auto;">
+  <div style="max-width:800px;margin:32px auto;padding:24px;">
+    <div style="background:rgba(8,3,16,.98);border:1px solid rgba(167,139,250,.2);border-left:4px solid rgba(167,139,250,.6);padding:24px;
+      clip-path:polygon(0 0,calc(100% - 12px) 0,100% 12px,100% 100%,0 100%);position:relative;">
+      <div style="position:absolute;top:0;right:0;width:0;height:0;border-top:12px solid rgba(167,139,250,.15);border-left:12px solid transparent;"></div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px;">
+        <div>
+          <div style="font-size:7px;color:rgba(167,139,250,.25);letter-spacing:.2em;font-family:'Share Tech Mono',monospace;">▓ ADMIN.CONTROL.PANEL ▓</div>
+          <h2 style="font-family:'VT323',monospace;font-size:28px;color:#a78bfa;letter-spacing:.08em;margin-top:4px;">Admin Panel</h2>
+        </div>
+        <button onclick="document.getElementById('admin-panel').style.display='none'"
+          style="background:none;border:1px solid rgba(255,68,102,.3);color:rgba(255,68,102,.6);padding:6px 12px;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.08em;">
+          [CLOSE]
+        </button>
+      </div>
+
+      <!-- Tabs -->
+      <div style="display:flex;gap:0;margin-bottom:20px;border:1px solid rgba(167,139,250,.12);">
+        <button onclick="switchAdminTab('pending')" id="admin-tab-pending"
+          style="flex:1;padding:8px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;background:#a78bfa;color:#0d0516;">
+          PENDING
+        </button>
+        <button onclick="switchAdminTab('users')" id="admin-tab-users"
+          style="flex:1;padding:8px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;background:rgba(10,4,20,.8);color:rgba(200,190,230,.4);">
+          ALL USERS
+        </button>
+      </div>
+
+      <!-- Pending Users -->
+      <div id="admin-pending-section">
+        <div id="pending-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+      <!-- All Users -->
+      <div id="admin-users-section" style="display:none;">
+        <div id="users-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- Supabase SDK -->
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+<script>
+// ── CONFIG ──
+const SUPABASE_URL = 'https://zrgthpeffbmxpzvhorla.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_GmiL6H9E7lbKe-dezbgaLA_f22t79ab';
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+
+let currentUser = null;
+let currentProfile = null;
+
+// ── INIT ──
+async function initAuth() {
+  const { data: { session } } = await supabaseClient.auth.getSession();
+  if (session) {
+    await loadProfile(session.user);
+  }
+  // Hiển thị auth overlay nếu chưa đăng nhập
+  if (!currentProfile) {
+    document.getElementById('auth-overlay').style.display = 'flex';
+  }
+}
+
+async function loadProfile(user) {
+  currentUser = user;
+  const { data: profile } = await supabaseClient
+    .from('profiles')
+    .select('*')
+    .eq('id', user.id)
+    .single();
+
+  if (profile) {
+    if (profile.status === 'banned') {
+      await supabaseClient.auth.signOut();
+      showError('login-error', 'Tài khoản của bạn đã bị banned.');
+      return;
+    }
+    if (profile.status === 'pending') {
+      await supabaseClient.auth.signOut();
+      showError('login-error', 'Tài khoản đang chờ admin xác thực.');
+      return;
+    }
+    currentProfile = profile;
+    grantAccess();
+  }
+}
+
+function grantAccess() {
+  document.getElementById('auth-overlay').style.display = 'none';
+  const bar = document.getElementById('user-bar');
+  bar.style.display = 'block';
+  document.getElementById('user-bar-name').textContent = currentProfile.username;
+  document.getElementById('user-bar-role').textContent = `[${currentProfile.role}]`;
+  if (currentProfile.role === 'admin') {
+    document.getElementById('admin-panel-btn').style.display = 'inline';
+  }
+}
+
+// ── TABS ──
+function switchTab(tab) {
+  const isLogin = tab === 'login';
+  document.getElementById('form-login').style.display = isLogin ? 'block' : 'none';
+  document.getElementById('form-register').style.display = isLogin ? 'none' : 'block';
+  document.getElementById('tab-btn-login').style.background = isLogin ? '#a78bfa' : 'rgba(10,4,20,.8)';
+  document.getElementById('tab-btn-login').style.color = isLogin ? '#0d0516' : 'rgba(200,190,230,.4)';
+  document.getElementById('tab-btn-register').style.background = isLogin ? 'rgba(10,4,20,.8)' : '#a78bfa';
+  document.getElementById('tab-btn-register').style.color = isLogin ? 'rgba(200,190,230,.4)' : '#0d0516';
+}
+
+// ── LOGIN ──
+async function handleLogin() {
+  const username = document.getElementById('login-username').value.trim();
+  const password = document.getElementById('login-password').value;
+  hideError('login-error');
+
+  if (!username || !password) {
+    showError('login-error', 'Vui lòng nhập đủ thông tin.'); return;
+  }
+
+  // Tìm email thật theo username
+  const { data: profile, error: lookupError } = await supabaseClient
+    .from('profiles')
+    .select('email')
+    .eq('username', username)
+    .single();
+
+  if (lookupError || !profile || !profile.email) {
+    showError('login-error', 'Username không tồn tại.'); return;
+  }
+
+  const { data, error } = await supabaseClient.auth.signInWithPassword({
+    email: profile.email,
+    password: password
+  });
+
+  if (error) {
+    showError('login-error', 'Sai mật khẩu, hoặc tài khoản chưa được admin xác thực.'); return;
+  }
+
+  await loadProfile(data.user);
+}
+
+// ── REGISTER ──
+async function handleRegister() {
+  const username = document.getElementById('reg-username').value.trim();
+  const email = document.getElementById('reg-email').value.trim();
+  const password = document.getElementById('reg-password').value;
+  hideError('reg-error');
+  document.getElementById('reg-success').style.display = 'none';
+
+  if (!username || !email || !password) {
+    showError('reg-error', 'Vui lòng nhập đủ thông tin.'); return;
+  }
+  if (password.length < 6) {
+    showError('reg-error', 'Mật khẩu phải ít nhất 6 ký tự.'); return;
+  }
+
+  // Check username đã tồn tại chưa
+  const { data: existing } = await supabaseClient
+    .from('profiles')
+    .select('id')
+    .eq('username', username)
+    .single();
+
+  if (existing) {
+    showError('reg-error', 'Username đã được sử dụng.'); return;
+  }
+
+  // Dùng email thật để tạo tài khoản (Supabase sẽ từ chối email giả/domain không tồn tại)
+  const { data, error } = await supabaseClient.auth.signUp({
+    email: email,
+    password: password,
+    options: { data: { username: username } }
+  });
+
+  if (error) {
+    showError('reg-error', error.message); return;
+  }
+
+  if (!data.user) {
+    showError('reg-error', 'Không tạo được tài khoản, vui lòng thử lại.'); return;
+  }
+
+  // Tạo hồ sơ trong bảng profiles, hoặc cập nhật nếu trigger đã tự tạo sẵn
+  const { error: profileError } = await supabaseClient
+    .from('profiles')
+    .upsert({ id: data.user.id, username: username, email: email, role: 'member', status: 'pending' }, { onConflict: 'id' });
+
+  if (profileError) {
+    showError('reg-error', 'Tài khoản đã tạo nhưng lỗi khi lưu hồ sơ: ' + profileError.message);
+    return;
+  }
+
+  // Đăng xuất ngay để tài khoản pending không tự động có quyền truy cập
+  await supabaseClient.auth.signOut();
+
+  document.getElementById('reg-success').style.display = 'block';
+  document.getElementById('reg-success').textContent =
+    '✓ Đăng ký thành công! Tài khoản của bạn đang chờ admin xác thực. Vui lòng chờ thông báo.';
+  document.getElementById('reg-username').value = '';
+  document.getElementById('reg-email').value = '';
+  document.getElementById('reg-password').value = '';
+}
+
+// ── LOGOUT ──
+async function handleLogout() {
+  await supabaseClient.auth.signOut();
+  currentUser = null;
+  currentProfile = null;
+  document.getElementById('user-bar').style.display = 'none';
+  document.getElementById('auth-overlay').style.display = 'flex';
+}
+
+// ── ADMIN PANEL ──
+async function showAdminPanel() {
+  document.getElementById('admin-panel').style.display = 'block';
+  await loadPendingUsers();
+}
+
+async function loadPendingUsers() {
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('*')
+    .eq('status', 'pending')
+    .order('created_at', { ascending: true });
+
+  const list = document.getElementById('pending-list');
+  if (!data || data.length === 0) {
+    list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No pending users</p>';
+    return;
+  }
+  list.innerHTML = data.map(u => renderUserCard(u, true)).join('');
+}
+
+async function loadAllUsers() {
+  const { data } = await supabaseClient
+    .from('profiles')
+    .select('*')
+    .neq('username', 'baoanz2102208')
+    .order('created_at', { ascending: false });
+
+  const list = document.getElementById('users-list');
+  if (!data || data.length === 0) {
+    list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No users</p>';
+    return;
+  }
+  list.innerHTML = data.map(u => renderUserCard(u, false)).join('');
+}
+
+function renderUserCard(u, isPending) {
+  const statusColor = u.status === 'active' ? '#4ade80' : u.status === 'banned' ? '#ff4466' : '#ffd060';
+  const roleColor = u.role === 'admin' ? '#a78bfa' : u.role === 'mod' ? '#00c8ff' : '#e0d8f0';
+  return `
+    <div style="background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.1);border-left:3px solid rgba(167,139,250,.25);padding:14px 16px;
+      clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+      <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px;">
+        <div>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:13px;color:#e0d8f0;font-weight:700;">${u.username}</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:${roleColor};margin-left:8px;">[${u.role}]</span>
+          <span style="font-family:'Share Tech Mono',monospace;font-size:10px;color:${statusColor};margin-left:4px;">[${u.status}]</span>
+        </div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap;">
+          ${isPending ? `
+            <button onclick="approveUser('${u.id}')" style="padding:4px 10px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:#4ade80;
+              cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[APPROVE]</button>
+            <button onclick="rejectUser('${u.id}')" style="padding:4px 10px;background:rgba(255,68,102,.1);border:1px solid rgba(255,68,102,.4);color:#ff4466;
+              cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[REJECT]</button>
+          ` : ''}
+          ${!isPending && u.status !== 'banned' ? `
+            <button onclick="banUser('${u.id}')" style="padding:4px 10px;background:rgba(255,68,102,.1);border:1px solid rgba(255,68,102,.4);color:#ff4466;
+              cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[BAN]</button>
+          ` : ''}
+          ${!isPending && u.status === 'banned' ? `
+            <button onclick="unbanUser('${u.id}')" style="padding:4px 10px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:#4ade80;
+              cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[UNBAN]</button>
+          ` : ''}
+          <select onchange="changeRole('${u.id}', this.value)"
+            style="padding:4px 8px;background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.2);color:rgba(200,190,230,.6);
+            font-family:'Share Tech Mono',monospace;font-size:10px;cursor:pointer;">
+            <option value="member" ${u.role==='member'?'selected':''}>member</option>
+            <option value="mod" ${u.role==='mod'?'selected':''}>mod</option>
+          </select>
+          <button onclick="resetPassword('${u.username}')" style="padding:4px 10px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);color:rgba(167,139,250,.6);
+            cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[RESET PW]</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+async function approveUser(id) {
+  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
+  await loadPendingUsers();
+}
+
+async function rejectUser(id) {
+  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
+  await loadPendingUsers();
+}
+
+async function banUser(id) {
+  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
+  await loadAllUsers();
+}
+
+async function unbanUser(id) {
+  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
+  await loadAllUsers();
+}
+
+async function changeRole(id, role) {
+  await supabaseClient.from('profiles').update({ role: role }).eq('id', id);
+}
+
+async function resetPassword(username) {
+  const newPw = prompt(`Nhập mật khẩu mới cho ${username}:`);
+  if (!newPw || newPw.length < 6) { alert('Mật khẩu phải ít nhất 6 ký tự.'); return; }
+  alert('Tính năng reset password cần Supabase Admin API. Vui lòng reset trực tiếp trong Supabase Dashboard > Authentication > Users.');
+}
+
+function switchAdminTab(tab) {
+  const isPending = tab === 'pending';
+  document.getElementById('admin-pending-section').style.display = isPending ? 'block' : 'none';
+  document.getElementById('admin-users-section').style.display = isPending ? 'none' : 'block';
+  document.getElementById('admin-tab-pending').style.background = isPending ? '#a78bfa' : 'rgba(10,4,20,.8)';
+  document.getElementById('admin-tab-pending').style.color = isPending ? '#0d0516' : 'rgba(200,190,230,.4)';
+  document.getElementById('admin-tab-users').style.background = isPending ? 'rgba(10,4,20,.8)' : '#a78bfa';
+  document.getElementById('admin-tab-users').style.color = isPending ? 'rgba(200,190,230,.4)' : '#0d0516';
+  if (!isPending) loadAllUsers();
+}
+
+// ── HELPERS ──
+function showError(id, msg) {
+  const el = document.getElementById(id);
+  el.textContent = '⚠ ' + msg;
+  el.style.display = 'block';
+}
+function hideError(id) {
+  document.getElementById(id).style.display = 'none';
+}
+
+// ── START ──
+initAuth();
+</script>
+</html>
+</body>
+</html>
