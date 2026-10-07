@@ -1059,6 +1059,11 @@
       <span class="nav-dot" style="background:#38bdf8"></span> Checklist kiểm ngành ChatGPT Ads
     </button>
 
+    <div class="nav-section-label" style="color:rgba(255,208,96,.55);border-top:1px solid rgba(255,208,96,.12);padding-top:12px;margin-top:4px">🛠️ Copywriting Tools</div>
+    <button class="nav-item" onclick="showPanel('story-questions', this)">
+      <span class="nav-dot" style="background:#ffd060"></span> 90 Câu hỏi khơi nguồn câu chuyện
+    </button>
+
     <div class="nav-section-label">Luyện tập</div>
     <button class="nav-item" onclick="showPanel('quiz', this)">
       <span class="nav-dot" style="background:#4ade80"></span> Quiz ôn bài
@@ -5814,6 +5819,416 @@ Nếu muốn đi tập đẩy 4xfail vẫn sung sức, click vào đây nhé.
       <div id="quizContainer"></div>
     </div>
 
+    <!-- ══════════ STORY QUESTIONS ══════════ -->
+    <div class="panel" id="panel-story-questions">
+      <div class="framework-header">
+        <div class="framework-tag" style="background:rgba(255,208,96,.1);color:#ffd060">✍️ Copywriting Tools</div>
+        <div class="framework-title">90 Câu hỏi <span style="color:#ffd060">Khơi nguồn</span></div>
+        <div class="framework-subtitle">Dùng những câu hỏi này để tạo "Kho Câu Chuyện" của riêng bạn và viết những email không nhàm chán — nổi bật, bán hàng dễ dàng và thực sự nghe ra giọng bạn.</div>
+        <div class="framework-quote">Lời nói kể, câu chuyện bán. Câu chuyện của bạn không cần phải hoành tráng hay thay đổi cuộc đời mới hiệu quả — những khoảnh khắc ngẫu nhiên thường ngày thường là những câu chuyện dễ đồng cảm nhất. <em>— CopyPosse.com</em></div>
+      </div>
+
+      <div class="section">
+        <div class="section-title" style="color:rgba(167,139,250,.7)">📖 Phần 1 — Câu chuyện cá nhân &amp; trải nghiệm thực tế</div>
+        <div class="callout" style="border-color:rgba(167,139,250,.3);background:rgba(167,139,250,.05);color:var(--text-muted);margin-bottom:16px">
+          Đây là những câu chuyện dễ kể nhất — vì chúng là của bạn. <strong style="color:var(--text)">Cá nhân = dễ đồng cảm.</strong>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q01]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bài học lớn nhất bạn học được gần đây là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q02]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều buồn cười hoặc ngượng ngùng nào đã xảy ra với bạn tuần này?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q03]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lần cuối cùng bạn suýt bỏ cuộc là khi nào?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q04]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn đã từng liều lĩnh một quyết định và nó đã thành công chưa?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q05]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Hồi nhỏ bạn hay bị trêu chọc về điều gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q06]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lời khen kỳ lạ nhất bạn từng nhận được là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q07]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cuộc trò chuyện kỳ quặc nhất bạn từng có với người lạ là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q08]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Thách thức bất ngờ nào bạn phải đối mặt hồi còn nhỏ?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q09]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Một "chiến thắng nhỏ" nào đã làm bạn vui hôm nay (hoặc tuần này)?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q10]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn học được điều gì từ cha/mẹ, thầy/cô hoặc người dẫn dắt bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q11]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Thú cưng hoặc sở thích kỳ lạ nhất bạn từng có là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q12]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì từng khiến bạn xấu hổ mà giờ bạn có thể cười về nó?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q13]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn có truyền thống hay nghi thức nào mà bạn thực hiện thường xuyên không?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q14]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Khoảnh khắc ngẫu nhiên, buồn cười nào bạn sẽ không bao giờ quên?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q15]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều bực bội nhất đã xảy ra với bạn hôm nay (hoặc tuần này) là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q16]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Thú vui tội lỗi nào của bạn mà mọi người có thể chưa biết?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q17]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Loại nội dung nào xuất hiện trên trang "Khám phá / For You" của bạn trên IG/TikTok?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q18]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì quan trọng nhất với bạn ngoài công việc/kinh doanh?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q19]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn từng tin mà giờ không còn tin nữa?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q20]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Quyết định nào đã thay đổi hoàn toàn cuộc sống của bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q21]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn đã làm mà bạn hối hận?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q22]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn đang xây dựng/tạo ra điều gì mà có thể sẽ không có kết quả trong vài năm tới?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q23]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lời khen đẹp nhất mà ai đó có thể dành cho bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q24]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lời bài hát yêu thích của bạn là gì? Tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q25]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Mở một cuốn sổ tay ngẫu nhiên trên bàn/trong phòng bạn — nó viết gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q26]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Nỗi sợ lớn nhất của bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q27]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cung hoàng đạo của bạn là gì và điều đó nói lên điều gì về bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q28]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Con số yêu thích của bạn là gì và tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q29]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Người dẫn dắt/mentor của bạn là ai (những người bạn ngưỡng mộ nhất)?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q30]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì khiến bạn bực mình hơn mức cần thiết?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q31]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Thói quen buổi sáng của bạn là gì? Bạn có thói quen buổi sáng không?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q32]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn sợ điều gì khi theo đuổi ước mơ của mình?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q33]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn đã phải vượt qua trở ngại nào để đến được vị trí như ngày hôm nay?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q34]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn vẫn còn đang vật lộn nhưng vẫn tiếp tục tiến về phía trước?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q35]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn biết mình nên làm nhưng chưa làm? Tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q36]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Mục tiêu cá nhân nào bạn đang hướng tới ngay lúc này? Tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q37]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn bè sẽ mô tả bạn như thế nào?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q38]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Nếu không làm công việc/kinh doanh hiện tại, bạn sẽ làm gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q39]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Hồi nhỏ, bạn muốn trở thành gì khi lớn lên?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(167,139,250,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(167,139,250,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q40]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn là người dậy sớm hay cú đêm?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title" style="color:rgba(255,208,96,.7)">💼 Phần 2 — Bài học kinh doanh &amp; câu chuyện xây dựng uy tín</div>
+        <div class="callout" style="border-color:rgba(255,208,96,.3);background:rgba(255,208,96,.05);color:var(--text-muted);margin-bottom:16px">
+          Những khoảnh khắc hậu trường, chiến thắng và bài học của bạn thú vị hơn bạn nghĩ. <strong style="color:var(--text)">Đây là thứ tạo nên lòng tin và thẩm quyền.</strong>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q41]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lời khuyên tốt nhất bạn từng nhận được là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q42]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Lời khuyên tệ nhất bạn từng nghe theo (và chuyện gì đã xảy ra)?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q43]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn đã mắc lỗi gì mà sau đó trở thành một bài học quý giá?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q44]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Email đáng sợ nhất bạn từng gửi là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q45]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn đã làm khác đi và nó hiệu quả hơn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q46]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Khoảnh khắc hậu trường nào mà khán giả của bạn sẽ không bao giờ ngờ tới?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q47]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn đã thử mà thất bại một cách buồn cười?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q48]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều ngẫu nhiên nhất nào đã truyền cảm hứng cho một trong những ý tưởng hay nhất của bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q49]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều bạn ước mình biết từ khi mới bắt đầu là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q50]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">"Quy tắc" nào bạn đã phá vỡ mà thực ra lại giúp bạn thành công?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q51]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Có lần nào bạn được công nhận vì những thành tựu của mình không?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q52]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Nếu bạn có thể để một điều trên bia mộ của mình, đó sẽ là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q53]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn thực sự tự hào trong cuộc sống/kinh doanh của mình?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q54]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn muốn được biết đến vì điều gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q55]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Ai là người bạn đã gặp mà họ thực sự truyền cảm hứng cho bạn và tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q56]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Số tiền lớn nhất bạn từng đầu tư vào sự nghiệp/kinh doanh của mình là bao nhiêu?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(255,208,96,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(255,208,96,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q57]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Mục tiêu kinh doanh lớn tiếp theo của bạn là gì?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title" style="color:rgba(74,222,128,.7)">👥 Phần 3 — Câu chuyện cộng đồng &amp; khách hàng</div>
+        <div class="callout" style="border-color:rgba(74,222,128,.3);background:rgba(74,222,128,.05);color:var(--text-muted);margin-bottom:16px">
+          Khán giả, khách hàng và cộng đồng của bạn chứa đầy những câu chuyện vàng. <strong style="color:var(--text)">Dùng với sự cho phép hoặc che đi thông tin cá nhân.</strong>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q58]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều truyền cảm hứng nhất một khách hàng đã từng nói với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q59]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu chuyện buồn cười hoặc bất ngờ nào đó từ khán giả của bạn đã chia sẻ là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q60]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Chiến thắng của khách hàng nào bạn vẫn còn nhớ mãi?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q61]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu hỏi mà khán giả của bạn hay hỏi nhất là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q62]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Kết quả bất ngờ nhất mà một khách hàng đạt được khi làm việc với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q63]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Có lần nào bạn học được điều gì đó từ khách hàng của mình không?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q64]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">DM, bình luận hoặc email hay nhất bạn từng nhận được là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q65]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Khó khăn phổ biến nhất mà khách hàng của bạn gặp phải là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q66]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Hãy kể về khách hàng tốt nhất của bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q67]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn có được khách hàng đầu tiên như thế nào?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q68]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều tử tế nhất một khách hàng từng nói với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q69]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều kỳ lạ nhất một khách hàng từng nói với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q70]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều thô lỗ nhất một khách hàng từng nói với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q71]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gây sốc nhất một khách hàng từng làm/nói với bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q72]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu chuyện nào nhắc nhở bạn về LÝ DO bạn làm những gì bạn đang làm?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(74,222,128,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(74,222,128,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q73]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bạn đã phục vụ bao nhiêu khách hàng/thành viên cộng đồng?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <div class="section-title" style="color:rgba(0,200,255,.7)">🌐 Phần 4 — Sự kiện thực tế &amp; những phát hiện ngẫu nhiên</div>
+        <div class="callout" style="border-color:rgba(0,200,255,.3);background:rgba(0,200,255,.05);color:var(--text-muted);margin-bottom:16px">
+          Thế giới đầy ắp những câu chuyện tuyệt vời. <strong style="color:var(--text)">Lấy cảm hứng từ tin tức, lịch sử, podcast và những sự thật kỳ lạ.</strong>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q74]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Tiêu đề tin tức kỳ lạ nhất bạn đọc được gần đây là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q75]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Bộ phim tài liệu, podcast hoặc bài viết nào đã để lại ấn tượng sâu sắc với bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q76]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì trong lịch sử khiến bạn thấy thú vị?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q77]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Sự thật kỳ lạ nhất bạn biết là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q78]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Điều gì bạn học được gần đây trên mạng?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q79]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Có lần nào bạn Google ngẫu nhiên và tìm ra điều thú vị bất ngờ không?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q80]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu chuyện nào từ quê hương của bạn đáng được kể?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q81]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Phát minh, sản phẩm hoặc xu hướng nào từng khiến bạn kinh ngạc?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q82]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu chuyện kỳ lạ nhất bạn tình cờ đọc được trên mạng là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q83]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cuốn sách, bộ phim hoặc chương trình nào đã thay đổi góc nhìn của bạn?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q84]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Ai là người nổi tiếng (còn sống hay đã mất) mà bạn ngưỡng mộ và tại sao?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q85]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cuốn tiểu thuyết yêu thích của bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q86]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cuốn sách phi hư cấu yêu thích của bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q87]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Concert cuối cùng bạn tham dự là của ai?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q88]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Cuốn sách cuối cùng bạn đọc là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q89]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Top 5 podcast trong thư viện của bạn là gì?</p>
+          </div>
+          <div class="card" style="border-left:3px solid rgba(0,200,255,.5)">
+            <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.5);letter-spacing:.14em;margin-bottom:5px;opacity:.8">[Q90]</div>
+            <p style="font-size:13px;color:rgba(200,190,230,.75);line-height:1.6">Câu trích dẫn nào bạn sống theo?</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout" style="border-color:#ffd060;background:rgba(255,208,96,.06);color:var(--text)">
+        <strong style="color:#ffd060">💡 Cách sử dụng hiệu quả</strong>
+        Mỗi tuần chọn 3–5 câu hỏi, viết nhanh câu trả lời vào "Kho Câu Chuyện" của bạn. Đây là nguồn nguyên liệu thô cho email, bài đăng mạng xã hội, và nội dung bán hàng — tất cả đều nghe ra giọng bạn.
+      </div>
+    </div>
   </div><!-- /content -->
 </main>
 </div><!-- /app -->
@@ -5860,6 +6275,7 @@ const panelTitles = {
   'ads-18steps': '✅ 18 Bước kiểm tra tại bàn làm việc',
   'chatgpt-ads-checklist': '🔎 Checklist kiểm ngành ChatGPT Ads tại Việt Nam',
   'quiz': 'Quiz ôn bài',
+  'story-questions': '✍️ 90 Câu hỏi khơi nguồn câu chuyện bán hàng',
 };
 
 const panelAccents = {
@@ -5870,6 +6286,7 @@ const panelAccents = {
   'lf8':'#f59e0b','simplicity':'#f97316','benefits':'#ec4899','headline':'#6366f1','scarcity':'#ef4444',
   'headline-openers':'#14b8a6','reader-hooks':'#a855f7','pattern-interrupt':'#eab308','text-contrast':'#84cc16',
   'leads':'#22d3ee','four-laws':'#818cf8','specificity':'#f59e0b','chatgpt-ads-checklist':'#38bdf8','quiz':'#4ade80',
+  'story-questions':'#ffd060',
 };
 
 function showPanel(id, btn) {
