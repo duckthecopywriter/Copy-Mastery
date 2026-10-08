@@ -1210,6 +1210,10 @@ function showPanel(id, el) {
           style="flex:1;padding:8px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;background:rgba(10,4,20,.8);color:rgba(200,190,230,.4);">
           ALL USERS
         </button>
+                <button onclick="switchAdminTab('submissions')" id="admin-tab-submissions"
+          style="flex:1;padding:8px;border:none;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.1em;background:rgba(10,4,20,.8);color:rgba(200,190,230,.4);">
+          SUBMISSIONS
+        </button>
       </div>
 
       <!-- Pending Users -->
@@ -1220,6 +1224,10 @@ function showPanel(id, el) {
       <!-- All Users -->
       <div id="admin-users-section" style="display:none;">
         <div id="users-list" style="display:flex;flex-direction:column;gap:8px;"></div>
+      </div>
+            <!-- Submissions -->
+      <div id="admin-submissions-section" style="display:none;">
+        <div id="submissions-list" style="display:flex;flex-direction:column;gap:12px;"></div>
       </div>
 
     </div>
@@ -1528,6 +1536,81 @@ function hideError(id) {
 }
 
 // ── START ──
+// ── SUBMISSIONS (admin duyệt bài) ──
+
+async function loadSubmissions() {
+  const { data } = await supabaseClient
+    .from('knowledge_submissions')
+    .select('*, profiles(username)')
+    .eq('status', 'pending')
+    .order('created_at', { ascending: true });
+
+  const list = document.getElementById('submissions-list');
+  if (!data || data.length === 0) {
+    list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No pending submissions</p>';
+    return;
+  }
+  list.innerHTML = data.map(s => renderSubmissionCard(s)).join('');
+}
+
+function renderSubmissionCard(s) {
+  const submitter = s.profiles?.username || 'unknown';
+  const date = new Date(s.created_at).toLocaleDateString('vi-VN');
+  const sectionsCount = (s.sections || []).length;
+
+  return `
+    <div style="background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.1);border-left:3px solid rgba(0,200,255,.35);padding:16px;
+      clip-path:polygon(0 0,calc(100% - 6px) 0,100% 6px,100% 100%,0 100%);">
+      <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:12px;flex-wrap:wrap;">
+        <div style="flex:1;min-width:0;">
+          <div style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(0,200,255,.4);letter-spacing:.1em;margin-bottom:4px;">
+            submitted by [${submitter}] · ${date} · ${sectionsCount} sections
+          </div>
+          <div style="font-family:'Lora',serif;font-size:15px;font-weight:700;color:#e0d8f0;margin-bottom:2px;">${s.title}</div>
+          ${s.subtitle ? `<div style="font-size:12px;color:rgba(200,190,230,.5);">${s.subtitle}</div>` : ''}
+          <div style="margin-top:6px;display:flex;gap:6px;flex-wrap:wrap;">
+            <span style="font-family:'Share Tech Mono',monospace;font-size:9px;padding:2px 8px;border:1px solid rgba(167,139,250,.2);color:rgba(167,139,250,.6);">
+              ${s.tag_label || '—'}
+            </span>
+            ${s.quote ? `<span style="font-family:'Share Tech Mono',monospace;font-size:9px;color:rgba(200,190,230,.35);font-style:italic;">"${s.quote.substring(0,60)}${s.quote.length>60?'…':''}"</span>` : ''}
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
+          <button onclick="previewSubmission('${s.id}')"
+            style="padding:4px 10px;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.25);color:rgba(167,139,250,.7);
+            cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[PREVIEW]</button>
+          <button onclick="approveSubmission('${s.id}')"
+            style="padding:4px 10px;background:rgba(74,222,128,.1);border:1px solid rgba(74,222,128,.4);color:#4ade80;
+            cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[APPROVE]</button>
+          <button onclick="rejectSubmission('${s.id}')"
+            style="padding:4px 10px;background:rgba(255,68,102,.1);border:1px solid rgba(255,68,102,.4);color:#ff4466;
+            cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">[REJECT]</button>
+        </div>
+      </div>
+    </div>`;
+}
+
+function previewSubmission(id) {
+  // Mở kt41.html với param để preview bài đó
+  window.open(`./kt41.html?preview=${id}`, '_blank');
+}
+
+async function approveSubmission(id) {
+  const { error } = await supabaseClient
+    .from('knowledge_submissions')
+    .update({ status: 'approved', approved_by: currentProfile.id, approved_at: new Date().toISOString() })
+    .eq('id', id);
+  if (!error) await loadSubmissions();
+}
+
+async function rejectSubmission(id) {
+  const reason = prompt('Lý do reject (tùy chọn):');
+  const { error } = await supabaseClient
+    .from('knowledge_submissions')
+    .update({ status: 'rejected', reject_reason: reason || null })
+    .eq('id', id);
+  if (!error) await loadSubmissions();
+}
 initAuth();
 </script>
 </html>
