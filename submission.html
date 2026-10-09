@@ -1,0 +1,589 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Soạn bài · Copycodyy</title>
+  <link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;600;700&family=Share+Tech+Mono&family=VT323&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d0516;
+      --surface: #100a1c;
+      --surface2: rgba(12,5,22,.9);
+      --surface3: rgba(16,7,28,.95);
+      --line: rgba(167,139,250,.15);
+      --text: #e0d8f0;
+      --muted: rgba(200,190,230,.55);
+      --dim: rgba(167,139,250,.4);
+      --accent: #a78bfa;
+      --rose: #ff4466;
+      --green: #4ade80;
+      --sky: #00c8ff;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Lora', serif;
+      font-size: 14px;
+      line-height: 1.7;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* ── SCANLINES + GRID ── */
+    body::before {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 9999;
+      background: repeating-linear-gradient(0deg, rgba(0,0,0,.1) 0px, rgba(0,0,0,.1) 1px, transparent 1px, transparent 3px);
+    }
+    body::after {
+      content: '';
+      position: fixed; inset: 0; pointer-events: none; z-index: 0;
+      background-image: linear-gradient(rgba(167,139,250,.025) 1px, transparent 1px), linear-gradient(90deg, rgba(167,139,250,.025) 1px, transparent 1px);
+      background-size: 32px 32px;
+    }
+
+    button, input, textarea, select { font: inherit; }
+    button { cursor: pointer; }
+
+    /* ── TOPBAR ── */
+    .topbar {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between; gap: 12px;
+      padding: 13px 24px;
+      background: rgba(8,3,16,.97);
+      border-bottom: 1px solid var(--line);
+      box-shadow: 0 4px 24px rgba(0,0,0,.5);
+    }
+    .topbar::after {
+      content: '⬡ KNOWLEDGE.STUDIO.ACTIVE  //  COPY.MASTERY.ONLINE';
+      position: absolute; bottom: 3px; left: 24px;
+      font-size: 7px; color: rgba(167,139,250,.12); letter-spacing: .16em;
+      white-space: nowrap; overflow: hidden; width: 60%;
+      font-family: 'Share Tech Mono', monospace;
+    }
+    .brand {
+      font: 20px 'VT323', monospace;
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-shadow: 0 0 14px rgba(167,139,250,.4);
+    }
+    .top-actions { display: flex; gap: 8px; position: relative; z-index: 1; }
+
+    /* ── BUTTONS ── */
+    .button {
+      padding: 8px 14px;
+      border: 1px solid rgba(167,139,250,.25);
+      background: rgba(10,4,20,.8);
+      color: rgba(200,190,230,.6);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 10px;
+      letter-spacing: .1em;
+      clip-path: polygon(0 0, calc(100% - 6px) 0, 100% 6px, 100% 100%, 6px 100%, 0 calc(100% - 6px));
+      transition: all .15s;
+    }
+    .button:hover {
+      background: rgba(167,139,250,.12);
+      color: var(--accent);
+      border-color: rgba(167,139,250,.5);
+    }
+    .button.primary {
+      border: 1px solid rgba(167,139,250,.55);
+      border-left: 3px solid rgba(167,139,250,.9);
+      color: var(--accent);
+      font-weight: 700;
+    }
+    .button.primary:hover {
+      background: var(--accent);
+      color: #0d0516;
+      box-shadow: 0 0 16px rgba(167,139,250,.35);
+    }
+    .button.danger {
+      border-color: rgba(255,68,102,.35);
+      color: rgba(255,68,102,.7);
+    }
+    .button.danger:hover {
+      background: rgba(255,68,102,.12);
+      border-color: rgba(255,68,102,.6);
+      color: var(--rose);
+    }
+    .button:disabled {
+      opacity: .4;
+      cursor: not-allowed;
+    }
+
+    /* ── LAYOUT ── */
+    .layout {
+      display: grid;
+      grid-template-columns: minmax(340px, 1fr) minmax(340px, 1fr);
+      gap: 20px;
+      max-width: 1600px;
+      margin: 0 auto;
+      padding: 24px;
+      align-items: start;
+      position: relative; z-index: 1;
+    }
+
+    /* ── PANELS ── */
+    .editor, .preview {
+      background: rgba(8,3,16,.92);
+      border: 1px solid var(--line);
+      border-left: 3px solid rgba(167,139,250,.35);
+      padding: 20px;
+      position: relative;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 0 100%);
+    }
+    .editor::after, .preview::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      border-top: 10px solid rgba(167,139,250,.12);
+      border-left: 10px solid transparent;
+    }
+    .preview {
+      position: sticky;
+      top: 74px;
+      max-height: calc(100vh - 94px);
+      overflow-y: auto;
+    }
+    .preview::-webkit-scrollbar { width: 3px; }
+    .preview::-webkit-scrollbar-thumb { background: rgba(167,139,250,.2); }
+
+    /* ── EYEBROW / LABELS ── */
+    .eyebrow {
+      font: 9px 'Share Tech Mono', monospace;
+      letter-spacing: .2em;
+      color: rgba(167,139,250,.35);
+      margin-bottom: 4px;
+    }
+    .panel-title {
+      font: 26px 'VT323', monospace;
+      color: var(--accent);
+      letter-spacing: .08em;
+      text-shadow: 0 0 16px rgba(167,139,250,.2);
+      margin: 6px 0 18px;
+    }
+
+    /* ── FORM FIELDS ── */
+    .field {
+      display: block;
+      margin: 14px 0;
+      color: rgba(167,139,250,.5);
+      font: 9px 'Share Tech Mono', monospace;
+      letter-spacing: .12em;
+    }
+    .field input,
+    .field textarea,
+    .field select {
+      display: block;
+      width: 100%;
+      margin-top: 7px;
+      padding: 10px 13px;
+      background: rgba(6,2,14,.95);
+      border: 1px solid rgba(167,139,250,.15);
+      border-left: 3px solid rgba(167,139,250,.35);
+      color: var(--text);
+      font: 13px 'Lora', serif;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .field input:focus,
+    .field textarea:focus,
+    .field select:focus {
+      border-color: rgba(167,139,250,.5);
+      box-shadow: 0 0 10px rgba(167,139,250,.06);
+    }
+    .field input[type="color"] {
+      height: 40px;
+      padding: 3px 6px;
+      cursor: pointer;
+    }
+    .field textarea { resize: vertical; line-height: 1.65; }
+    .field select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238884a0' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 34px;
+      cursor: pointer;
+    }
+    .field select option { background: #0d0516; }
+
+    .meta-grid { display: grid; grid-template-columns: minmax(0,1fr) 130px; gap: 10px; }
+
+    /* ── RICH EDITOR ── */
+    .rich-editor {
+      width: 100%;
+      min-height: 80px;
+      margin-top: 7px;
+      padding: 10px 13px;
+      background: rgba(6,2,14,.95);
+      border: 1px solid rgba(167,139,250,.15);
+      border-left: 3px solid rgba(167,139,250,.35);
+      color: var(--text);
+      font: 13px/1.65 'Lora', serif;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      outline: none;
+      transition: border-color .15s;
+    }
+    .rich-editor:focus {
+      border-color: rgba(167,139,250,.5);
+      box-shadow: 0 0 10px rgba(167,139,250,.06);
+    }
+    .title-rich-editor {
+      min-height: 58px;
+      margin-top: 7px;
+      font: 13px/1.65 'Lora', serif;
+      letter-spacing: normal;
+      text-transform: none;
+    }
+    .title-rich-editor:empty::before {
+      content: attr(data-placeholder);
+      color: rgba(200,190,230,.38);
+      pointer-events: none;
+    }
+
+    /* ── FORMAT TOOLBAR ── */
+    .format-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      margin-top: 8px;
+      flex-wrap: wrap;
+    }
+    .format-button {
+      min-width: 30px;
+      padding: 4px 8px;
+      border: 1px solid rgba(167,139,250,.2);
+      background: rgba(10,4,20,.8);
+      color: rgba(200,190,230,.6);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 11px;
+      transition: all .12s;
+    }
+    .format-button:hover { background: rgba(167,139,250,.1); color: var(--accent); border-color: rgba(167,139,250,.4); }
+    .format-bold { font-weight: 700; }
+    .format-italic { font-style: italic; }
+    .format-underline { text-decoration: underline; }
+
+    /* ── COLOR SWATCHES ── */
+    .color-swatches {
+      display: flex;
+      gap: 4px;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .swatch {
+      width: 20px;
+      height: 20px;
+      border: 1px solid rgba(255,255,255,.15);
+      cursor: pointer;
+      transition: transform .1s, box-shadow .1s;
+      flex-shrink: 0;
+    }
+    .swatch:hover {
+      transform: scale(1.2);
+      box-shadow: 0 0 6px currentColor;
+    }
+    .swatch-divider {
+      width: 1px;
+      height: 18px;
+      background: rgba(167,139,250,.2);
+      margin: 0 2px;
+    }
+    .format-color-custom {
+      width: 24px;
+      height: 24px;
+      padding: 2px;
+      border: 1px solid rgba(167,139,250,.25);
+      background: rgba(10,4,20,.8);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .format-color-custom::-webkit-color-swatch-wrapper { padding: 1px; }
+    .format-color-custom::-webkit-color-swatch { border: 0; }
+    .format-help {
+      margin: 6px 0 0;
+      color: rgba(167,139,250,.3);
+      font: 10px 'Share Tech Mono', monospace;
+      letter-spacing: .04em;
+      line-height: 1.6;
+    }
+
+    /* ── QUICK LOAD ── */
+    .quick-load {
+      margin: 0 0 22px;
+      padding: 16px;
+      border: 1px solid rgba(167,139,250,.2);
+      border-left: 3px solid rgba(167,139,250,.5);
+      background: rgba(167,139,250,.03);
+      position: relative;
+      clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);
+    }
+    .quick-load::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      border-top: 8px solid rgba(167,139,250,.1);
+      border-left: 8px solid transparent;
+    }
+    .quick-load p {
+      color: var(--muted);
+      font: 12px/1.65 'Lora', serif;
+      margin: 8px 0 12px;
+    }
+    .quick-load textarea {
+      display: block;
+      width: 100%;
+      min-height: 120px;
+      margin: 10px 0;
+      padding: 10px 13px;
+      background: rgba(6,2,14,.95);
+      border: 1px solid rgba(167,139,250,.15);
+      border-left: 3px solid rgba(167,139,250,.3);
+      color: var(--text);
+      font: 11px/1.6 'Share Tech Mono', monospace;
+      resize: vertical;
+      outline: none;
+    }
+    .quick-load textarea:focus { border-color: rgba(167,139,250,.45); }
+    .quick-load-actions { display: flex; gap: 8px; flex-wrap: wrap; }
+
+    /* ── STATUS ── */
+    .status {
+      display: none;
+      margin: 14px 0;
+      padding: 10px 14px;
+      border: 1px solid var(--line);
+      font: 11px/1.6 'Share Tech Mono', monospace;
+      letter-spacing: .04em;
+    }
+    .status.error  { display: block; color: var(--rose); border-color: rgba(255,68,102,.45); background: rgba(255,68,102,.04); }
+    .status.success { display: block; color: var(--green); border-color: rgba(74,222,128,.4); background: rgba(74,222,128,.04); }
+
+    /* ── SECTION DIVIDER ── */
+    .section-divider {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin: 22px 0 14px;
+      font: 9px 'Share Tech Mono', monospace;
+      letter-spacing: .18em;
+      color: var(--accent);
+      opacity: .6;
+    }
+    .section-divider::before { content: '░░'; font-size: 12px; letter-spacing: 0; }
+    .section-divider::after { content: ''; flex: 1; height: 1px; background: linear-gradient(90deg, rgba(167,139,250,.25), transparent); }
+
+    /* ── BLOCKS ── */
+    .blocks { display: flex; flex-direction: column; gap: 12px; margin-top: 14px; }
+
+    .block {
+      border: 1px solid rgba(167,139,250,.12);
+      border-left: 3px solid rgba(167,139,250,.3);
+      padding: 14px;
+      background: rgba(10,4,20,.5);
+      position: relative;
+      clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);
+    }
+    .block::after {
+      content: '';
+      position: absolute; top: 0; right: 0;
+      border-top: 7px solid rgba(167,139,250,.1);
+      border-left: 7px solid transparent;
+    }
+
+    .block-toolbar {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-bottom: 10px;
+    }
+    .block-toolbar select {
+      flex: 1;
+      min-width: 0;
+      padding: 7px 10px;
+      background: rgba(6,2,14,.9);
+      border: 1px solid rgba(167,139,250,.15);
+      border-left: 2px solid rgba(167,139,250,.4);
+      color: var(--text);
+      font: 11px 'Share Tech Mono', monospace;
+      letter-spacing: .04em;
+      outline: none;
+      appearance: none;
+      cursor: pointer;
+    }
+    .block-toolbar select:focus { border-color: rgba(167,139,250,.45); }
+    .block-toolbar select option { background: #0d0516; }
+
+    .block-toolbar input[type="color"] {
+      width: 34px;
+      height: 30px;
+      padding: 2px;
+      background: rgba(6,2,14,.8);
+      border: 1px solid rgba(167,139,250,.2);
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+    .block-toolbar input[type="color"]::-webkit-color-swatch-wrapper { padding: 1px; }
+    .block-toolbar input[type="color"]::-webkit-color-swatch { border: 0; }
+
+    .block-move-group { display: flex; gap: 4px; flex-shrink: 0; }
+
+    .block .field { margin: 10px 0 0; }
+
+    /* ── STRUCTURED ITEMS ── */
+    .structured-item {
+      margin: 10px 0;
+      padding: 12px;
+      border: 1px solid rgba(167,139,250,.12);
+      border-left: 2px solid rgba(167,139,250,.2);
+      background: rgba(6,2,14,.4);
+    }
+    .structured-item-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: rgba(167,139,250,.5);
+      font: 9px 'Share Tech Mono', monospace;
+      letter-spacing: .1em;
+      margin-bottom: 8px;
+    }
+    .structured-item-heading div { display: flex; gap: 4px; }
+
+    /* ── PREVIEW PANEL ── */
+    .preview-eyebrow {
+      font: 9px 'Share Tech Mono', monospace;
+      letter-spacing: .2em;
+      color: rgba(167,139,250,.25);
+      margin-bottom: 18px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .preview-eyebrow::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(90deg, rgba(167,139,250,.2), transparent);
+    }
+
+    /* ── BOTTOM ACTIONS ── */
+    .bottom-actions {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin-top: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 860px) {
+      .layout { grid-template-columns: 1fr; padding: 14px; }
+      .preview { position: static; max-height: none; }
+    }
+    @media (max-width: 520px) {
+      .topbar { padding: 10px 14px; }
+      .brand { font-size: 16px; }
+      .editor, .preview { padding: 14px; }
+    }
+  </style>
+  <script src="access-guard.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">▓ COPY.MASTERY.OS · KNOWLEDGE STUDIO</div>
+    <div class="top-actions">
+      <button class="button" type="button" id="back-button">← QUAY LẠI</button>
+      <button class="button primary" type="button" id="submit-button">GỬI CHỜ DUYỆT</button>
+    </div>
+  </header>
+
+  <main class="layout">
+
+    <!-- ── EDITOR ── -->
+    <section class="editor">
+      <div class="eyebrow">// KNOWLEDGE.BUILDER</div>
+      <div class="panel-title">Soạn bài viết</div>
+
+      <div id="editor-status" class="status" role="status"></div>
+
+      <!-- Quick Load -->
+      <div class="quick-load" aria-labelledby="quick-load-title">
+        <div class="eyebrow" id="quick-load-title">// NẠP KIẾN THỨC NHANH · KHÔNG DÙNG API</div>
+        <p>Copy prompt mẫu sang AI bạn đang dùng, đưa ghi chú thô để AI soạn thành JSON, rồi dán kết quả vào đây. Nội dung sẽ được nạp vào editor để bạn xem preview, chỉnh sửa và gửi duyệt.</p>
+        <div class="quick-load-actions">
+          <button class="button" type="button" id="copy-ai-prompt">COPY PROMPT MẪU</button>
+        </div>
+        <label class="field" for="ai-response">DÁN JSON AI TRẢ VỀ
+          <textarea id="ai-response" spellcheck="false" placeholder='{"title":"...","sections":[]}'></textarea>
+        </label>
+        <div class="quick-load-actions">
+          <button class="button primary" type="button" id="import-ai-response">NẠP VÀO EDITOR</button>
+        </div>
+        <div id="ai-import-status" class="status" role="status"></div>
+      </div>
+
+      <!-- Meta fields -->
+      <div class="section-divider">THÔNG TIN BÀI</div>
+
+      <label class="field">TIÊU ĐỀ *
+        <input id="article-title" maxlength="180" placeholder="Tên bài viết">
+      </label>
+      <label class="field">PHỤ ĐỀ
+        <input id="article-subtitle" maxlength="300" placeholder="Mô tả ngắn cho bài">
+      </label>
+      <div class="meta-grid">
+        <label class="field">NHÃN BÀI
+          <input id="article-tag" maxlength="80" placeholder="Ví dụ: 💡 Framework">
+        </label>
+        <label class="field">MÀU NHÃN
+          <input id="article-color" type="color" value="#a78bfa">
+        </label>
+      </div>
+      <label class="field">TRANG HIỂN THỊ
+        <select id="article-page">
+          <option value="kt41">41 Kỹ thuật bán hàng</option>
+          <option value="neuro">Neuroscience</option>
+          <option value="tu-duy">Tư duy Copywriting</option>
+          <option value="fb-ads">Copy in Action</option>
+          <option value="tl17">17 Nguyên tắc tâm lý học</option>
+          <option value="tools">Copywriting Tools</option>
+          <option value="luyen-tap">Luyện tập</option>
+        </select>
+      </label>
+      <label class="field">QUOTE MỞ ĐẦU
+        <textarea id="article-quote" rows="2" placeholder="Câu trích dẫn nổi bật (không bắt buộc)"></textarea>
+      </label>
+
+      <!-- Blocks -->
+      <div class="section-divider">NỘI DUNG BÀI</div>
+
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+        <p class="format-help" style="margin:0;">Chọn chữ → dùng B / I / U hoặc chọn màu trong bảng swatches.</p>
+        <button class="button" type="button" id="add-block">+ THÊM BLOCK</button>
+      </div>
+
+      <div id="article-blocks" class="blocks"></div>
+
+      <div class="bottom-actions">
+        <button class="button primary" type="button" id="bottom-submit-button">GỬI CHỜ DUYỆT</button>
+      </div>
+    </section>
+
+    <!-- ── PREVIEW ── -->
+    <section class="preview" aria-label="Xem trước bài viết">
+      <div class="preview-eyebrow">// LIVE.PREVIEW</div>
+      <div id="article-preview"></div>
+    </section>
+
+  </main>
+
+  <script src="knowledge-renderer.js"></script>
+  <script src="submission-app.js"></script>
+</body>
+</html>

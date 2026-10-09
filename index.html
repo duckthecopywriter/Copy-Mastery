@@ -1052,7 +1052,6 @@ function showPanel(id, el) {
   });
 })();
 </script>
-</body>
 <!-- ══════════ AUTH LAYER — paste này vào TRƯỚC thẻ </body> của index.html ══════════ -->
 
 <!-- Auth Screen Overlay -->
@@ -1123,6 +1122,27 @@ function showPanel(id, el) {
           transition:all .15s;">
           [ AUTHENTICATE ]
         </button>
+        <button onclick="showPasswordResetRequest()" style="margin-top:12px;background:none;border:none;color:#a78bfa;cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;letter-spacing:.06em;">
+          [ QUÊN MẬT KHẨU? ]
+        </button>
+      </div>
+
+      <div id="form-reset-request" style="display:none;">
+        <div style="font-size:7px;color:rgba(167,139,250,.18);letter-spacing:.14em;margin-bottom:16px;">// PASSWORD.RECOVERY.REQUEST</div>
+        <p style="font-size:11px;color:rgba(200,190,230,.5);line-height:1.6;margin-bottom:14px;">Nhập email tài khoản. Supabase sẽ gửi một link đặt lại mật khẩu.</p>
+        <input id="reset-email" type="email" placeholder="email@example.com" style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;">
+        <div id="reset-request-message" style="display:none;font-size:11px;margin:12px 0;"></div>
+        <button onclick="requestPasswordReset()" style="width:100%;margin-top:12px;padding:12px;background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.4);color:#a78bfa;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;">[ GỬI LINK RESET ]</button>
+        <button onclick="switchTab('login')" style="margin-top:12px;background:none;border:none;color:rgba(200,190,230,.5);cursor:pointer;font-family:'Share Tech Mono',monospace;font-size:10px;">← QUAY LẠI LOGIN</button>
+      </div>
+
+      <div id="form-reset-password" style="display:none;">
+        <div style="font-size:7px;color:rgba(167,139,250,.18);letter-spacing:.14em;margin-bottom:16px;">// PASSWORD.RECOVERY.CONFIRM</div>
+        <p style="font-size:11px;color:rgba(200,190,230,.5);line-height:1.6;margin-bottom:14px;">Đặt mật khẩu mới cho tài khoản của bạn.</p>
+        <input id="reset-new-password" type="password" placeholder="mật khẩu mới (ít nhất 6 ký tự)" style="width:100%;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;">
+        <input id="reset-confirm-password" type="password" placeholder="nhập lại mật khẩu" style="width:100%;margin-top:10px;padding:10px 14px;background:rgba(6,2,14,.95);border:1px solid rgba(167,139,250,.15);color:#e0d8f0;font-family:'Share Tech Mono',monospace;font-size:13px;">
+        <div id="reset-password-message" style="display:none;font-size:11px;margin:12px 0;"></div>
+        <button onclick="completePasswordReset()" style="width:100%;margin-top:12px;padding:12px;background:rgba(10,4,20,.8);border:1px solid rgba(167,139,250,.4);color:#a78bfa;font-family:'Share Tech Mono',monospace;font-size:11px;letter-spacing:.1em;cursor:pointer;">[ ĐỔI MẬT KHẨU ]</button>
       </div>
 
       <!-- REGISTER FORM -->
@@ -1241,18 +1261,48 @@ function showPanel(id, el) {
 // ── CONFIG ──
 const SUPABASE_URL = 'https://zrgthpeffbmxpzvhorla.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_GmiL6H9E7lbKe-dezbgaLA_f22t79ab';
-const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+const supabaseClient = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY, {
+  auth: { storage: window.sessionStorage, persistSession: true, autoRefreshToken: true }
+});
 
 let currentUser = null;
 let currentProfile = null;
+const isPasswordRecoveryLink =
+  new URLSearchParams(location.hash.slice(1)).get('type') === 'recovery';
+
+supabaseClient.auth.onAuthStateChange((event) => {
+  if (event === 'PASSWORD_RECOVERY') {
+    document.getElementById('auth-overlay').style.display = 'flex';
+    showPasswordResetConfirm();
+  }
+});
 
 // ── INIT ──
 async function initAuth() {
-  const { data: { session } } = await supabaseClient.auth.getSession();
+  const { data: { session }, error: sessionError } = await supabaseClient.auth.getSession();
+
+  if (sessionError) {
+    console.error('[AUTH] getSession failed:', sessionError);
+    showError('login-error', 'Không đọc được phiên đăng nhập: ' + sessionError.message);
+  }
+
+  if (isPasswordRecoveryLink) {
+    document.getElementById('auth-overlay').style.display = 'flex';
+    showPasswordResetConfirm();
+    if (sessionError || !session) {
+      const msg = document.getElementById('reset-password-message');
+      msg.style.display = 'block';
+      msg.style.color = '#ff4466';
+      msg.textContent = '⚠ Link đặt lại mật khẩu không hợp lệ hoặc đã hết hạn. Hãy yêu cầu gửi link mới.';
+    }
+    return;
+  }
+
   if (session) {
     await loadProfile(session.user);
   }
-  // Hiển thị auth overlay nếu chưa đăng nhập
+
+  // Chỉ mở auth overlay khi chưa có profile hợp lệ.
   if (!currentProfile) {
     document.getElementById('auth-overlay').style.display = 'flex';
   }
@@ -1260,37 +1310,85 @@ async function initAuth() {
 
 async function loadProfile(user) {
   currentUser = user;
-  const { data: profile } = await supabaseClient
+
+  const { data: profile, error } = await supabaseClient
     .from('profiles')
     .select('*')
     .eq('id', user.id)
     .single();
 
-  if (profile) {
-    if (profile.status === 'banned') {
-      await supabaseClient.auth.signOut();
-      showError('login-error', 'Tài khoản của bạn đã bị banned.');
-      return;
-    }
-    if (profile.status === 'pending') {
-      await supabaseClient.auth.signOut();
-      showError('login-error', 'Tài khoản đang chờ admin xác thực.');
-      return;
-    }
-    currentProfile = profile;
-    grantAccess();
+  if (error) {
+    console.error('[AUTH] profiles lookup failed:', error);
+    showError(
+      'login-error',
+      'Đăng nhập được nhưng không đọc được quyền tài khoản. Supabase báo: ' + error.message
+    );
+    return false;
   }
+
+  if (!profile) {
+    console.error('[AUTH] No profile found for user:', user.id);
+    showError('login-error', 'Tài khoản đăng nhập nhưng chưa có hồ sơ trong profiles.');
+    return false;
+  }
+
+  const role = String(profile.role || '').trim().toLowerCase();
+  const status = String(profile.status || '').trim().toLowerCase();
+
+  if (status === 'banned') {
+    await supabaseClient.auth.signOut();
+    showError('login-error', 'Tài khoản của bạn đã bị banned.');
+    return false;
+  }
+
+  if (status === 'pending') {
+    await supabaseClient.auth.signOut();
+    showError('login-error', 'Tài khoản đang chờ admin xác thực.');
+    return false;
+  }
+
+  if (!['member', 'mod', 'admin'].includes(role)) {
+    console.error('[AUTH] Unknown role:', profile.role);
+    showError('login-error', 'Role tài khoản không hợp lệ: ' + (profile.role || 'trống'));
+    return false;
+  }
+
+  // Chuẩn hóa role/status để frontend không lỗi vì "Admin", "ADMIN", khoảng trắng...
+  currentProfile = { ...profile, role, status };
+  grantAccess();
+  return true;
 }
 
 function grantAccess() {
   document.getElementById('auth-overlay').style.display = 'none';
+
   const bar = document.getElementById('user-bar');
   bar.style.display = 'block';
   document.getElementById('user-bar-name').textContent = currentProfile.username;
   document.getElementById('user-bar-role').textContent = `[${currentProfile.role}]`;
-  if (currentProfile.role === 'admin') {
-    document.getElementById('admin-panel-btn').style.display = 'inline';
+
+  // Chỉ ADMIN mới thấy Admin Panel.
+  // MOD không được bypass bước pending/approval.
+  const adminBtn = document.getElementById('admin-panel-btn');
+  adminBtn.style.display = currentProfile.role === 'admin' ? 'inline' : 'none';
+  const next = new URLSearchParams(location.search).get('next');
+  if (next && !next.startsWith('http') && !next.includes('..')) location.replace(next);
+}
+
+function isAdmin() {
+  return !!currentProfile && currentProfile.role === 'admin';
+}
+
+function isModOrAdmin() {
+  return !!currentProfile && ['mod', 'admin'].includes(currentProfile.role);
+}
+
+function requireAdmin() {
+  if (!isAdmin()) {
+    alert('Bạn không có quyền Admin.');
+    return false;
   }
+  return true;
 }
 
 // ── TABS ──
@@ -1302,6 +1400,43 @@ function switchTab(tab) {
   document.getElementById('tab-btn-login').style.color = isLogin ? '#0d0516' : 'rgba(200,190,230,.4)';
   document.getElementById('tab-btn-register').style.background = isLogin ? 'rgba(10,4,20,.8)' : '#a78bfa';
   document.getElementById('tab-btn-register').style.color = isLogin ? 'rgba(200,190,230,.4)' : '#0d0516';
+  document.getElementById('form-reset-request').style.display = 'none';
+  document.getElementById('form-reset-password').style.display = 'none';
+}
+
+function showPasswordResetRequest() {
+  document.getElementById('form-login').style.display = 'none';
+  document.getElementById('form-register').style.display = 'none';
+  document.getElementById('form-reset-request').style.display = 'block';
+  document.getElementById('form-reset-password').style.display = 'none';
+}
+
+function showPasswordResetConfirm() {
+  document.getElementById('form-login').style.display = 'none';
+  document.getElementById('form-register').style.display = 'none';
+  document.getElementById('form-reset-request').style.display = 'none';
+  document.getElementById('form-reset-password').style.display = 'block';
+}
+
+async function requestPasswordReset() {
+  const email = document.getElementById('reset-email').value.trim();
+  const msg = document.getElementById('reset-request-message');
+  if (!email) { msg.textContent = '⚠ Nhập email của tài khoản.'; msg.style.color = '#ff4466'; msg.style.display = 'block'; return; }
+  const { error } = await supabaseClient.auth.resetPasswordForEmail(email, { redirectTo: location.origin + location.pathname });
+  msg.style.display = 'block';
+  msg.style.color = error ? '#ff4466' : '#4ade80';
+  msg.textContent = error ? '⚠ ' + error.message : '✓ Nếu email tồn tại, link đặt lại mật khẩu đã được gửi. Hãy kiểm tra Inbox/Spam.';
+}
+
+async function completePasswordReset() {
+  const password = document.getElementById('reset-new-password').value;
+  const confirmPassword = document.getElementById('reset-confirm-password').value;
+  const msg = document.getElementById('reset-password-message');
+  if (password.length < 6 || password !== confirmPassword) { msg.textContent = '⚠ Mật khẩu cần ít nhất 6 ký tự và phải khớp.'; msg.style.color = '#ff4466'; msg.style.display = 'block'; return; }
+  const { error } = await supabaseClient.auth.updateUser({ password });
+  msg.style.display = 'block'; msg.style.color = error ? '#ff4466' : '#4ade80';
+  msg.textContent = error ? '⚠ ' + error.message : '✓ Đổi mật khẩu thành công. Bạn có thể đăng nhập bằng mật khẩu mới.';
+  if (!error) setTimeout(() => { history.replaceState({}, '', location.pathname); switchTab('login'); }, 1600);
 }
 
 // ── LOGIN ──
@@ -1410,37 +1545,63 @@ async function handleLogout() {
 
 // ── ADMIN PANEL ──
 async function showAdminPanel() {
+  if (!requireAdmin()) return;
+
   document.getElementById('admin-panel').style.display = 'block';
   await loadPendingUsers();
 }
 
 async function loadPendingUsers() {
-  const { data } = await supabaseClient
+  if (!requireAdmin()) return;
+
+  const { data, error } = await supabaseClient
     .from('profiles')
     .select('*')
     .eq('status', 'pending')
     .order('created_at', { ascending: true });
 
   const list = document.getElementById('pending-list');
+
+  if (error) {
+    console.error('[ADMIN] loadPendingUsers failed:', error);
+    list.innerHTML = `<p style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#ff4466;">
+      ⚠ Không tải được pending users: ${escapeHtml(error.message)}
+    </p>`;
+    return;
+  }
+
   if (!data || data.length === 0) {
     list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No pending users</p>';
     return;
   }
+
   list.innerHTML = data.map(u => renderUserCard(u, true)).join('');
 }
 
 async function loadAllUsers() {
-  const { data } = await supabaseClient
+  if (!requireAdmin()) return;
+
+  const { data, error } = await supabaseClient
     .from('profiles')
     .select('*')
     .neq('username', 'baoanz2102208')
     .order('created_at', { ascending: false });
 
   const list = document.getElementById('users-list');
+
+  if (error) {
+    console.error('[ADMIN] loadAllUsers failed:', error);
+    list.innerHTML = `<p style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#ff4466;">
+      ⚠ Không tải được users: ${escapeHtml(error.message)}
+    </p>`;
+    return;
+  }
+
   if (!data || data.length === 0) {
     list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No users</p>';
     return;
   }
+
   list.innerHTML = data.map(u => renderUserCard(u, false)).join('');
 }
 
@@ -1485,27 +1646,91 @@ function renderUserCard(u, isPending) {
 }
 
 async function approveUser(id) {
-  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
+  if (!requireAdmin()) return;
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ status: 'active' })
+    .eq('id', id);
+
+  if (error) {
+    console.error('[ADMIN] approveUser failed:', error);
+    alert('Approve thất bại: ' + error.message);
+    return;
+  }
+
   await loadPendingUsers();
 }
 
 async function rejectUser(id) {
-  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
+  if (!requireAdmin()) return;
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ status: 'banned' })
+    .eq('id', id);
+
+  if (error) {
+    console.error('[ADMIN] rejectUser failed:', error);
+    alert('Reject thất bại: ' + error.message);
+    return;
+  }
+
   await loadPendingUsers();
 }
 
 async function banUser(id) {
-  await supabaseClient.from('profiles').update({ status: 'banned' }).eq('id', id);
+  if (!requireAdmin()) return;
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ status: 'banned' })
+    .eq('id', id);
+
+  if (error) {
+    console.error('[ADMIN] banUser failed:', error);
+    alert('Ban thất bại: ' + error.message);
+    return;
+  }
+
   await loadAllUsers();
 }
 
 async function unbanUser(id) {
-  await supabaseClient.from('profiles').update({ status: 'active' }).eq('id', id);
+  if (!requireAdmin()) return;
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ status: 'active' })
+    .eq('id', id);
+
+  if (error) {
+    console.error('[ADMIN] unbanUser failed:', error);
+    alert('Unban thất bại: ' + error.message);
+    return;
+  }
+
   await loadAllUsers();
 }
 
 async function changeRole(id, role) {
-  await supabaseClient.from('profiles').update({ role: role }).eq('id', id);
+  if (!requireAdmin()) return;
+
+  const nextRole = String(role || '').trim().toLowerCase();
+  if (!['member', 'mod'].includes(nextRole)) {
+    alert('Role không hợp lệ.');
+    return;
+  }
+
+  const { error } = await supabaseClient
+    .from('profiles')
+    .update({ role: nextRole })
+    .eq('id', id);
+
+  if (error) {
+    console.error('[ADMIN] changeRole failed:', error);
+    alert('Đổi role thất bại: ' + error.message);
+  }
 }
 
 async function resetPassword(username) {
@@ -1515,17 +1740,50 @@ async function resetPassword(username) {
 }
 
 function switchAdminTab(tab) {
-  const isPending = tab === 'pending';
-  document.getElementById('admin-pending-section').style.display = isPending ? 'block' : 'none';
-  document.getElementById('admin-users-section').style.display = isPending ? 'none' : 'block';
-  document.getElementById('admin-tab-pending').style.background = isPending ? '#a78bfa' : 'rgba(10,4,20,.8)';
-  document.getElementById('admin-tab-pending').style.color = isPending ? '#0d0516' : 'rgba(200,190,230,.4)';
-  document.getElementById('admin-tab-users').style.background = isPending ? 'rgba(10,4,20,.8)' : '#a78bfa';
-  document.getElementById('admin-tab-users').style.color = isPending ? 'rgba(200,190,230,.4)' : '#0d0516';
-  if (!isPending) loadAllUsers();
+  if (!requireAdmin()) return;
+
+  const sections = {
+    pending: document.getElementById('admin-pending-section'),
+    users: document.getElementById('admin-users-section'),
+    submissions: document.getElementById('admin-submissions-section')
+  };
+
+  const tabs = {
+    pending: document.getElementById('admin-tab-pending'),
+    users: document.getElementById('admin-tab-users'),
+    submissions: document.getElementById('admin-tab-submissions')
+  };
+
+  if (!sections[tab] || !tabs[tab]) {
+    console.warn('[ADMIN] Unknown admin tab:', tab);
+    return;
+  }
+
+  Object.entries(sections).forEach(([name, section]) => {
+    section.style.display = name === tab ? 'block' : 'none';
+  });
+
+  Object.entries(tabs).forEach(([name, button]) => {
+    const active = name === tab;
+    button.style.background = active ? '#a78bfa' : 'rgba(10,4,20,.8)';
+    button.style.color = active ? '#0d0516' : 'rgba(200,190,230,.4)';
+  });
+
+  if (tab === 'pending') loadPendingUsers();
+  if (tab === 'users') loadAllUsers();
+  if (tab === 'submissions') window.loadKnowledgeStudio?.();
 }
 
 // ── HELPERS ──
+function escapeHtml(value) {
+  return String(value ?? '')
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#039;');
+}
+
 function showError(id, msg) {
   const el = document.getElementById(id);
   el.textContent = '⚠ ' + msg;
@@ -1539,13 +1797,24 @@ function hideError(id) {
 // ── SUBMISSIONS (admin duyệt bài) ──
 
 async function loadSubmissions() {
-  const { data } = await supabaseClient
+  if (!requireAdmin()) return;
+
+  const { data, error } = await supabaseClient
     .from('knowledge_submissions')
-    .select('*, profiles(username)')
+    .select('*, profiles!knowledge_submissions_submitted_by_fkey(username)')
     .eq('status', 'pending')
     .order('created_at', { ascending: true });
 
   const list = document.getElementById('submissions-list');
+
+  if (error) {
+    console.error('[ADMIN] loadSubmissions failed:', error);
+    list.innerHTML = `<p style="font-family:'Share Tech Mono',monospace;font-size:11px;color:#ff4466;">
+      ⚠ Không tải được submissions: ${escapeHtml(error.message)}
+    </p>`;
+    return;
+  }
+
   if (!data || data.length === 0) {
     list.innerHTML = '<p style="font-family:\'Share Tech Mono\',monospace;font-size:11px;color:rgba(200,190,230,.3);letter-spacing:.06em;">// No pending submissions</p>';
     return;
@@ -1596,23 +1865,46 @@ function previewSubmission(id) {
 }
 
 async function approveSubmission(id) {
+  if (!requireAdmin()) return;
+
   const { error } = await supabaseClient
     .from('knowledge_submissions')
-    .update({ status: 'approved', approved_by: currentProfile.id, approved_at: new Date().toISOString() })
+    .update({
+      status: 'approved',
+      approved_by: currentProfile.id,
+      approved_at: new Date().toISOString()
+    })
     .eq('id', id);
-  if (!error) await loadSubmissions();
+
+  if (error) {
+    console.error('[ADMIN] approveSubmission failed:', error);
+    alert('Approve bài thất bại: ' + error.message);
+    return;
+  }
+
+  await loadSubmissions();
 }
 
 async function rejectSubmission(id) {
+  if (!requireAdmin()) return;
+
   const reason = prompt('Lý do reject (tùy chọn):');
+
   const { error } = await supabaseClient
     .from('knowledge_submissions')
     .update({ status: 'rejected', reject_reason: reason || null })
     .eq('id', id);
-  if (!error) await loadSubmissions();
+
+  if (error) {
+    console.error('[ADMIN] rejectSubmission failed:', error);
+    alert('Reject bài thất bại: ' + error.message);
+    return;
+  }
+
+  await loadSubmissions();
 }
 initAuth();
 </script>
-</html>
+<script src="knowledge-studio.js"></script>
 </body>
 </html>
