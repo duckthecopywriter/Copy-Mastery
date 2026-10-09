@@ -267,6 +267,18 @@
     panel.className = options.className || 'panel';
     if (options.id) panel.id = options.id;
 
+    if (options.backButton) {
+      const backButton = element(
+        'button',
+        '← Quay về mục lục',
+        `border:1px solid ${accent}88;background:${accent}14;color:${accent};padding:8px 12px;`
+      );
+      backButton.type = 'button';
+      backButton.className = 'back-btn';
+      backButton.addEventListener('click', () => window.goHome());
+      panel.append(backButton);
+    }
+
     const header = element('header', null, 'margin-bottom:28px;');
     if (article.tag_label) {
       header.append(element(
@@ -324,7 +336,7 @@
       const panel = document.createElement('section');
       panel.id = id;
       panel.className = 'panel';
-      renderArticle(article, panel, { className: 'knowledge-article' });
+      renderArticle(article, panel, { className: 'knowledge-article', backButton: true });
       content.append(panel);
 
       if (nav) {
