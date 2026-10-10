@@ -58,35 +58,36 @@ Trang dự kiến: ${pageNames[$('#article-page').value] || $('#article-page').v
 
 TƯ DUY BỐ CỤC VÀ MÀU SẮC:
 - Hãy chia nội dung theo nhóm có ý nghĩa; mỗi nhóm có tiêu đề ngắn, nội dung vừa đủ và khoảng nghỉ. Dùng "cards" cho các mục ngang hàng, "list" cho các bước/trình tự (viết theo đúng thứ tự và gọn như checklist [01], [02]...), "counterexamples" cho các tình huống có bối cảnh/mục tiêu/câu ví dụ/bài học, "comparison" cho hai hướng đối lập, "flow" cho tiến trình ngắn. Chỉ dùng block phù hợp, không ép nội dung vào đủ mọi loại.
-- Các block "list" sẽ được website tự đánh số [01], [02]...; không gõ số thứ tự vào đầu từng item để tránh đánh số lặp. Khi cần nhấn mạnh trong nội dung, chỉ dùng thẻ inline <strong>, <em>, <u>, <br> hoặc <span style="color:#RRGGBB"> với màu hợp bảng màu; không dùng Markdown, thuộc tính HTML khác, CSS khác hay thẻ khác. Quote giữ kiểu chữ thường; chỉ dùng đậm/nghiêng/gạch chân/màu nếu thật sự có chủ đích.
+- Tự động bọc tiêu đề bài ("title"), mọi tiêu đề mục ("section_heading.title") và tiêu đề ngắn của card/callout/takeaway/item bằng <strong>...</strong> để chúng nổi bật. Chỉ bọc phần chữ tiêu đề, không bọc cả nội dung dài. Khi cần nhấn mạnh trong nội dung, chỉ dùng thẻ inline <strong>, <em>, <u>, <br> hoặc <span style="color:#RRGGBB"> với màu hợp bảng màu; không dùng Markdown, thuộc tính HTML khác, CSS khác hay thẻ khác. Quote giữ kiểu chữ thường; chỉ dùng đậm/nghiêng/gạch chân/màu nếu thật sự có chủ đích.
 - Giao diện CopyHub nền tím đen tối, chữ thân bài sáng dịu; tiêu đề được website hiển thị bằng font pixel 8-bit. Chỉ mô tả nội dung, không thêm trường font hay CSS vào JSON.
-- Chọn màu nhấn có chủ đích, không tô tất cả cùng một màu và cũng không dùng quá nhiều màu. Dùng bảng màu hài hòa trên nền tối: xanh dương #60A5FA (nền tảng/thông tin), xanh lá #34D399 (đúng/tiến bộ), vàng hổ phách #FBBF24 (lưu ý/điểm cần nhớ), tím #A78BFA (khái niệm/chủ đạo), hồng #E879F9 (ngoại lệ/điểm nhấn). Mỗi bài chỉ nên dùng 2-4 màu nhấn; các thẻ cùng nhóm dùng màu nhất quán, nhóm khác nhau có thể đổi màu. Giữ chữ dễ đọc, không dùng màu nhạt trên nền sáng, không gán màu chỉ để trang trí. Dùng một màu chủ đạo tương ứng cho "tag_color", và gán màu hợp lý cho từng item trong các block hỗ trợ "color".
+- Màu sắc: nền trang tối nên dùng màu chữ thân bài sáng, dễ đọc (ưu tiên #E0D8F0 hoặc trắng dịu); không tô cả đoạn văn dài bằng màu nhấn. Đặc biệt, mọi block "text" phải có "color":"#E0D8F0" để nội dung không bị tô tím mặc định. Chỉ tô màu cho heading, nhãn, viền/nhóm card và cụm từ ngắn thật sự cần nhấn.
+- Chọn màu nhấn có chủ đích, đa dạng nhưng tiết chế: xanh dương #60A5FA (thông tin), xanh ngọc #22D3EE (liên kết/ý mới), xanh lá #34D399 (đúng/tiến bộ), vàng hổ phách #FBBF24 (lưu ý), hồng #E879F9 (ví dụ/điểm nhấn), tím #A78BFA (khái niệm). Mỗi bài dùng khoảng 2-4 màu nhấn, giữ màu nhất quán trong cùng nhóm và tương phản tốt trên nền tối. Không mặc định chọn tím: hãy chọn "tag_color" theo chủ đề bài, luân phiên các màu phù hợp giữa các bài; màu tím chỉ dùng khi thực sự hợp nội dung. Gán màu rõ ràng cho từng block và item có trường "color"; giữ phần thân bài sáng, không dùng màu nhấn cho đoạn dài.
 - Tạo phân cấp rõ: tiêu đề bài súc tích, subtitle giải thích lợi ích/phạm vi, nhãn ngắn; quote chỉ dùng nếu có trong ghi chú hoặc là câu ví dụ được ghi chú hỗ trợ.
 
 CHỈ trả về một object JSON hợp lệ, không markdown/code fence, không giải thích bên ngoài JSON. Dùng đúng cấu trúc:
 {
-  "title": "Tiêu đề bài",
+  "title": "<strong>Tiêu đề bài</strong>",
   "subtitle": "Phụ đề ngắn hoặc chuỗi rỗng",
   "tag_label": "Nhãn ngắn hoặc chuỗi rỗng",
-  "tag_color": "#60A5FA",
+  "tag_color": "#34D399",
   "quote": "Quote mở đầu hoặc chuỗi rỗng",
   "page_key": "${$('#article-page').value}",
   "sections": [
-    {"type":"section_heading","title":"Tiêu đề mục","content":""},
-    {"type":"text","content":"Đoạn giải thích"},
+    {"type":"section_heading","title":"<strong>Tiêu đề mục</strong>","content":"","color":"#22D3EE"},
+    {"type":"text","content":"Đoạn giải thích","color":"#E0D8F0"},
     {"type":"quote","content":"Câu trích dẫn"},
     {"type":"list","items":["Ý một","Ý hai"]},
     {"type":"callout","title":"Lưu ý","content":"Nội dung"},
     {"type":"counterexamples","title":"Các ví dụ theo bối cảnh","items":[{"title":"Bối cảnh","goal":"Mục tiêu/belief","quote":"Câu ví dụ","insight":"Giải thích","color":"#60A5FA"}]},
     {"type":"comparison","title":"So sánh tốt và kém","items":[{"label":"Framing kém","points":["Điểm một","Điểm hai"],"quote":"Ví dụ","content":"Giải thích","color":"#E879F9"},{"label":"Framing tốt","points":["Điểm một"],"quote":"Ví dụ","content":"Giải thích","color":"#34D399"}]},
-    {"type":"cards","title":"Các khái niệm","items":[{"title":"Tên card","content":"Giải thích","note":"Ghi chú tùy chọn","color":"#A78BFA"}]},
+    {"type":"cards","title":"Các khái niệm","items":[{"title":"<strong>Tên card</strong>","content":"Giải thích","note":"Ghi chú tùy chọn","color":"#22D3EE"}]},
     {"type":"flow","items":[{"label":"Bước 1","content":"Mô tả bước","color":"#60A5FA"}]},
     {"type":"takeaway","title":"🎯 Key Takeaway","content":"Tóm tắt tùy chọn","items":[{"content":"Ý chính","warn":false},{"content":"Cảnh báo","warn":true}],"note":"Câu chốt tùy chọn"},
     {"type":"table","headers":["Mã","Khái niệm","Loại"],"rows":[["LF1","Ví dụ","Sinh học"]]}
   ]
 }
 
-Chọn các block phù hợp với ghi chú; không cần dùng tất cả. Mỗi list phải có thứ tự có ý nghĩa; nếu ghi chú không có trình tự thì dùng cards hoặc nhóm theo chủ đề thay vì đánh số giả. Dùng mã màu #RRGGBB trong bảng màu và nguyên tắc trên. Giữ các ý chính, loại bỏ lặp ý và sắp xếp sections theo trình tự dễ học.
+Chọn các block phù hợp với ghi chú; không cần dùng tất cả. Mỗi list phải có thứ tự có ý nghĩa; nếu ghi chú không có trình tự thì dùng cards hoặc nhóm theo chủ đề thay vì đánh số giả. Luôn bọc tiêu đề bài và tiêu đề mục bằng <strong>, đồng thời đặt màu chữ body sáng cho từng block "text". Chọn mã màu #RRGGBB theo đúng bảng màu và nguyên tắc trên; đừng lặp màu tím làm màu chủ đạo mặc định. Giữ các ý chính, loại bỏ lặp ý và sắp xếp sections theo trình tự dễ học.
 
 GHI CHÚ THÔ:
 [DÁN GHI CHÚ CỦA TÔI VÀO ĐÂY]`;
