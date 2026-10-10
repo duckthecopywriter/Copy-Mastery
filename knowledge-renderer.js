@@ -367,7 +367,7 @@
 
       const grid = document.getElementById('mini-home-grid') || document.querySelector('.mini-home-grid');
       if (grid) {
-        const card = element('button', null, `width:100%;text-align:left;cursor:pointer;border-left:3px solid ${hex(article.tag_color)};`);
+        const card = element('button', null, `width:100%;text-align:left;cursor:pointer;border-left:3px solid ${hex(article.tag_color)};font-family:'Lora',Georgia,serif;`);
         card.className = 'mini-card';
         card.type = 'button';
         card.append(
