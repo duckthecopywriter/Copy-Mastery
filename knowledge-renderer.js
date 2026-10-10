@@ -38,19 +38,27 @@
     const stack = [];
     let result = '';
     let offset = 0;
+    const escapeText = value => {
+      let decoded = value;
+      for (let i = 0; i < 3; i++) {
+        const next = decodeEntities(decoded);
+        if (next === decoded) break;
+        decoded = next;
+      }
+      return escapeHtml(decoded.replace(/<\/\s*b\s*>/gi, ''));
+    };
     tags.forEach(match => {
       const [tag, , color] = match;
       const index = match.index;
-      result += escapeHtml(decodeEntities(source.slice(offset, index)));
-      const name = tag.match(/[a-z]+/i)[0].toLowerCase();
+      result += escapeText(source.slice(offset, index));
+      const rawName = tag.match(/[a-z]+/i)[0].toLowerCase();
+      const name = ({ b: 'strong', i: 'em' })[rawName] || rawName;
       if (name === 'br') {
         result += '<br>';
       } else if (tag.startsWith('</')) {
         const stackIndex = stack.lastIndexOf(name);
         if (stackIndex !== -1) {
           while (stack.length > stackIndex) result += `</${stack.pop()}>`;
-        } else {
-          result += escapeHtml(tag);
         }
       } else if (name === 'span' && color) {
         const rgb = color.match(/^rgb\(\s*(\d{1,3})\s*,\s*(\d{1,3})\s*,\s*(\d{1,3})\s*\)$/i);
@@ -60,13 +68,12 @@
         result += `<span style="color:#${hexColor.toUpperCase()}">`;
         stack.push('span');
       } else {
-        const normalized = ({ b: 'strong', i: 'em' })[name] || name;
-        result += `<${normalized}>`;
-        stack.push(normalized);
+        result += `<${name}>`;
+        stack.push(name);
       }
       offset = index + tag.length;
     });
-    result += escapeHtml(decodeEntities(source.slice(offset)));
+    result += escapeText(source.slice(offset));
     while (stack.length) result += `</${stack.pop()}>`;
     return result;
   }
@@ -339,37 +346,38 @@
       renderArticle(article, panel, { className: 'knowledge-article', backButton: true });
       content.append(panel);
 
+      const titleText = plainInlineText(article.title || 'Bài viết chưa có tiêu đề');
+      const openArticle = () => {
+        document.querySelectorAll('.panel').forEach(item => item.classList.remove('active'));
+        panel.classList.add('active');
+        const title = document.getElementById('topbar-title');
+        if (title) title.textContent = titleText;
+        window.scrollTo(0, 0);
+      };
+
       if (nav) {
-        const titleText = plainInlineText(article.title || 'Bài viết chưa có tiêu đề');
         const link = element('a', `●  ${titleText}`, `display:block;padding:8px 10px;color:${hex(article.tag_color)};text-decoration:none;font-size:12px;cursor:pointer`);
         link.href = '#';
-        const openArticle = () => {
-          document.querySelectorAll('.panel').forEach(item => item.classList.remove('active'));
-          panel.classList.add('active');
-          const title = document.getElementById('topbar-title');
-          if (title) title.textContent = titleText;
-          window.scrollTo(0, 0);
-        };
         link.addEventListener('click', event => {
           event.preventDefault();
           openArticle();
         });
         nav.append(link);
+      }
 
-        const grid = document.getElementById('mini-home-grid');
-        if (grid) {
-          const card = element('button', null, `width:100%;text-align:left;cursor:pointer;border-left:3px solid ${hex(article.tag_color)};`);
-          card.className = 'mini-card';
-          card.type = 'button';
-          card.append(
-            formattedElement('div', article.title || 'Bài viết chưa có tiêu đề', 'font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3;'),
-            element('div', article.subtitle || 'Bài viết cộng đồng', 'font-size:12px;color:var(--text-muted);line-height:1.45;')
-          );
-          card.firstElementChild.className = 'mc-title';
-          card.lastElementChild.className = 'mc-desc';
-          card.addEventListener('click', openArticle);
-          grid.append(card);
-        }
+      const grid = document.getElementById('mini-home-grid') || document.querySelector('.mini-home-grid');
+      if (grid) {
+        const card = element('button', null, `width:100%;text-align:left;cursor:pointer;border-left:3px solid ${hex(article.tag_color)};`);
+        card.className = 'mini-card';
+        card.type = 'button';
+        card.append(
+          formattedElement('div', article.title || 'Bài viết chưa có tiêu đề', 'font-weight:700;color:var(--text);margin-bottom:4px;line-height:1.3;'),
+          element('div', article.subtitle || 'Bài viết cộng đồng', 'font-size:12px;color:var(--text-muted);line-height:1.45;')
+        );
+        card.firstElementChild.className = 'mc-title';
+        card.lastElementChild.className = 'mc-desc';
+        card.addEventListener('click', openArticle);
+        grid.append(card);
       }
     });
   }
